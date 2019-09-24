@@ -1,0 +1,25 @@
+.card {
+	background-color: rgba(106, 107, 111, 0.5);
+	color: rgba(241, 241, 241, 0.9);
+	margin-bottom: 20px;
+}
+
+.grid {
+	justify-content: center;
+	color: rgba(106, 107, 111, 0.5);
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-gap: 20px;
+	justify-items: center;
+	align-items: center;
+	padding: 10px;
+}
+
+.avatar {
+	--border-radius: 50%
+}
+
+.text {
+	font-size: auto;
+	color: rgba(241, 241, 241, 0.9);
+}
