@@ -22,6 +22,7 @@ import { locate } from "ionicons/icons";
 import React from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import "../theme/page.css";
+import "../theme/tag.css";
 
 const mapStyles = {
   width: "100%",
@@ -33,13 +34,54 @@ class MapContainer extends React.Component {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-    agentLoc: [
-      { lat: 42.6573929, lng: 12.09283475 },
-      { latitude: 42.9384572, longitude: 12.09283475 },
-      { latitude: 42.023948, longitude: 12.20938457 },
-      { latitude: 42.2009823, longitude: 12.01938467 },
-      { latitude: 42.2903845, longitude: 12.02938475 },
-      { latitude: 42.6573929, longitude: 12.09283475 }
+    agent: [
+      {
+        assignedOp: "Tradimento rossi",
+        picture:
+          "https://www.dandi.media/wp-content/uploads/2017/06/roger-moore-as-James-Bond.jpg",
+        name: "Mario",
+        lat: 42.6573929,
+        lng: 12.09283475
+      },
+      {
+        assignedOp: "Tradimento bianchi",
+        picture: "https://www.wecanjob.it/moduli/output_immagine.php?id=613",
+        name: "Paolo",
+        latitude: 42.9384572,
+        longitude: 12.09283475
+      },
+      {
+        assignedOp: "Tradimento verdi",
+        picture:
+          "http://www.iferronline.com/images/652e873d-1a28-4bf9-baa9-502f49663969.JPG",
+        name: "Giulio",
+        latitude: 42.023948,
+        longitude: 12.20938457
+      },
+      {
+        assignedOp: "Tradimento rossi",
+        picture:
+          "https://upload.wikimedia.org/wikipedia/it/4/4e/Agente_Smart_-_Casino_totale_-_Trailer.png",
+        name: "Nando",
+        latitude: 42.2009823,
+        longitude: 12.01938467
+      },
+      {
+        assignedOp: "Tradimento verdi",
+        picture:
+          "https://www.repstatic.it/content/nazionale/img/2019/01/13/112758099-cbaa5e8b-3d81-4fd9-826f-af6f7647e27d.jpg",
+        name: "Fernando",
+        latitude: 42.2903845,
+        longitude: 12.02938475
+      },
+      {
+        assignedOp: "Tradimento rossi",
+        picture:
+          "https://www.dandi.media/wp-content/uploads/2017/06/roger-moore-as-James-Bond.jpg",
+        name: "Giorgio",
+        latitude: 42.6573929,
+        longitude: 12.09283475
+      }
     ]
   };
 
@@ -65,18 +107,33 @@ class MapContainer extends React.Component {
     });
   };
   displayMarkers = () => {
-    return this.state.agentLoc.map((agentLoc, index) => {
+    return this.state.agent.map((agent, index) => {
       return (
         <Marker
-          style={{ color: "black" }}
           key={index}
           id={index}
           position={{
-            lat: agentLoc.latitude,
-            lng: agentLoc.longitude
+            lat: agent.latitude,
+            lng: agent.longitude
           }}
           onClick={this.onMarkerClick}
-          name={agentLoc[index]}
+          name={
+            <div className="tagGrid">
+              <div>
+                <img className="tag" src={agent.picture} />
+              </div>
+              <div>
+                <div className="agent">
+                  <h4>Agente:</h4>
+                  <h4>{agent.name}</h4>
+                </div>
+                <div className="operation">
+                  <h6>Operazione:</h6>
+                  <h4>{agent.assignedOp}</h4>
+                </div>
+              </div>
+            </div>
+          }
         ></Marker>
       );
     });
@@ -94,13 +151,13 @@ class MapContainer extends React.Component {
           >
             {this.displayMarkers()}
             <InfoWindow
+              content={"ciao"}
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
               onClose={this.onClose}
+              onClick={this.toAgentPage}
             >
-              <div>
-                <h4>{this.state.selectedPlace.name}</h4>
-              </div>
+              <div>{this.state.selectedPlace.name}</div>
             </InfoWindow>
           </Map>
         </IonContent>
