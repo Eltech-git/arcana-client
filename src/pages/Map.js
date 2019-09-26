@@ -8,10 +8,10 @@ class Map extends React.Component {
 		return (
 	    <IonPage>
 	      <IonContent className="page">
-				
+
 				</IonContent>
 	    </IonPage>
 	  );
-	}
+};
 
 export default Map;
