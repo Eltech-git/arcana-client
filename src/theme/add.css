@@ -1,0 +1,22 @@
+.button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+	margin-top: 30px;
+	color: black;
+	--background: white;
+}
+
+.input {
+	--background: #2d3439;
+	color: white;
+	--border-color: white;
+	--highlight-color-focused: white;
+}
+
+
+.label {
+	--highlight-color-focused: white;
+	color: var(white);
+}
