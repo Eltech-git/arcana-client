@@ -2,14 +2,31 @@
   width: 100px;
   height: 100px;
   border: 1px solid white;
-  border-radius: 50%;
-  margin-top: 30px;
+  border-radius: 30%;
+  background-size: cover;
+  background-position: center;
 }
 .tagGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
 }
 .agent {
+  height: 50px;
+  padding: 0px;
+  width: auto;
   display: grid;
   grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+h4 {
+  padding: 0;
+  height: 20px;
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+}
+.operation {
+  height: 50px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
 }

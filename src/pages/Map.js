@@ -120,15 +120,18 @@ class MapContainer extends React.Component {
           name={
             <div className="tagGrid">
               <div>
-                <img className="tag" src={agent.picture} />
+                <img
+                  className="tag"
+                  style={{ backgroundImage: "url(" + agent.picture + ")" }}
+                />
               </div>
               <div>
                 <div className="agent">
-                  <h4>Agente:</h4>
+                  <h7>Agente:</h7>
                   <h4>{agent.name}</h4>
                 </div>
-                <div className="operation">
-                  <h6>Operazione:</h6>
+                <div className="operation" onClick={e => this.toAgentPage()}>
+                  <h7>Operazione:</h7>
                   <h4>{agent.assignedOp}</h4>
                 </div>
               </div>
