@@ -12,6 +12,7 @@ class Map extends React.Component {
 				</IonContent>
 	    </IonPage>
 	  );
+	}
 };
 
 export default Map;
