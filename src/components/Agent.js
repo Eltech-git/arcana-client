@@ -1,34 +1,52 @@
-import {IonGrid, IonRow, IonCol, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonButton, IonLabel, IonIcon, IonCardHeader, IonImg, IonAvatar, IonChip } from '@ionic/react';
+import {IonGrid, IonText, IonCard, IonAvatar, IonItem } from '@ionic/react';
 import React from 'react';
-import '../theme/card.css'
+import '../theme/card.css';
+import Operation from '../components/Operation';
 
-class Operation extends React.Component {
+class Agent extends React.Component {
 
 	state= {
 		agent: {
 			src: '../images/agent.jpg',
 			name: 'Sempronio',
-			cases: 4
-		}
+			cases: 3
+		},
+		large: false
 	}
+
+	showOperations = () => {
+		let size = this.state.large
+		let large = !size
+
+		this.setState({
+			large: large
+		})
+	}
+
 
 	render() {
 		return (
 			<IonCard className="card">
 
-			<IonGrid className="grid">
+			<IonGrid className="grid-agent" onClick={this.showOperations}>
 			<IonAvatar className="avatar">
 				<img className="img" src={this.state.agent.src}/>
 			</IonAvatar>
 			<IonText className="text">{this.state.agent.name}</IonText>
 			<IonText className="text">{this.state.agent.cases}</IonText>
 			</IonGrid>
-
-	</IonCard>
+				<IonGrid className={this.state.large === true ? "" : "hidden"}>
+					{
+						[...Array(4)].map((n,i) =>
+						<Operation />
+					)
+					}
+				</IonGrid>
+			</IonCard>
 
 
 	  );
 	}
 };
 
-export default Operation;
+export default Agent;
