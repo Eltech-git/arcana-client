@@ -2,9 +2,17 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, 
 import React from 'react';
 import Header from '../components/Header';
 import Operation from '../components/Operation';
+import LargeComment from '../components/LargeComment';
+
 import '../theme/page.css';
 
 class Operations extends React.Component {
+
+	goToDetail = () => {
+		this.props.history.push({
+			pathname: '/operationdetail'
+		})
+	}
 
 	render() {
 		return (
@@ -12,10 +20,9 @@ class Operations extends React.Component {
 	      <IonContent className="page">
 				{
 					[...Array(10).keys()].map(n =>
-						<Operation />
+						<Operation goToDetail={this.goToDetail}/>
 					)
 				}
-
 	      </IonContent>
 
 	    </IonPage>
