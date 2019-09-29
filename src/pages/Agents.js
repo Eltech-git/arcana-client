@@ -6,15 +6,22 @@ import '../theme/page.css';
 
 class Agents extends React.Component {
 
+	goToDetail = () => {
+		this.props.history.push({
+			pathname: '/operationdetail'
+		})
+	}
+
 	render() {
 		return (
 	    <IonPage>
 			<IonContent className="page">
 			{
 				[...Array(10).keys()].map(n =>
-					<Agent />
+					<Agent goToDetail={this.goToDetail}/>
 				)
 			}
+
 			</IonContent>
 
 	    </IonPage>
