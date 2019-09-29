@@ -17,32 +17,32 @@ class Add extends React.Component {
 			</IonHeader>
 				<IonContent className="input">
 					<IonItem className="input">
-			      <IonLabel className="label" position="stacked">Nome Operazione</IonLabel>
-					<IonInput type="number" placeholder="Nome"></IonInput>
+			      <IonLabel position="stacked">Nome Operazione</IonLabel>
+						<IonInput type="number" placeholder="Nome"></IonInput>
 			    </IonItem>
 					<IonItem className="input">
-			      <IonLabel className="label" position="stacked">Giornate</IonLabel>
+			      <IonLabel position="stacked">Giornate</IonLabel>
 			      <IonInput type="number" placeholder="Numero"></IonInput>
 			    </IonItem>
 					<IonItem className="input">
-			      <IonLabel className="label" position="stacked">Indirizzo primo OCP</IonLabel>
+			      <IonLabel position="stacked">Indirizzo primo OCP</IonLabel>
 					<IonInput type="number" placeholder="Via"></IonInput>
 			    </IonItem>
 						<IonItem className="input">
-				      <IonLabel className="label"  position="stacked">Agente/i</IonLabel>
+				      <IonLabel position="stacked">Agente/i</IonLabel>
 				      <IonInput placeholder="username"></IonInput>
 				    </IonItem>
 						<IonItem className="input">
-				      <IonLabel className="label"  position="stacked">Target</IonLabel>
+				      <IonLabel  position="stacked">Target</IonLabel>
 						<IonInput placeholder="nome"></IonInput>
 				    </IonItem>
 						<IonItem className="input">
-			      <IonLabel className="label" position="stacked">Immagini</IonLabel>
-					<IonInput type="file"></IonInput>
+			      <IonLabel position="stacked">Immagini</IonLabel>
+						<IonInput type="file"></IonInput>
 		    		</IonItem>
 
 				<IonItem className="input">
-					<IonLabel position="stacked" className="label">Indicazioni Operative</IonLabel>
+					<IonLabel position="stacked">Indicazioni Operative</IonLabel>
 				<IonTextarea  placeholder="Aggiungi maggiori informazioni qui..."></IonTextarea>
 				</IonItem>
 				<IonButton className="button" shape="round">Crea</IonButton>
