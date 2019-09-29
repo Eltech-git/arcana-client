@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@expo/vector-icons": "^10.0.5",
+    "@ionic-native/core": "^5.0.0",
+    "@ionic-native/google-maps": "^5.0.0-beta.27",
     "@ionic/react": "^4.9.0-rc.2",
     "@ionic/react-router": "^4.9.0-rc.2",
     "@types/jest": "24.0.18",
@@ -12,6 +14,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router": "^5.0.3",
     "@types/react-router-dom": "^4.3.1",
+    "google-maps-react": "^2.0.2",
     "ionicons": "^4.6.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
