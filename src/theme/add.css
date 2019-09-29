@@ -15,8 +15,9 @@
 	--highlight-color-focused: white;
 }
 
-
-.label {
-	--highlight-color-focused: white;
-	color: var(white);
+.label-stacked.sc-ion-label-md-h {
+	--background: #2d3439;
+}
+.item-has-focus .label-stacked.sc-ion-label-md-h {
+	color: #ffffff;
 }

@@ -1,10 +1,10 @@
 .card {
 	background-color: rgba(106, 107, 111, 0.5);
 	color: rgba(241, 241, 241, 0.9);
-	margin-bottom: 20px;
+	padding-bottom: 2%;
 }
 
-.grid {
+.grid-agent {
 	justify-content: center;
 	color: rgba(106, 107, 111, 0.5);
 	display: grid;
@@ -13,6 +13,28 @@
 	justify-items: center;
 	align-items: center;
 	padding: 10px;
+}
+
+
+.grid-operation {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+	grid-gap: 20px;
+	align-items: center;
+	padding: 0;
+}
+
+.grid-operation .text {
+	font-size: auto;
+}
+
+.card .display {
+	margin: 10px;
+}
+
+.hidden {
+	display: none;
 }
 
 .avatar {

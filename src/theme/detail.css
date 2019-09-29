@@ -1,0 +1,28 @@
+.page {
+	--background: #2d3439;
+}
+
+.detail-header {
+	--background: #222428;
+	color: white;
+}
+
+.card {
+	background-color: rgba(106, 107, 111, 0.5);
+	color: rgba(241, 241, 241, 0.9);
+	padding-bottom: 2%;
+}
+
+
+.grid-detail {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	padding: 5%;
+}
+
+
+.grid-detail .text {
+	margin: auto;
+	font-size: 100%;
+	text-align: center;
+}

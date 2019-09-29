@@ -1,0 +1,39 @@
+.login {
+	--background: #2d3439;
+	justify-content: center;
+	color: white;
+}
+
+.image {
+	width: 60%;
+	height: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+	margin-top: 10%;
+}
+
+.text {
+	justify-content: center;
+	color: white;
+	font-size: 150%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.form {
+	margin-top: 5%;
+	--background: #2d3439;
+	color: #ffffff;
+	--border-color: white;
+	--highlight-color-focused: white;
+}
+
+.link {
+	margin-top: 5%;
+	--background: #2d3439;
+	color: #ffffff;
+	--border-color: #2d3439;
+	margin-left: auto;
+	margin-right: auto;
+}

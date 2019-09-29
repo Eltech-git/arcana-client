@@ -1,0 +1,26 @@
+.comment {
+	--background: --ion-color-step-550;
+	--border-color: white;
+}
+
+.largecomment {
+	background-color: rgba(106, 107, 111, 0.5);
+	padding-bottom: 2%;
+}
+
+.grid-largecomment {
+	display: grid;
+	grid-template-columns: 3fr 5fr;
+}
+
+.largecomment .image {
+	width: 100px !important;
+	height: 100px !important;
+}
+
+
+
+.grid-largecomment .text {
+	font-size: 80%;
+	color: white;
+}
