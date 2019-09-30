@@ -19,7 +19,6 @@ import Add from "./pages/Add";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import App from "./App";
-import Signform from "./pages/Signform";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -46,7 +45,6 @@ const Routes: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/login" component={Login} exact={true} />
         <Route path="/signup" component={Signup} exact={true} />
-        <Route path="/signform" component={Signform} exact={true} />
         <Route path="/app" component={App} exact={true} />
         <Route exact path="/" render={() => <Redirect to="/login" />} />
       </IonRouterOutlet>

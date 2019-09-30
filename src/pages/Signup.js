@@ -30,26 +30,26 @@ class Signup extends React.Component {
       image: "../images/arcana_white.png",
       name: "ARCANA"
     },
-    signup: {
-      name: "Paolo",
-      surname: "Rossi",
-      email: "paolorossi@gmail.com",
-      password: "123",
-      location: "Rimini",
-      birthDate: "09/04/2003",
-      phone: "33366558347",
-      companyIDnum: "32"
-    },
-    nome: "ciccio"
+    form: {
+      name: " ",
+      surname: " ",
+      email: " ",
+      password: " ",
+      location: " ",
+      birthDate: " ",
+      phone: 0,
+      companyIDnum: " ",
+      avatar: " "
+    }
   };
 
   submitHandler = event => {
     event.preventDefault();
 
-    const agent = this.state.signup;
+    const agent = this.state.form;
     console.log(agent);
     axios
-      .post(`http://localhost:4000/agents`, { agent })
+      .post(`http://localhost:4000/signup`, agent)
       .then(res => {
         console.log(res);
       })
@@ -57,6 +57,16 @@ class Signup extends React.Component {
         console.log(err);
       });
   };
+
+  inputChange = (event, field) => {
+    let name = event.target.value;
+    let form = this.state.form;
+    form[field] = name;
+    this.setState({
+      form
+    });
+  };
+
   render() {
     return (
       <IonPage>
@@ -73,43 +83,72 @@ class Signup extends React.Component {
               <IonInput
                 type="text"
                 placeholder="Nome"
-                ionInput={this.inputChange}
+                onIonChange={event => this.inputChange(event, "name")}
               ></IonInput>
+              {console.log(this.state.form)}
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">Cognome</IonLabel>
-              <IonInput type="text" placeholder="Cognome"></IonInput>
+              <IonInput
+                type="text"
+                placeholder="Cognome"
+                onIonChange={event => this.inputChange(event, "surname")}
+              ></IonInput>
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">Email</IonLabel>
-              <IonInput type="email" placeholder="Email"></IonInput>
+              <IonInput
+                type="email"
+                placeholder="Email"
+                onIonChange={event => this.inputChange(event, "email")}
+              ></IonInput>
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">Password</IonLabel>
-              <IonInput type="password" placeholder="Password"></IonInput>
+              <IonInput
+                type="password"
+                placeholder="Password"
+                onIonChange={event => this.inputChange(event, "password")}
+              ></IonInput>
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">Indirizzo</IonLabel>
-              <IonInput type="text" placeholder="Indirizzo"></IonInput>
+              <IonInput
+                type="text"
+                placeholder="Indirizzo"
+                onIonChange={event => this.inputChange(event, "location")}
+              ></IonInput>
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">Data di Nascita</IonLabel>
-              <IonInput type="date" placeholder="Data di Nascita"></IonInput>
+              <IonInput
+                type="date"
+                placeholder="Data di Nascita"
+                onIonChange={event => this.inputChange(event, "birthDate")}
+              ></IonInput>
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">Cellulare</IonLabel>
               <IonInput
                 type="number"
                 placeholder="Numero di cellulare"
+                onIonChange={event => this.inputChange(event, "phone")}
               ></IonInput>
             </IonItem>
             <IonItem className="form">
               <IonLabel position="floating">ID Compagnia</IonLabel>
-              <IonInput type="number" placeholder="ID Compagnia"></IonInput>
+              <IonInput
+                type="number"
+                placeholder="ID Compagnia"
+                onIonChange={event => this.inputChange(event, "companyIDnum")}
+              ></IonInput>
             </IonItem>
             <IonItem className="input">
               <IonLabel position="stacked">Foto profilo</IonLabel>
-              <IonInput type="file"></IonInput>
+              <IonInput
+                type="file"
+                onIonChange={event => this.inputChange(event, "avatar")}
+              ></IonInput>
             </IonItem>
             <IonButton
               className="button"
