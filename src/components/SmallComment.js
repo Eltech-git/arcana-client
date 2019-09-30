@@ -13,7 +13,7 @@ class SmallComment extends React.Component {
 	render() {
 		return (
 			<IonItem className="comment">
-			<IonGrid className="grid-comment">
+			<IonGrid className="grid-smallcomment">
 			<IonAvatar className="avatar">
 				<img className="img" src={this.state.comment.image}/>
 			</IonAvatar>
