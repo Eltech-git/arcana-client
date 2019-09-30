@@ -19,12 +19,12 @@ import React from "react";
 import Header from "../components/Header";
 import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
-
+import axios from "axios";
 import "../theme/page.css";
 
 class Operations extends React.Component {
   state = {
-    operations: []
+    user: {}
   };
 
   goToDetail = () => {
@@ -34,7 +34,7 @@ class Operations extends React.Component {
   };
   componentDidMount() {
     let token = localStorage.getItem("token");
-    axios.post(`http://localhost:4000/auth?token=${token}`).then(res => {
+    axios.post(`http://localhost:4000/user?token=${token}`).then(res => {
       this.setState({
         user: res.data
       });
