@@ -1,33 +1,57 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonText,  IonTabs, IonTabBar, IonTabButton, IonBadge, IonIcon, IonLabel} from '@ionic/react';
-import React from 'react';
-import Header from '../components/Header';
-import Operation from '../components/Operation';
-import LargeComment from '../components/LargeComment';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonText,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonBadge,
+  IonIcon,
+  IonLabel
+} from "@ionic/react";
+import React from "react";
+import Header from "../components/Header";
+import Operation from "../components/Operation";
+import LargeComment from "../components/LargeComment";
 
-import '../theme/page.css';
+import "../theme/page.css";
 
 class Operations extends React.Component {
+  state = {
+    operations: []
+  };
 
-	goToDetail = () => {
-		this.props.history.push({
-			pathname: '/operationdetail'
-		})
-	}
+  goToDetail = () => {
+    this.props.history.push({
+      pathname: "/operationdetail"
+    });
+  };
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+    axios.post(`http://localhost:4000/auth?token=${token}`).then(res => {
+      this.setState({
+        user: res.data
+      });
+    });
+  }
 
-	render() {
-		return (
-	    <IonPage>
-	      <IonContent className="page">
-				{
-					[...Array(10).keys()].map(n =>
-						<Operation goToDetail={this.goToDetail}/>
-					)
-				}
-	      </IonContent>
-
-	    </IonPage>
-	  );
-	}
-};
+  render() {
+    return (
+      <IonPage>
+        <IonContent className="page">
+          {[...Array(10).keys()].map(n => (
+            <Operation goToDetail={this.goToDetail} />
+          ))}
+        </IonContent>
+      </IonPage>
+    );
+  }
+}
 
 export default Operations;
