@@ -46,10 +46,9 @@ class Signup extends React.Component {
   submitHandler = event => {
     event.preventDefault();
 
-    const agent = this.state.form;
-    console.log(agent);
+    const user = this.state.form;
     axios
-      .post(`http://localhost:4000/signup`, agent)
+      .post(`http://localhost:4000/signup`, user)
       .then(res => {
         console.log(res);
       })

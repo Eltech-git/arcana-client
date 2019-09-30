@@ -13,7 +13,8 @@ import {
   IonTabButton,
   IonBadge,
   IonIcon,
-  IonLabel
+  IonLabel,
+  withIonLifeCycle
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
@@ -32,26 +33,39 @@ class Operations extends React.Component {
       pathname: "/operationdetail"
     });
   };
-  componentDidMount() {
-    let token = localStorage.getItem("token");
-    axios.post(`http://localhost:4000/user?token=${token}`).then(res => {
-      this.setState({
-        user: res.data
-      });
-    });
+
+  ionViewDidEnter() {
+    console.log("ionViewWillEnter event fired");
+    axios
+      .get("http:localhost:4000/users/5d91e1a47492b06ee913f321")
+      .then(res => {
+        let user = this.state.user;
+        user = res.data;
+        this.setState({
+          user: user
+        });
+        console.log(res.data);
+      })
+      .catch(err => {});
+    console.log(this.state.user);
   }
+
+  // componentDidMount() {
+  //   let token = localStorage.getItem("token");
+  //   axios.post(`http://localhost:4000/user?token=${token}`).then(res => {
+  //     this.setState({
+  //       user: res.data
+  //     });
+  //   });
+  // }
 
   render() {
     return (
       <IonPage>
-        <IonContent className="page">
-          {[...Array(10).keys()].map(n => (
-            <Operation goToDetail={this.goToDetail} />
-          ))}
-        </IonContent>
+        <IonContent className="page"></IonContent>
       </IonPage>
     );
   }
 }
 
-export default Operations;
+export default withIonLifeCycle(Operations);
