@@ -50,15 +50,6 @@ class Operations extends React.Component {
     console.log(this.state.user);
   }
 
-  // componentDidMount() {
-  //   let token = localStorage.getItem("token");
-  //   axios.post(`http://localhost:4000/user?token=${token}`).then(res => {
-  //     this.setState({
-  //       user: res.data
-  //     });
-  //   });
-  // }
-
   render() {
     return (
       <IonPage>
