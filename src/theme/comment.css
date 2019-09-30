@@ -8,19 +8,52 @@
 	padding-bottom: 2%;
 }
 
+
+.grid-smallcomment {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+
+.grid-smallcomment .text {
+	font-size: 100%;
+	color: white;
+}
+
+.head {
+	padding: 10px;
+}
+
 .grid-largecomment {
 	display: grid;
-	grid-template-columns: 3fr 5fr;
+	grid-template-columns: 4fr 2fr;
+	height: auto !important;
+	justify-items: center;
+	grid-gap: 20px;
+	align-items: center;
+	padding: 0;
 }
 
-.largecomment .image {
-	width: 100px !important;
-	height: 100px !important;
+.subtitle {
+	font-size: 110%;
+	color: rgb(182, 182, 182);
+	align-content: center;
+	margin-bottom: 5%;
 }
 
-
-
-.grid-largecomment .text {
-	font-size: 80%;
+.title {
+	font-size: 150%;
 	color: white;
+	align-content: center;
+}
+
+.grid-largecomment .img {
+	width: auto;
+  height: auto;
+  border: 1px solid #2d3439;
+  background-size: cover;
+	background-position: center;
+}
+
+.grid-content {
+	
 }

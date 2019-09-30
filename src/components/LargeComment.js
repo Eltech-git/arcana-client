@@ -16,21 +16,19 @@ class LargeComment extends React.Component {
 			<IonCardHeader className="head">
 			<IonGrid className="grid-largecomment">
 				<IonCol>
-					<IonCardSubtitle>Commento </IonCardSubtitle>
-					<IonCardTitle>Trovato l'amante</IonCardTitle>
+					<IonCardSubtitle className="subtitle">Commento </IonCardSubtitle>
+				<IonCardTitle className="title">Trovato l'amante</IonCardTitle>
 				</IonCol>
-				<IonAvatar className="avatar">
-					<IonImg className="img" src={this.state.comment.image}/>
-				</IonAvatar>
+				<img className="img" src={this.state.comment.image}/>
 			</IonGrid>
 			</IonCardHeader>
-
-		<IonCardContent>
+		<IonCardContent className="grid-content">
 			<IonTitle> 27/08/2019 </IonTitle>
-			Keep close to Nature's heart... and break clear away, once in awhile,
+		<IonText>Keep close to Nature's heart... and break clear away, once in awhile,
 			and climb a mountain or spend a week in the woods. Wash your spirit clean.
+		</IonText>
 		</IonCardContent>
-	</IonCard>
+		</IonCard>
 	  );
 	}
 };
