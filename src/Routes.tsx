@@ -11,7 +11,7 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { map, list, person, add } from "ionicons/icons";
-import Map from "./pages/Map";
+import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
 import Agents from "./pages/Agents";

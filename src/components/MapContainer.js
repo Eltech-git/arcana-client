@@ -16,8 +16,7 @@ import {
   IonLabel,
   IonButton,
   IonInput,
-  IonItem,
-  withIonLifeCycle
+  IonItem
 } from "@ionic/react";
 import { locate } from "ionicons/icons";
 import React from "react";
@@ -33,28 +32,11 @@ const mapStyles = {
 
 class MapContainer extends React.Component {
   state = {
-    url: "http://localhost:4000/userspos",
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-    userspos: []
+    userspos: this.props.users
   };
-
-  ionViewDidEnter() {
-    console.log("ionViewWillEnter event fired");
-    axios
-      .get(this.state.url)
-      .then(res => {
-        let userspos = this.state.userspos;
-        userspos = res.data;
-        this.setState({
-          userspos: userspos
-        });
-        console.log(res.data);
-      })
-      .catch(err => {});
-    console.log(this.state.users);
-  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -79,13 +61,14 @@ class MapContainer extends React.Component {
   };
   displayMarkers = () => {
     return this.state.userspos.map((agent, index) => {
+      console.log(this.state.userspos);
       return (
         <Marker
           key={index}
           id={index}
           position={{
-            lat: agent.latitude,
-            lng: agent.longitude
+            lat: agent.lat,
+            lng: agent.lng
           }}
           onClick={this.onMarkerClick}
           name={
@@ -93,7 +76,7 @@ class MapContainer extends React.Component {
               <div>
                 <img
                   className="tag"
-                  style={{ backgroundImage: "url(" + agent.picture + ")" }}
+                  style={{ backgroundImage: "url(" + agent.avatar + ")" }}
                 />
               </div>
               <div>
@@ -115,27 +98,23 @@ class MapContainer extends React.Component {
 
   render() {
     return (
-      <IonPage>
-        <IonContent className="page">
-          <Map
-            google={this.props.google}
-            zoom={7.5}
-            style={mapStyles}
-            initialCenter={{ lat: 42.5, lng: 12.285 }}
-          >
-            {this.displayMarkers()}
-            <InfoWindow
-              content={"ciao"}
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
-              onClick={this.toAgentPage}
-            >
-              <div>{this.state.selectedPlace.name}</div>
-            </InfoWindow>
-          </Map>
-        </IonContent>
-      </IonPage>
+      <Map
+        google={this.props.google}
+        zoom={7.5}
+        style={mapStyles}
+        initialCenter={{ lat: 42.5, lng: 12.285 }}
+      >
+        {this.displayMarkers()}
+        <InfoWindow
+          content={"ciao"}
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+          onClick={this.toAgentPage}
+        >
+          <div>{this.state.selectedPlace.name}</div>
+        </InfoWindow>
+      </Map>
     );
   }
 }

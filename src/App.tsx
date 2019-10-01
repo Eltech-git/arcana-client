@@ -11,7 +11,7 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { map, list, person, add } from "ionicons/icons";
-import Map from "./pages/Map";
+import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
 import Agents from "./pages/Agents";
@@ -42,7 +42,7 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/map" component={Map} exact={true} />
+          <Route path="/mappa" component={Mappa} exact={true} />
           <Route path="/operations" component={Operations} exact={true} />
           <Route
             path="/operationdetail"
@@ -54,7 +54,7 @@ const App: React.FC = () => (
           <Route exact path="/" render={() => <Redirect to="/login" />} />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
-          <IonTabButton tab="tab1" href="/map">
+          <IonTabButton tab="tab1" href="/mappa">
             <IonIcon icon={map} />
             <IonLabel>Mappa</IonLabel>
           </IonTabButton>
