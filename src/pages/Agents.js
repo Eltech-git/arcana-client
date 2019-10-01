@@ -18,7 +18,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
-import AgentA from "../components/AgentA";
+import Agent from "../components/Agent";
 import "../theme/page.css";
 import axios from "axios";
 class Agents extends React.Component {
@@ -53,7 +53,7 @@ class Agents extends React.Component {
       <IonPage>
         <IonContent className="page">
           {this.state.users.map((a, i) => (
-            <AgentA a={a} key={i} goToDetail={this.goToDetail} />
+            <Agent a={a} key={i} goToDetail={this.goToDetail} />
           ))}
         </IonContent>
       </IonPage>
