@@ -16,7 +16,8 @@ import {
   IonButton,
   IonInput,
   IonItem,
-  IonImg
+  IonImg,
+	IonRouterLink
 } from "@ionic/react";
 import { Route } from "react-router-dom";
 import React from "react";
@@ -37,26 +38,12 @@ class Login extends React.Component {
   };
   submitHandler = e => {
     e.preventDefault();
-    let agent = this.state.form;
-    axios
-      .post("http://localhost:4000/login", agent)
-      .then(res => {
-        console.log(res.data);
-        if (res.data.error) {
-          res.data.error === `Error, email doesn't exist! Please sign up`
-            ? this.setState({ errorEmail: res.data.error })
-            : this.setState({ errorPassword: res.data.error });
-        } else {
-          console.log(res.data.token);
-          localStorage.setItem("token", res.data.token);
-          this.props.history.push({
-            pathname: `/map`
-          });
-        }
-        console.log(this.state.error);
-      })
-      .catch(err => {});
+		console.log('hello')
+		this.props.history.push({
+			pathname: `/app`
+		});
   };
+
 
   inputChange = (event, field) => {
     let name = event.target.value;
@@ -99,12 +86,10 @@ class Login extends React.Component {
           <IonButton
             className="button"
             shape="round"
-            onClick={this.submitHandler}
-            href="/map"
-          >
+            onClick={this.submitHandler} >
             Login
           </IonButton>
-          <IonItem className="link" href="/signup">
+          <IonItem className="link" href="/map">
             <IonText className="link">Registra nuovo agente</IonText>
           </IonItem>
         </IonContent>
