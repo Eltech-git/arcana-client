@@ -2,7 +2,7 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 30%;
+	width: 60%;
 	margin-top: 30px;
 	color: black;
 	--background: white;
@@ -13,6 +13,12 @@
 	color: white;
 	--border-color: white;
 	--highlight-color-focused: white;
+}
+
+.input .title {
+	--background: rgba(106, 107, 111, 0.5);
+	color: white;
+	font-size: 120%;
 }
 
 .label-stacked.sc-ion-label-md-h {

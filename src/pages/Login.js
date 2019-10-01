@@ -16,7 +16,8 @@ import {
   IonButton,
   IonInput,
   IonItem,
-  IonImg
+  IonImg,
+  IonRouterLink
 } from "@ionic/react";
 import { Route } from "react-router-dom";
 import React from "react";
@@ -100,11 +101,10 @@ class Login extends React.Component {
             className="button"
             shape="round"
             onClick={this.submitHandler}
-            href="/map"
           >
             Login
           </IonButton>
-          <IonItem className="link" href="/signup">
+          <IonItem className="link" href="/map">
             <IonText className="link">Registra nuovo agente</IonText>
           </IonItem>
         </IonContent>

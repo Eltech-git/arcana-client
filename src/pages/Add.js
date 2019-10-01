@@ -1,20 +1,9 @@
-import {
-  IonHeader,
-  IonTitle,
-  IonContent,
-  IonToolbar,
-  IonInput,
-  IonItem,
-  IonPage,
-  IonLabel,
-  IonTextarea,
-  IonButton
-} from "@ionic/react";
-import React from "react";
-import Header from "../components/Header";
-import "../theme/add.css";
-import "../theme/header.css";
-import axios from "axios";
+import { IonHeader, IonTitle, IonContent, IonToolbar, IonInput, IonItem, IonPage, IonLabel, IonTextarea, IonButton, IonText} from '@ionic/react';
+import React from 'react';
+import Header from '../components/Header';
+import Agent from '../components/Agent';
+import '../theme/add.css';
+import '../theme/header.css';
 
 class Add extends React.Component {
   state = {
@@ -42,85 +31,60 @@ class Add extends React.Component {
       });
   };
 
-  inputChange = (event, field) => {
-    let name = event.target.value;
-    let form = this.state.operation;
-    form[field] = name;
-    this.setState({
-      form
-    });
-  };
+	    <IonPage>
+			<IonHeader>
+			<IonToolbar className='header'>
+			<IonTitle>Nuova Operazione</IonTitle>
+			</IonToolbar>
+			</IonHeader>
+				<IonContent className="input">
+					<IonItem className="title">
+					<IonText>Operazione</IonText>
+					</IonItem>
+					<IonItem className="input">
+						<IonLabel position="stacked">Nome Operazione</IonLabel>
+						<IonInput type="number" placeholder="nome"></IonInput>
+			    </IonItem>
+					<IonItem className="input">
+			      <IonLabel position="stacked">Giornate</IonLabel>
+			      <IonInput type="number" placeholder="numero"></IonInput>
+			    </IonItem>
+					<IonItem className="input">
+						<IonLabel position="stacked">Indirizzo primo OCP</IonLabel>
+					<IonInput type="number" placeholder="via"></IonInput>
+					</IonItem>
+					<IonItem className="input">
+						<IonLabel position="stacked">Indicazioni Operative</IonLabel>
+					<IonTextarea  placeholder="aggiungi maggiori informazioni qui..."></IonTextarea>
+					</IonItem>
+					<IonItem className="title">
+					<IonText>Target</IonText>
+					</IonItem>
+						<IonItem className="input">
+							<IonLabel  position="stacked">Target</IonLabel>
+						<IonInput placeholder="nome"></IonInput>
+						</IonItem>
+						<IonItem className="input">
+						<IonLabel position="stacked">Immagini</IonLabel>
+						<IonInput type="file"></IonInput>
+						</IonItem>
+						<IonItem className="input">
+						<IonLabel  position="stacked">Targa</IonLabel>
+						<IonInput placeholder="numero"></IonInput>
+						</IonItem>
+						<IonItem className="title">
+						<IonText>Seleziona agenti</IonText>
+						</IonItem>
+						<Agent />
+						<Agent />
+						<Agent />
+						<Agent />
 
-  render() {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar className="header">
-            <IonTitle>Nuova Operazione</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="input">
-          <IonItem className="input">
-            <IonLabel position="stacked">Nome Operazione</IonLabel>
-            <IonInput
-              type="number"
-              placeholder="Nome"
-              onIonChange={event => this.inputChange(event, "title")}
-            ></IonInput>
-          </IonItem>
-          <IonItem className="input">
-            <IonLabel position="stacked">Giornate</IonLabel>
-            <IonInput
-              type="number"
-              placeholder="Numero"
-              onIonChange={event => this.inputChange(event, "daysAssigned")}
-            ></IonInput>
-          </IonItem>
-          <IonItem className="input">
-            <IonLabel position="stacked">Indirizzo primo OCP</IonLabel>
-            <IonInput
-              type="number"
-              placeholder="Via"
-              onIonChange={event => this.inputChange(event, "firstOCP")}
-            ></IonInput>
-          </IonItem>
-          <IonItem className="input">
-            <IonLabel position="stacked">Agente/i</IonLabel>
-            <IonInput
-              placeholder="username"
-              onIonChange={event => this.inputChange(event, "agentAssigned")}
-            ></IonInput>
-          </IonItem>
-          <IonItem className="input">
-            <IonLabel position="stacked">Target</IonLabel>
-            <IonInput
-              placeholder="nome"
-              onIonChange={event => this.inputChange(event, "target")}
-            ></IonInput>
-          </IonItem>
-          <IonItem className="input">
-            <IonLabel position="stacked">Immagini</IonLabel>
-            <IonInput type="file"></IonInput>
-          </IonItem>
-
-          <IonItem className="input">
-            <IonLabel position="stacked">Indicazioni Operative</IonLabel>
-            <IonTextarea
-              placeholder="Aggiungi maggiori informazioni qui..."
-              onIonChange={event => this.inputChange(event, "description")}
-            ></IonTextarea>
-          </IonItem>
-          <IonButton
-            className="button"
-            shape="round"
-            onClick={this.submitHandler}
-          >
-            Crea
-          </IonButton>
-        </IonContent>
-      </IonPage>
-    );
-  }
-}
+						<IonButton className="button" shape="round">Crea operazione</IonButton>
+				</IonContent>
+	    </IonPage>
+	  );
+	}
+};
 
 export default Add;
