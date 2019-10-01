@@ -86,7 +86,6 @@ class MapContainer extends React.Component {
                 </div>
                 <div className="operation" onClick={e => this.toAgentPage()}>
                   <h7>Operazione:</h7>
-                  <h4>{agent.assignedOp}</h4>
                 </div>
               </div>
             </div>

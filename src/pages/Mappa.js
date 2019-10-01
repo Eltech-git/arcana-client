@@ -38,10 +38,18 @@ class Mappa extends React.Component {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-    userspos: []
+    userspos: [
+      {
+        avatar: "",
+        name: "",
+        lat: 0,
+        lng: 0,
+        assignedOP: []
+      }
+    ]
   };
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     console.log("ionViewWillEnter event fired");
     axios
       .get(this.state.url)
