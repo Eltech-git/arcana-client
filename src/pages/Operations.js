@@ -25,7 +25,26 @@ import "../theme/page.css";
 
 class Operations extends React.Component {
   state = {
-    user: {}
+    user: {
+      avatar: "",
+      email: "",
+      location: "",
+      name: "",
+      surname: "",
+      birthDate: "",
+      phone: "",
+      assignedOP: [
+        {
+          comments: [],
+          target: {
+            pictures: []
+          }
+        }
+      ],
+      companyIDnum: 0,
+      agentAssigned: []
+    },
+    url: "http://localhost:4000/users/5d91e1a47492b06ee913f321"
   };
 
   goToDetail = () => {
@@ -37,7 +56,7 @@ class Operations extends React.Component {
   ionViewDidEnter() {
     console.log("ionViewWillEnter event fired");
     axios
-      .get("http:localhost:4000/users/5d91e1a47492b06ee913f321")
+      .get(this.state.url)
       .then(res => {
         let user = this.state.user;
         user = res.data;
@@ -53,7 +72,11 @@ class Operations extends React.Component {
   render() {
     return (
       <IonPage>
-        <IonContent className="page"></IonContent>
+        <IonContent className="page">
+          {this.state.user.assignedOP.map((o, i) => (
+            <Operation o={o} key={i} goToDetail={this.goToDetail} />
+          ))}
+        </IonContent>
       </IonPage>
     );
   }

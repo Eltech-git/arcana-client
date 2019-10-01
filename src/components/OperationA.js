@@ -40,10 +40,10 @@ class Operation extends React.Component {
           onClick={() => this.props.goToDetail()}
         >
           <IonAvatar className="avatar">
-            <img className="img" src={this.props.o.target.pictures} />
+            <img className="img" src={this.props.a.target.pictures} />
           </IonAvatar>
-          <IonText className="text"> {this.props.o.title}</IonText>
-          <IonText className="text">{this.props.o.daysAssigned}</IonText>
+          <IonText className="text"> {this.props.a.title}</IonText>
+          <IonText className="text">{this.props.a.daysAssigned}</IonText>
         </IonGrid>
 
         <IonText className="display" onClick={this.showComments}>
@@ -52,7 +52,7 @@ class Operation extends React.Component {
             : "Visualizza commenti"}
         </IonText>
         <IonGrid className={this.state.comments === true ? "" : "hidden"}>
-          {this.props.o.comments.map((c, i) => (
+          {this.props.a.comments.map((c, i) => (
             <SmallComment c={c} key={i} />
           ))}
         </IonGrid>
