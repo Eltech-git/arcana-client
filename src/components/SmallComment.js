@@ -21,19 +21,30 @@ import "../theme/comment.css";
 
 class SmallComment extends React.Component {
   state = {
-    comment: {
-      image: "../images/lover.jpg"
-    }
+    comment: {},
+		smallComment: ''
   };
+
+
+	componentWillMount(){
+		let comment = this.props.comment
+		let text = this.props.comment.text
+		let smallComment = text.substring(0, 20)
+		console.log(smallComment)
+		this.setState({
+			comment: comment,
+			smallComment: smallComment
+		})
+	}
 
   render() {
     return (
       <IonItem className="comment">
         <IonGrid className="grid-smallcomment">
           <IonAvatar className="avatar">
-            <img className="img" src={this.props.c.picture} />
+            <img className="img" src={this.props.comment.picture} />
           </IonAvatar>
-          <IonTitle className="text">{this.props.c.text}</IonTitle>
+          <IonText className="text">{this.state.smallComment}</IonText>
         </IonGrid>
       </IonItem>
     );
