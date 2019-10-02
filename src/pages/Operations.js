@@ -14,6 +14,8 @@ import {
   IonBadge,
   IonIcon,
   IonLabel,
+  IonFabButton,
+  IonFab,
   withIonLifeCycle
 } from "@ionic/react";
 import React from "react";
@@ -23,6 +25,7 @@ import LargeComment from "../components/LargeComment";
 import Camera from "../components/Camera";
 import axios from "axios";
 import "../theme/page.css";
+import { add } from "ionicons/icons";
 
 class Operations extends React.Component {
   state = {
@@ -83,6 +86,11 @@ class Operations extends React.Component {
             <Operation o={o} key={i} goToDetail={this.goToDetail} />
           ))}
         </IonContent>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton href="/add" color="light">
+            <IonIcon icon={add} />
+          </IonFabButton>
+        </IonFab>
       </IonPage>
     );
   }

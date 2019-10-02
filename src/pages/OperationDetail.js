@@ -18,7 +18,9 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardContent,
-  IonCardTitle
+  IonCardTitle,
+  IonFabButton,
+  IonFab
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
@@ -26,6 +28,7 @@ import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
 import Camera from "../components/Camera";
 import axios from "axios";
+import { add } from "ionicons/icons";
 
 import "../theme/detail.css";
 
@@ -83,6 +86,11 @@ class OperationDetail extends React.Component {
             <LargeComment comment={this.state.comment} />
           ))}
         </IonContent>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton href="/mappa" color="light">
+            <IonIcon icon={add} />
+          </IonFabButton>
+        </IonFab>
       </IonPage>
     );
   }
