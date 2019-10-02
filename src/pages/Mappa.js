@@ -21,7 +21,7 @@ import {
 } from "@ionic/react";
 import { locate } from "ionicons/icons";
 import React from "react";
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import {GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import MapContainer from "../components/MapContainer";
 import "../theme/page.css";
 import "../theme/tag.css";
