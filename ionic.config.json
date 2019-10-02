@@ -1,5 +1,7 @@
 {
   "name": "inv_fac",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

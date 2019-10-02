@@ -1,0 +1,7 @@
+{
+  "appId": "com.project.arcana",
+  "appName": "Arcana",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "public"
+}
