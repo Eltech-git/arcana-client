@@ -35,7 +35,8 @@ class MapContainer extends React.Component {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-    userspos: this.props.users
+    userspos: this.props.users,
+    operations: this.props.users.assignedOP
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -86,6 +87,9 @@ class MapContainer extends React.Component {
                 </div>
                 <div className="operation" onClick={e => this.toAgentPage()}>
                   <h7>Operazione:</h7>
+                  {agent.assignedOP.map((t, i) => (
+                    <h4>{t.title}</h4>
+                  ))}
                 </div>
               </div>
             </div>
