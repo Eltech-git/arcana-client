@@ -43,14 +43,13 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/app/mappa" component={Mappa} exact={true} />
+          <Route path="/mappa" component={Mappa} exact={true} />
           <Route path="/operations" component={Operations} exact={true} />
           <Route
             path="/operationdetail"
             component={OperationDetail}
             exact={true}
           />
-          <Route path="/newoperation" component={Add} exact={true} />
           <Route
             path="/locationdetail"
             component={LocationDetail}
@@ -58,8 +57,7 @@ const App: React.FC = () => (
           />
           <Route path="/add" component={Add} exact={true} />
           <Route path="/agents" component={Agents} />
-          <Route exact path="/app" render={() => <Redirect to="/mappa" />} />
-          <Route exact path="/" render={() => <Redirect to="/login" />} />
+          <Route exact path="/" render={() => <Redirect to="/app" />} />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
           <IonTabButton tab="tab1" href="/mappa">
