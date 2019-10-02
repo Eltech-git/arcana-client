@@ -11,10 +11,10 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { map, list, person, add } from "ionicons/icons";
-import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
 import Agents from "./pages/Agents";
+import Mappa from "./pages/Mappa";
 import Add from "./pages/Add";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
