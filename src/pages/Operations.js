@@ -45,7 +45,7 @@ class Operations extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: `http://a1361c94.ngrok.io/users/5d9434bb03dd9307d82d4329`
+    url: `http://253e7407.ngrok.io/users/5d9434bb03dd9307d82d4329`
   };
 
   goToDetail = () => {

@@ -1,99 +1,97 @@
 .comment {
-	--background: --ion-color-step-550;
-	--border-color: white;
+  --background: --ion-color-step-550;
+  --border-color: white;
 }
 
 .largecomment {
-	background-color: rgba(106, 107, 111, 0.5);
-	padding-bottom: 2%;
+  background-color: rgba(106, 107, 111, 0.5);
+  padding-bottom: 2%;
 }
 
-
 .grid-smallcomment {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
 .grid-smallcomment .text {
-	font-size: 100%;
-	color: white;
+  font-size: 100%;
+  color: white;
 }
 
 .head {
-	padding: 10px;
+  padding: 10px;
 }
 
-
 .subtitle {
-	font-size: 110%;
-	color: rgb(182, 182, 182);
-	align-content: center;
-	margin-bottom: 5%;
+  font-size: 110%;
+  color: rgb(182, 182, 182);
+  align-content: center;
+  margin-bottom: 5%;
 }
 
 .title {
-	font-size: 150%;
-	color: white;
-	align-content: center;
+  font-size: 150%;
+  color: white;
+  align-content: center;
 }
 
 .div {
-	height: 100px;
-	--background: --ion-color-step-550;
-	--border-color: white;
-	margin-top: 3%;
+  height: 100px;
+  --background: --ion-color-step-550;
+  --border-color: white;
+  margin-top: 3%;
 }
 
 .largecomment .divlarge {
-	display: grid;
-	grid-template-columns: 4fr 2fr 2fr;
-	--background: --ion-color-step-550;
-	--border-color: white;
-	margin-top: 3%;
+  display: grid;
+  grid-template-columns: 4fr 2fr 2fr;
+  --background: --ion-color-step-550;
+  --border-color: white;
+  margin-top: 3%;
 }
 
 .divlarge .img {
-	height: 100px !important;
-	width: 150px !important;
-	margin-left: auto;
-	margin-right: auto;
+  height: 100px !important;
+  width: 150px !important;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid #2d3439;
   background-size: cover;
-	background-position: center;
-	margin-bottom: 5%;
+  background-position: center;
+  margin-bottom: 5%;
 }
 
 .divlarge .img .divBtn {
-	width: 120%;
-	height: 120%;
+  width: 120%;
+  height: 120%;
 }
 
 .divlarge .img .divBtn .icon {
-	color: rgba(106, 107, 111, 0.5);
+  color: rgba(106, 107, 111, 0.5);
 }
 
 .content {
-	color: white;
+  color: white;
 }
 
 .grid-icons {
-	width: auto;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	align-items: center;
-	font-size: 350%;
-	text-align: center;
+  width: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  font-size: 350%;
+  text-align: center;
 }
 
 .grid-content {
-	display: grid;
-	grid-template-columns: 5fr 2fr;
-	align-items: center;
-	padding: 0;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  align-items: center;
+  padding: 0;
 }
 
 .grid-content .text-content {
-	display: grid;
-	grid-template-rows: 1fr 4fr;
-	grid-gap: 10%;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-gap: 10%;
 }

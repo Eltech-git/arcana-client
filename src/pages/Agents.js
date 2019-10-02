@@ -24,7 +24,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 class Agents extends React.Component {
   state = {
-    url: `http://a1361c94.ngrok.io/users`,
+    url: `http://253e7407.ngrok.io/users`,
     users: []
   };
   ionViewDidEnter() {
