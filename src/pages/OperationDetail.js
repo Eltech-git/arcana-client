@@ -1,5 +1,7 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonImg, IonText,  IonAvatar, IonTabBar, IonTabButton, IonBadge, IonIcon, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonImg, IonText,  IonAvatar, IonTabBar, IonTabButton, IonBadge, IonIcon, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle,IonFabButton,IonFab } from '@ionic/react';
 import React from 'react';
+import {arrowRoundBack, add} from 'ionicons/icons';
+import {Link} from 'react-router-dom';
 import Header from '../components/Header';
 import Operation from '../components/Operation';
 import LargeComment from '../components/LargeComment';
@@ -20,24 +22,41 @@ class OperationDetail extends React.Component {
 			image: '../images/lover.jpg',
 			largeContent: `L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi.`,
 			smallContent: '',
+		},
+		operation: {
+          comments: [],
+					dayDone: 0,
+          title: '',
+					description: '',
+					firstOCP: '',
+					daysAssigned: 0,
+					target: {
+						pictures: [],
+						name: ''
+				}
 		}
 	}
 
-
-	ionViewWillEnter() {
-		let comment = this.state.comment
-		console.log(comment)
-		let content = this.state.comment.largeContent
-		console.log(content)
-		let smallContent = content.substring(0, 95) + " ..."
-		console.log(smallContent)
-		comment.smallContent = smallContent
-
-		console.log(smallContent)
+	componentWillMount() {
+		console.log('hello')
+		let operation = this.props.location.operation
+		console.log("log1 >>>>>>" + operation)
 		this.setState({
-			comment: comment
+			operation: operation
 		})
+	}
 
+	componentWillReceiveProps(props) {
+		console.log('hello')
+		let operation = props.location.operation
+		console.log("log2 >>>>" + operation)
+		this.setState({
+			operation: operation
+		})
+	}
+
+	goBack = () => {
+		this.props.history.goBack()
 	}
 
 
@@ -46,21 +65,31 @@ class OperationDetail extends React.Component {
 	    <IonPage>
 	      <IonContent className="page">
 				<IonHeader>
+
 					<IonToolbar className="detail-header">
 						<IonGrid className="grid-detail">
+						<Link to="/operations">
+						<IonIcon className="back" icon={arrowRoundBack} />
+						</Link>
 							<IonAvatar className="text">
-							<IonImg className="image" src={this.state.header.src}/>
+							<IonImg src={this.state.operation.target.pictures[0]}/>
 							</IonAvatar>
-							<IonText className="text">{this.state.header.case}
+							<IonText className="text">{this.state.operation.title}
 							</IonText>
 						</IonGrid>
 					</IonToolbar>
 				</IonHeader>
 				{
-				[...Array(10).keys()].map(n =>
-					<LargeComment comment={this.state.comment}/>
-				)
+					this.state.operation.comments.map((comment, i) =>
+						<LargeComment comment={comment}/>
+					)
 				}
+
+					<IonFab vertical="bottom" horizontal="end" slot="fixed" >
+						<IonFabButton color="light">
+							<IonIcon icon={add} />
+					</IonFabButton>
+					</IonFab>
 				</IonContent>
 	    </IonPage>
 	  );

@@ -14,12 +14,15 @@ import {
   IonBadge,
   IonIcon,
   IonLabel,
+	IonFab,
+	IonFabButton,
   withIonLifeCycle
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
 import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
+import {add} from 'ionicons/icons';
 import axios from "axios";
 import "../theme/page.css";
 
@@ -36,24 +39,29 @@ class Operations extends React.Component {
       assignedOP: [
         {
           comments: [],
+					title: '',
           target: {
-            pictures: []
+            pictures: [],
+						name: ''
           }
         }
       ],
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "http://localhost:4000/users/5d91e1a47492b06ee913f321"
+    url: "http://localhost:4000/users/5d9434bb03dd9307d82d4329"
   };
 
-  goToDetail = () => {
+  goToDetail = (i) => {
+
     this.props.history.push({
-      pathname: "/operationdetail"
+      pathname: "/operationdetail",
+			assignedOP: this.state.user.assignedOP,
+			index: i
     });
   };
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     console.log("ionViewWillEnter event fired");
     axios
       .get(this.state.url)
@@ -73,9 +81,14 @@ class Operations extends React.Component {
     return (
       <IonPage>
         <IonContent className="page">
-          {this.state.user.assignedOP.map((o, i) => (
-            <Operation o={o} key={i} goToDetail={this.goToDetail} />
-          ))}
+				{this.state.user.assignedOP.map((operation, i) => (
+					<Operation operation={operation} key={i} goToDetail={() => this.goToDetail(i)} history={this.props.history} />
+				))}
+				<IonFab vertical="bottom" horizontal="end" slot="fixed" >
+					<IonFabButton href="/add"color="light">
+						<IonIcon icon={add} />
+				</IonFabButton>
+				</IonFab>
         </IonContent>
       </IonPage>
     );

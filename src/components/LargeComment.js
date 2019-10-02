@@ -19,17 +19,13 @@ class LargeComment extends React.Component {
 		})
 	}
 
-	ionViewWillEnter() {
+	componentDidMount() {
 
 		let comment = this.props.comment
 
 		this.setState({
 			comment: comment
 		})
-
-
-		console.log(this.props.comment)
-		console.log(this.state.comment)
 
 	}
 
@@ -40,7 +36,7 @@ class LargeComment extends React.Component {
 
 			<IonCard className="largecomment">
 			<IonGrid className="divlarge">
-			<img className="img" src={this.state.comment.image}/>
+			<img className="img" src={this.props.comment.picture}/>
 			<IonButton className="divBtn" href='/locationdetail'>
 			<IonIcon className="icon" icon={pin} />
 			</IonButton>
@@ -49,8 +45,7 @@ class LargeComment extends React.Component {
 			</IonButton>
 			</IonGrid>
 			<IonCardContent className="content" color="white" onClick={this.showLargeContent}>
-				{this.state.comment.stateContent ? this.state.comment.largeContent :
-					this.state.comment.smallContent}
+				{this.props.comment.text}
 			</IonCardContent>
 		</IonCard>
 
