@@ -50,14 +50,14 @@ const App: React.FC = () => (
             component={OperationDetail}
             exact={true}
           />
-					<Route
+          <Route
             path="/locationdetail"
             component={LocationDetail}
             exact={true}
           />
           <Route path="/add" component={Add} exact={true} />
           <Route path="/agents" component={Agents} />
-          <Route exact path="/" render={() => <Redirect to="/login" />} />
+          <Route exact path="/" render={() => <Redirect to="/app" />} />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
           <IonTabButton tab="tab1" href="/mappa">
