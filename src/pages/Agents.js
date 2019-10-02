@@ -23,11 +23,12 @@ import "../theme/page.css";
 import axios from "axios";
 class Agents extends React.Component {
   state = {
-    url: "http://localhost:4000/users",
+    url: "http://253e7407.ngrok.io/users",
     users: []
   };
-  ionViewDidEnter() {
-    console.log("ionViewWillEnter event fired");
+
+
+  componentWillMount() {
     axios
       .get(this.state.url)
       .then(res => {
@@ -52,9 +53,9 @@ class Agents extends React.Component {
     return (
       <IonPage>
         <IonContent className="page">
-          {this.state.users.map((a, i) => (
-            <Agent a={a} key={i} goToDetail={this.goToDetail} />
-          ))}
+					{this.state.users.map((agent, i) => (
+						<Agent agent={agent} key={i} goToDetail={this.goToDetail} />
+					))}
         </IonContent>
       </IonPage>
     );

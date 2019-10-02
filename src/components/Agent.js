@@ -10,7 +10,8 @@ class Agent extends React.Component {
       name: "Sempronio",
       cases: 3
     },
-    large: false
+    large: false,
+		agent: {}
   };
 
   showOperations = () => {
@@ -27,14 +28,19 @@ class Agent extends React.Component {
       <IonCard className="card">
         <IonGrid className="grid-agent" onClick={this.showOperations}>
           <IonAvatar className="avatar">
-            <img className="img" src={this.props.a.avatar} />
+            <img className="img" src={this.props.agent.avatar} />
           </IonAvatar>
-          <IonText className="text">{this.props.a.name}</IonText>
-          <IonText className="text">{`Op: ${this.props.a.assignedOP.length}`}</IonText>
+          <IonText className="text">{this.props.agent.name}</IonText>
+				<IonText className="text">{`Op: ${this.props.agent.assignedOP.length}`}</IonText>
         </IonGrid>
+				<IonText className="display" onClick={this.showOperations}>
+				          {this.state.showOperations === true
+				            ? "Nascondi operazioni"
+				            : "Visualizza operazioni"}
+				 </IonText>
         <IonGrid className={this.state.large === true ? "" : "hidden"}>
-          {this.props.a.assignedOP.map((a, i) => (
-            <Operation o={a} key={i} goToDetail={this.props.goToDetail} />
+          {this.props.agent.assignedOP.map((operation, i) => (
+            <Operation operation={operation} key={i} goToDetail={this.props.goToDetail} />
           ))}
         </IonGrid>
       </IonCard>
