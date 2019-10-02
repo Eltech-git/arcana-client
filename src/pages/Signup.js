@@ -48,7 +48,7 @@ class Signup extends React.Component {
 
     const user = this.state.form;
     axios
-      .post(`http://localhost:4000/signup`, user)
+      .post(`${process.env.API_ADDRESS}/signup`, user)
       .then(res => {
         console.log(res);
       })

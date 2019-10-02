@@ -20,7 +20,7 @@ import {
 } from "@ionic/react";
 import { locate } from "ionicons/icons";
 import React from "react";
-import {arrowRoundBack} from 'ionicons/icons';
+import { arrowRoundBack } from "ionicons/icons";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import "../theme/tag.css";
 
@@ -107,16 +107,13 @@ class LocationDetail extends React.Component {
     });
   };
 
-
-	goBack = () => {
-	this.props.history.goBack()
-	}
-
+  goBack = () => {
+    this.props.history.goBack();
+  };
 
   displayMarkers = () => {
     return this.state.agent.map((agent, index) => {
       return (
-
         <Marker
           key={index}
           id={index}
@@ -154,11 +151,15 @@ class LocationDetail extends React.Component {
     return (
       <IonPage>
         <IonContent className="page">
-				<IonHeader>
-					<IonToolbar className="detail-header">
-						<IonIcon onClick={this.goBack}className="arrowBack" icon={arrowRoundBack} />
-					</IonToolbar>
-				</IonHeader>
+          <IonHeader>
+            <IonToolbar className="detail-header">
+              <IonIcon
+                onClick={this.goBack}
+                className="arrowBack"
+                icon={arrowRoundBack}
+              />
+            </IonToolbar>
+          </IonHeader>
           <Map
             google={this.props.google}
             zoom={7.5}

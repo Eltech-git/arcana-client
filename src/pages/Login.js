@@ -40,7 +40,7 @@ class Login extends React.Component {
     e.preventDefault();
     let user = this.state.form;
     axios
-      .post("http://localhost:4000/login", user)
+      .post(`${process.env.API_ADDRESS}/login`, user)
       .then(res => {
         console.log(res.data);
         if (res.data.error) {
@@ -50,9 +50,7 @@ class Login extends React.Component {
         } else {
           console.log(res.data.token);
           localStorage.setItem("token", res.data.token);
-          this.props.history.push({
-            pathname: `/map`
-          });
+          window.location = "/mappa";
         }
         console.log(this.state.error);
       })

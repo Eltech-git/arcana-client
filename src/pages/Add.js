@@ -17,6 +17,7 @@ import Agent from "../components/Agent";
 import "../theme/add.css";
 import "../theme/header.css";
 import axios from "axios";
+import dotenv from "dotenv";
 
 class Add extends React.Component {
   state = {
@@ -40,7 +41,7 @@ class Add extends React.Component {
     const operation = this.state.operation;
     console.log(operation);
     axios
-      .post(`http://localhost:4000/operations`, operation)
+      .post(`${process.env.API_ADDRESS}/operations`, operation)
       .then(res => {
         console.log(res);
       })
@@ -49,7 +50,7 @@ class Add extends React.Component {
       });
     const target = this.state.target;
     axios
-      .post(`http://localhost:4000/targets`, target)
+      .post(`${process.env.API_ADDRESS}/targets`, target)
       .then(res => {
         console.log(res);
       })

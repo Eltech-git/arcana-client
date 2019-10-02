@@ -20,6 +20,7 @@ import React from "react";
 import Header from "../components/Header";
 import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
+import Camera from "../components/Camera";
 import axios from "axios";
 import "../theme/page.css";
 
@@ -44,7 +45,7 @@ class Operations extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "http://localhost:4000/users/5d91e1a47492b06ee913f321"
+    url: `http://a1361c94.ngrok.io/users/5d9434bb03dd9307d82d4329`
   };
 
   goToDetail = () => {
@@ -53,7 +54,7 @@ class Operations extends React.Component {
     });
   };
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     console.log("ionViewWillEnter event fired");
     axios
       .get(this.state.url)
@@ -69,10 +70,15 @@ class Operations extends React.Component {
     console.log(this.state.user);
   }
 
+  sendToTarghe = image => {
+    axios.post("targe.com/sdfsd");
+  };
+
   render() {
     return (
       <IonPage>
         <IonContent className="page">
+          <Camera sendPhoto={this.sendToTarghe} />
           {this.state.user.assignedOP.map((o, i) => (
             <Operation o={o} key={i} goToDetail={this.goToDetail} />
           ))}
