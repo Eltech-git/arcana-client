@@ -34,7 +34,7 @@ class Agent extends React.Component {
         </IonGrid>
         <IonGrid className={this.state.large === true ? "" : "hidden"}>
           {this.props.a.assignedOP.map((a, i) => (
-            <Operation o={a} key={i} />
+            <Operation o={a} key={i} goToDetail={this.props.goToDetail} />
           ))}
         </IonGrid>
       </IonCard>
