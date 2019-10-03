@@ -35,7 +35,7 @@ const mapStyles = {
 
 class Mappa extends React.Component {
   state = {
-    url: `http://253e7407.ngrok.io/userspos`,
+    url: `http://563a1f42.ngrok.io/userspos`,
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
@@ -60,7 +60,7 @@ class Mappa extends React.Component {
         this.setState({
           userspos: userspos
         });
-        console.log(res.data);
+        console.log(this.state);
       })
       .catch(err => {});
     console.log(this.state.userspos);
@@ -69,7 +69,7 @@ class Mappa extends React.Component {
   render() {
     return (
       <IonPage>
-        <MapContainer users={this.state.userspos} />
+        <MapContainer />
       </IonPage>
     );
   }

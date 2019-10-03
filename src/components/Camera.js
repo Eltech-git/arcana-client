@@ -1,6 +1,28 @@
 import React from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonText,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonBadge,
+  IonIcon,
+  IonLabel,
+  IonFabButton,
+  IonFab,
+  withIonLifeCycle
+} from "@ionic/react";
+
 import { Plugins, CameraResultType, CameraSource } from "@capacitor/core";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
+import { arrowRoundBack, add } from "ionicons/icons";
 
 class Camera extends React.Component {
   state = {
@@ -27,13 +49,18 @@ class Camera extends React.Component {
 
     // let photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
   };
+  // <div>
+  // 	<span>{this.state.image.dataUrl}</span>
+  // 	<button onClick={this.takePicture}>PHOTO</button>;
+  // </div>
 
   render() {
     return (
-      <div>
-        <span>{this.state.image.dataUrl}</span>
-        <button onClick={this.takePicture}>PHOTO</button>;
-      </div>
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton color="light" onClick={this.takePicture}>
+          <IonIcon icon={add} />
+        </IonFabButton>
+      </IonFab>
     );
   }
 }
