@@ -18,6 +18,7 @@ import LocationDetail from "./pages/LocationDetail";
 import Agents from "./pages/Agents";
 import Add from "./pages/Add";
 import Login from "./pages/Login";
+import RecordAudio from "./pages/RecordAudio";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -56,6 +57,7 @@ const App: React.FC = () => (
             exact={true}
           />
           <Route path="/add" component={Add} exact={true} />
+          <Route path="/record" component={RecordAudio} exact={true} />
           <Route path="/agents" component={Agents} />
           <Route exact path="/" render={() => <Redirect to="/app" />} />
         </IonRouterOutlet>

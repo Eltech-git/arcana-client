@@ -73,8 +73,12 @@ class OperationDetail extends React.Component {
     console.log(this.state.user);
   }
 
-  sendToFaccia = image => {
-    axios.post("faccia/sdsdfdsf");
+  sendPhoto = image => {
+    // axios.post("faccia/sdsdfdsf");
+    // window.location = "record";
+    this.props.history.push({
+      pathname: "record"
+    });
   };
 
   // {this.state.operation.comments.map((comment, i) => (
@@ -99,7 +103,7 @@ class OperationDetail extends React.Component {
               </IonGrid>
             </IonToolbar>
           </IonHeader>
-          <Camera />
+          <Camera sendPhoto={this.sendPhoto} />
         </IonContent>
       </IonPage>
     );
