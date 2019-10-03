@@ -12,6 +12,10 @@
   color: rgba(241, 241, 241, 0.9);
   padding-bottom: 2%;
 }
+.sound-wave {
+  height: 50%;
+  width: 100%;
+}
 
 .grid-detail {
   display: grid;

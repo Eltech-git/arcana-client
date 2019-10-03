@@ -27,6 +27,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { ReactMic } from "react-mic";
+import { mic, micOff, checkmark } from "ionicons/icons";
 
 import "../theme/detail.css";
 
@@ -55,9 +56,13 @@ class RecordAudio extends React.Component {
     console.log("chunk of real-time data is: ", recordedBlob);
   }
 
-  onStop(recordedBlob) {
-    console.log("recordedBlob is: ", recordedBlob);
-  }
+  onStop = recordedBlob => {
+    // axios.post("faccia/sdsdfdsf");
+    // window.location = "record";
+    this.props.history.push({
+      pathname: "mappa"
+    });
+  };
 
   render() {
     return (
@@ -65,6 +70,9 @@ class RecordAudio extends React.Component {
         <IonContent className="page">
           <IonHeader>
             <IonToolbar className="detail-header">
+              <IonText className="text">
+                Registra il tuo commento (max 50 sec)
+              </IonText>
               <IonGrid className="grid-detail"></IonGrid>
             </IonToolbar>
           </IonHeader>
@@ -74,14 +82,18 @@ class RecordAudio extends React.Component {
             onStop={this.onStop}
             onData={this.onData}
             strokeColor="#000000"
-            backgroundColor="#FF4081"
+            backgroundColor="rgba(219, 224, 241, 0.02)"
           />
-          <button onClick={this.startRecording} type="button">
-            Start
-          </button>
-          <button onClick={this.stopRecording} type="button">
-            Stop
-          </button>
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
+            <IonFabButton color="light" onClick={this.stopRecording}>
+              <IonIcon icon={micOff} />
+            </IonFabButton>
+          </IonFab>
+          <IonFab vertical="bottom" horizontal="center" slot="fixed">
+            <IonFabButton color="light" onClick={this.startRecording}>
+              <IonIcon icon={mic} />
+            </IonFabButton>
+          </IonFab>
         </IonContent>
       </IonPage>
     );
