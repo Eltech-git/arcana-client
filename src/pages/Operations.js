@@ -22,7 +22,7 @@ import React from "react";
 import Header from "../components/Header";
 import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
-import {add} from 'ionicons/icons';
+import {add, nuclear} from 'ionicons/icons';
 import axios from "axios";
 import "../theme/page.css";
 
@@ -87,6 +87,11 @@ class Operations extends React.Component {
 				<IonFab vertical="bottom" horizontal="end" slot="fixed" >
 					<IonFabButton href="/add"color="light">
 						<IonIcon icon={add} />
+				</IonFabButton>
+				</IonFab>
+				<IonFab vertical="bottom" horizontal="start" slot="fixed" >
+					<IonFabButton href="/detailwork"color="light">
+						<IonIcon icon={nuclear} />
 				</IonFabButton>
 				</IonFab>
         </IonContent>
