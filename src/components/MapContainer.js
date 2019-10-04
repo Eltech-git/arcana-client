@@ -37,6 +37,21 @@ const mylng = Geolocation.getCurrentPosition().then(function(result) {
   return mylng;
 });
 
+const usersposition = () => {
+  return new Promise(function(resolve, reject) {
+    axios
+      .patch("http://4c921f55.ngrok.io/users/5d9434bb03dd9307d82d4329", {
+        lat: this.state.mylatitude,
+        lng: this.state.mylongitude
+      })
+      .then(response => {
+        resolve(response.data);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
 const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
@@ -75,14 +90,7 @@ class MapContainer extends React.Component {
     mylongitude: 0
   };
 
-  getmyloc = (mylat, mylng) => {
-    console.log(mylat);
-    this.setState({
-      mylatitude: mylat,
-      mylongitude: mylng
-    });
-  };
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios
       .get(this.state.url)
       .then(res => {
@@ -90,18 +98,29 @@ class MapContainer extends React.Component {
         users = res.data;
         this.setState({
           users: users
-        }).then(this.getmyloc);
-        console.log(res.data);
+        });
       })
       .catch(err => {});
 
-    Geolocation.getCurrentPosition().then(result => {
+    Geolocation.getCurrentPosition({ setTimeout: 15000 }).then(result => {
       let gotlongitude = result.coords.longitude;
       let gotlatitude = result.coords.latitude;
       this.setState({
         mylatitude: gotlatitude,
         mylongitude: gotlongitude
-      });
+      }).then(
+        axios
+          .patch("http://4c921f55.ngrok.io/users/5d9434bb03dd9307d82d4329", {
+            lat: gotlatitude,
+            lng: gotlongitude
+          })
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      );
     });
   }
 
