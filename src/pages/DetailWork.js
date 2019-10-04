@@ -3,6 +3,7 @@ import React from 'react';
 import {arrowRoundBack, add} from 'ionicons/icons';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Camera from "../components/Camera";
 import Header from '../components/Header';
 import Operation from '../components/Operation';
 import LargeComment from '../components/LargeComment';
@@ -21,7 +22,8 @@ class DetailWork extends React.Component {
 					daysAssigned: 0,
 					target: {
 						pictures: [],
-						name: ''
+						name: '',
+						_id: ''
 				}
 		},
 		url: 'http://localhost:4000/operations/5d943cb303dd9307d82d432e'
@@ -40,6 +42,17 @@ class DetailWork extends React.Component {
       })
       .catch(err => {});
 	}
+
+	sendPhoto = image => {
+    // axios.post("faccia/sdsdfdsf");
+    // window.location = "record";
+    this.props.history.push({
+      pathname: "/selectimage",
+			image: image,
+			_id: this.state.operation.target._id
+
+    });
+  };
 
 
 	render() {
@@ -71,7 +84,7 @@ class DetailWork extends React.Component {
 								<IonIcon icon={add} />
 						</IonFabButton>
 						</IonFab>
-
+						<Camera sendPhoto={this.sendPhoto} />
 				</IonContent>
 	    </IonPage>
 	  );
