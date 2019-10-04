@@ -9,7 +9,12 @@ import {
   IonLabel,
   IonTextarea,
   IonButton,
-  IonText
+  IonText,
+	IonSelect,
+	IonSelectOption,
+	IonGrid,
+	IonAvatar,
+	IonImg
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
@@ -24,48 +29,78 @@ class Add extends React.Component {
       title: "",
       description: "",
       firstOCP: "",
-      // agentAssigned:"",
-      daysAssigned: 0
-      // target: ""
+      agentAssigned:"",
+      daysAssigned: 0,
+			email: '',
+      target: ''
     },
     target: {
       name: "",
       vehiclePlate: "",
       pictures: []
-    }
+    },
+		email: '',
+		users: []
   };
+
   submitHandler = event => {
     event.preventDefault();
+		const email = this.state.email
 
-    const operation = this.state.operation;
-    console.log(operation);
-    axios
-      .post(`http://localhost:4000/operations`, operation)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    const target = this.state.target;
-    axios
-      .post(`http://localhost:4000/targets`, target)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+		const target = this.state.target;
+		axios
+			.post(`http://localhost:4000/targets`, target)
+			.then(data => {
+				const ope = this.state.operation;
+				ope.target = data._id
+				axios
+					.post(`http://localhost:4000/createoperation`, ope)
+					.then(res => {
+						console.log(res);
+					})
+					.catch(err => {
+						console.log(err);
+					});
+			})
+			.catch(err => {
+				console.log(err);
+			});
+
+
+			this.props.history.goBack()
+
+
   };
+
+	componentWillMount() {
+		axios
+      .get(`http://localhost:4000/users`)
+      .then(res => {
+				let users = this.state.users;
+        users = res.data;
+        this.setState({
+          users: users
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+
+	}
+
+
 
   inputChangeOP = (event, field) => {
     let name = event.target.value;
+		console.log(name)
     let operation = this.state.operation;
     operation[field] = name;
     this.setState({
       operation
     });
   };
+
   inputChangeTA = (event, field) => {
     let name = event.target.value;
     let target = this.state.target;
@@ -74,6 +109,18 @@ class Add extends React.Component {
       target
     });
   };
+
+	getAgent = (event) => {
+		let id = event.target.value
+		let operation = this.state.operation
+		operation.agentAssigned = id
+		this.setState({
+			operation
+		})
+	}
+
+
+
   render() {
     return (
       <IonPage>
@@ -93,7 +140,6 @@ class Add extends React.Component {
               placeholder="nome"
               onIonChange={event => this.inputChangeOP(event, "title")}
             ></IonInput>
-            {console.log(this.state.operations)}
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Giornate</IonLabel>
@@ -142,10 +188,16 @@ class Add extends React.Component {
               onIonChange={event => this.inputChangeTA(event, "vehiclePlate")}
             ></IonInput>
           </IonItem>
-          <IonItem className="title">
-            <IonText>Seleziona agenti</IonText>
-          </IonItem>
-
+					<IonItem>
+		        <IonLabel>Seleziona agente</IonLabel>
+					<IonSelect value={this.state.operation.agentAssigned} interface="action-sheet" placeholder="Seleziona uno" onIonChange={event => this.getAgent(event)} >
+							{this.state.users.map((n, i) =>
+								<IonSelectOption key={i} value={n._id}>
+									{`${n.name}    Operazioni: ${n.assignedOP.length}`}
+								</IonSelectOption>
+							)}
+		        </IonSelect>
+		      </IonItem>
           <IonButton
             className="button"
             shape="round"

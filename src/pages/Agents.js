@@ -23,7 +23,7 @@ import "../theme/page.css";
 import axios from "axios";
 class Agents extends React.Component {
   state = {
-    url: "http://253e7407.ngrok.io/users",
+    url: "http://localhost:4000/users",
     users: []
   };
 
@@ -48,6 +48,10 @@ class Agents extends React.Component {
       pathname: "/operationdetail"
     });
   };
+
+	addAgent = () => {
+		console.log(this.props.agent)
+	}
 
   render() {
     return (

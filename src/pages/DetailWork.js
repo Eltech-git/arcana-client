@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonImg, IonText,  IonAvatar, IonTabBar, IonTabButton, IonBadge, IonIcon, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle,IonFabButton,IonFab } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonImg, IonText,  IonAvatar, IonTabBar, IonTabButton, IonBadge, IonIcon, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle,IonFabButton,IonFab, IonItem, IonSelectOption, IonSelect } from '@ionic/react';
 import React from 'react';
 import {arrowRoundBack, add} from 'ionicons/icons';
 import {Link} from 'react-router-dom';
@@ -27,7 +27,7 @@ class DetailWork extends React.Component {
 		url: 'http://localhost:4000/operations/5d9454b103dd9307d82d4331'
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		axios
       .get(this.state.url)
       .then(res => {
@@ -46,32 +46,20 @@ class DetailWork extends React.Component {
 		return (
 	    <IonPage>
 	      <IonContent className="page">
-				<IonHeader>
+			<IonItem>
+        <IonLabel>Action Sheet</IonLabel>
+        <IonSelect
+          interface="action-sheet"
+          placeholder="Select One"
+        >
+          <IonSelectOption value="red">Red</IonSelectOption>
+          <IonSelectOption value="purple">Purple</IonSelectOption>
+          <IonSelectOption value="yellow">Yellow</IonSelectOption>
+          <IonSelectOption value="orange">Orange</IonSelectOption>
+          <IonSelectOption value="green">Green</IonSelectOption>
+        </IonSelect>
+      </IonItem>
 
-					<IonToolbar className="detail-header">
-						<IonGrid className="grid-detail">
-						<Link to="/operations">
-						<IonIcon className="back" icon={arrowRoundBack} />
-						</Link>
-							<IonAvatar className="text">
-							<IonImg src={this.state.operation.target.pictures[0]}/>
-							</IonAvatar>
-							<IonText className="text">{this.state.operation.title}
-							</IonText>
-						</IonGrid>
-					</IonToolbar>
-				</IonHeader>
-				{
-					this.state.operation.comments.map((comment, i) =>
-						<LargeComment comment={comment}/>
-					)
-				}
-
-					<IonFab vertical="bottom" horizontal="end" slot="fixed" >
-						<IonFabButton color="light">
-							<IonIcon icon={add} />
-					</IonFabButton>
-					</IonFab>
 				</IonContent>
 	    </IonPage>
 	  );

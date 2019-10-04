@@ -77,6 +77,21 @@ class Operations extends React.Component {
     console.log(this.state.user);
   }
 
+	componentWillReceiveProps(props) {
+		axios
+      .get(this.state.url)
+      .then(res => {
+        let user = this.state.user;
+        user = res.data;
+        this.setState({
+          user: user
+        });
+        console.log(res.data);
+      })
+      .catch(err => {});
+
+	}
+
   render() {
     return (
       <IonPage>

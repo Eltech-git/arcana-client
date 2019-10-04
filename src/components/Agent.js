@@ -11,7 +11,8 @@ class Agent extends React.Component {
       cases: 3
     },
     large: false,
-		agent: {}
+		agent: {},
+		component: this.props.component
   };
 
   showOperations = () => {
@@ -23,10 +24,15 @@ class Agent extends React.Component {
     });
   };
 
+
+	addAgent = () => {
+		console.log(this.props.agent)
+	}
+
   render() {
     return (
       <IonCard className="card">
-        <IonGrid className="grid-agent" onClick={this.showOperations}>
+        <IonGrid className="grid-agent">
           <IonAvatar className="avatar">
             <img className="img" src={this.props.agent.avatar} />
           </IonAvatar>

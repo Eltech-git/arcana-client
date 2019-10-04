@@ -11,18 +11,7 @@ import '../theme/detail.css';
 class OperationDetail extends React.Component {
 
 	state = {
-		header: {
-			src: '../images/woman.jpg',
-			case: ' Tradimento Bianchi e Rossi',
-			cases: 4,
-			image: '../images/lover.jpg'
-		},
-		comments: false,
-		comment : {
-			image: '../images/lover.jpg',
-			largeContent: `L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi.`,
-			smallContent: '',
-		},
+
 		operation: {
           comments: [],
 					dayDone: 0,
