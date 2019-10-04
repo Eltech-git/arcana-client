@@ -57,9 +57,9 @@ class Agents extends React.Component {
     return (
       <IonPage>
         <IonContent className="page">
-					{this.state.users.map((agent, i) => (
-						<Agent agent={agent} key={i} goToDetail={this.goToDetail} />
-					))}
+				{this.state.users.map((agent, i) => (
+					<Agent agent={agent} key={i} goToDetail={this.goToDetail} />
+				))}
         </IonContent>
       </IonPage>
     );
