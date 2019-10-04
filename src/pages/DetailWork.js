@@ -24,7 +24,7 @@ class DetailWork extends React.Component {
 						name: ''
 				}
 		},
-		url: 'http://localhost:4000/operations/5d9454b103dd9307d82d4331'
+		url: 'http://localhost:4000/operations/5d943cb303dd9307d82d432e'
 	}
 
 	componentDidMount() {
@@ -46,19 +46,31 @@ class DetailWork extends React.Component {
 		return (
 	    <IonPage>
 	      <IonContent className="page">
-			<IonItem>
-        <IonLabel>Action Sheet</IonLabel>
-        <IonSelect
-          interface="action-sheet"
-          placeholder="Select One"
-        >
-          <IonSelectOption value="red">Red</IonSelectOption>
-          <IonSelectOption value="purple">Purple</IonSelectOption>
-          <IonSelectOption value="yellow">Yellow</IonSelectOption>
-          <IonSelectOption value="orange">Orange</IonSelectOption>
-          <IonSelectOption value="green">Green</IonSelectOption>
-        </IonSelect>
-      </IonItem>
+				<IonHeader>
+				<IonToolbar className="detail-header">
+							<IonGrid className="grid-detail">
+							<Link to="/operations">
+							<IonIcon className="back" icon={arrowRoundBack} />
+							</Link>
+								<IonAvatar className="text">
+								<IonImg src={this.state.operation.target.pictures[0]}/>
+								</IonAvatar>
+								<IonText className="text">{this.state.operation.title}
+								</IonText>
+							</IonGrid>
+						</IonToolbar>
+					</IonHeader>
+					{
+						this.state.operation.comments.map((comment, i) =>
+							<LargeComment comment={comment}/>
+						)
+					}
+
+						<IonFab vertical="bottom" horizontal="end" slot="fixed" >
+							<IonFabButton color="light">
+								<IonIcon icon={add} />
+						</IonFabButton>
+						</IonFab>
 
 				</IonContent>
 	    </IonPage>
