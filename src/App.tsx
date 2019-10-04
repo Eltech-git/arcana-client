@@ -17,8 +17,10 @@ import OperationDetail from "./pages/OperationDetail";
 import DetailWork from "./pages/DetailWork";
 import LocationDetail from "./pages/LocationDetail";
 import Agents from "./pages/Agents";
+import SelectTypeImage from "./pages/SelectTypeImage";
 import Add from "./pages/Add";
 import Login from "./pages/Login";
+import RecordAudio from "./pages/RecordAudio";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -51,6 +53,7 @@ const App: React.FC = () => (
             component={OperationDetail}
             exact={true}
           />
+
 					<Route
             path="/detailwork"
             component={DetailWork}
@@ -67,6 +70,8 @@ const App: React.FC = () => (
             exact={true}
           />
           <Route path="/add" component={Add} exact={true} />
+					<Route path="/selectimage" component={SelectTypeImage} exact={true} />
+					<Route path="/record" component={RecordAudio} exact={true} />
           <Route path="/agents" component={Agents} />
 					<Route exact path="/app" render={() => <Redirect to="/mappa" />} />
           <Route exact path="/" render={() => <Redirect to="/login" />} />
