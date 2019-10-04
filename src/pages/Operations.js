@@ -26,6 +26,7 @@ import Camera from "../components/Camera";
 import axios from "axios";
 import "../theme/page.css";
 import { add } from "ionicons/icons";
+require("dotenv").config();
 
 class Operations extends React.Component {
   state = {
@@ -48,7 +49,7 @@ class Operations extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: `http://563a1f42.ngrok.io/users/5d9434bb03dd9307d82d4329`
+    url: `http://4c921f55.ngrok.io/users/5d9434bb03dd9307d82d4329`
   };
 
   goToDetail = () => {

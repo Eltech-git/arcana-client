@@ -31,18 +31,17 @@ const mapStyles = {
   width: "100%",
   height: "100%"
 };
-const coordinates = Geolocation.getCurrentPosition().then(function(result) {
-  let mycoords = {
-    mylat: result.coords.latitude,
-    mylng: result.coords.longitude
-  };
-  return mycoords;
+
+const mylng = Geolocation.getCurrentPosition().then(function(result) {
+  let mylng = result.coords.longitude;
+  return mylng;
 });
+
 const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
   state = {
-    url: "http://563a1f42.ngrok.io/userspos",
+    url: "http://4c921f55.ngrok.io/userspos",
     users: [
       {
         avatar: "",
@@ -72,9 +71,17 @@ class MapContainer extends React.Component {
     // userspos: [this.props.user],
     // operations: this.props.user.assignedOP,
 
-    mycoords: { mylat: 10, mylng: 10 }
+    mylatitude: 0,
+    mylongitude: 0
   };
 
+  getmyloc = (mylat, mylng) => {
+    console.log(mylat);
+    this.setState({
+      mylatitude: mylat,
+      mylongitude: mylng
+    });
+  };
   componentWillMount() {
     axios
       .get(this.state.url)
@@ -83,11 +90,19 @@ class MapContainer extends React.Component {
         users = res.data;
         this.setState({
           users: users
-        });
+        }).then(this.getmyloc);
         console.log(res.data);
       })
       .catch(err => {});
-    console.log(this.state.user);
+
+    Geolocation.getCurrentPosition().then(result => {
+      let gotlongitude = result.coords.longitude;
+      let gotlatitude = result.coords.latitude;
+      this.setState({
+        mylatitude: gotlatitude,
+        mylongitude: gotlongitude
+      });
+    });
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -136,7 +151,6 @@ class MapContainer extends React.Component {
                   <h4>{agent.name}</h4>
                 </div>
                 <div className="operation" onClick={e => this.toAgentPage()}>
-                  {console.log(coordinates)}
                   <h7>Operazione:</h7>
                   {agent.assignedOP.map((o, i) => (
                     <h6>{o.title}</h6>
@@ -159,13 +173,13 @@ class MapContainer extends React.Component {
         initialCenter={{ lat: 42.5, lng: 12.285 }}
       >
         <Marker
-          color="blue"
           position={{
-            lat: this.state.mylat,
-            lng: this.state.mylng
+            lat: this.state.mylatitude,
+            lng: this.state.mylongitude
           }}
         />
-        {console.log(this.state)}
+        {() => this.getmyloc()}
+        {console.log(mylng)}
         {this.displayMarkers()}
         <InfoWindow
           content={"ciao"}

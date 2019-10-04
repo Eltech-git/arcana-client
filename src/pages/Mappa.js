@@ -35,7 +35,7 @@ const mapStyles = {
 
 class Mappa extends React.Component {
   state = {
-    url: `http://563a1f42.ngrok.io/userspos`,
+    url: `http://4c921f55.ngrok.io/userspos`,
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
