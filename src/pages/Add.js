@@ -37,7 +37,8 @@ class Add extends React.Component {
     target: {
       name: "",
       vehiclePlate: "",
-      pictures: []
+      pictures: [],
+			descriptionOfSubject: ''
     },
 		email: '',
 		users: []
@@ -48,23 +49,28 @@ class Add extends React.Component {
 		const email = this.state.email
 
 		const target = this.state.target;
-		axios
-			.post(`http://localhost:4000/targets`, target)
-			.then(data => {
-				const ope = this.state.operation;
-				ope.target = data._id
+
+		let data = new FormData()
+
+		data.append('name', this.state.target.name)
+		data.append('vehiclePlate', this.state.target.vehiclePlate)
+		data.append('pictures', this.state.target.pictures[0])
+		data.append('descriptionOfSubject', this.state.target.descriptionOfSubject)
+		data.append('title', this.state.operation.title)
+		data.append('daysAssigned', this.state.operation.daysAssigned)
+		data.append('firstOCP', this.state.operation.firstOCP)
+		data.append('description', this.state.operation.description)
+		data.append('agentAssigned', this.state.operation.agentAssigned)
+
+
 				axios
-					.post(`http://localhost:4000/createoperation`, ope)
+					.post(`http://localhost:4000/createoperation`, data)
 					.then(res => {
 						console.log(res);
 					})
 					.catch(err => {
 						console.log(err);
 					});
-			})
-			.catch(err => {
-				console.log(err);
-			});
 
 
 			this.props.history.goBack()
@@ -117,6 +123,18 @@ class Add extends React.Component {
 		this.setState({
 			operation
 		})
+	}
+
+
+	getFile = (event) => {
+		console.log('e', event)
+		console.log('t', event.target.files[0])
+		// let photo = event.target.files[0]
+		// let target = this.state.target
+		// target.pictures.push(photo)
+		// this.setState({
+		// 	target
+		// })
 	}
 
 
@@ -175,11 +193,11 @@ class Add extends React.Component {
             ></IonInput>
           </IonItem>
           <IonItem className="input">
-            <IonLabel position="stacked">Immagini</IonLabel>
-            <IonInput
+            <IonLabel position="stacked">Immagine</IonLabel>
+            <input
               type="file"
-              onIonChange={event => this.inputChangeTA(event, "pictures")}
-            ></IonInput>
+              onChange={event => this.getFile(event)}
+            />
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Targa</IonLabel>
