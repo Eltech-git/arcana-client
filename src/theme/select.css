@@ -1,0 +1,19 @@
+.detail-header {
+	text-align: center;
+	font-size: 140%;
+}
+
+.grid-select {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	height: 500px;
+	width: auto;
+	margin-top: 50px;
+	text-align: center;
+
+}
+
+.grid-select .grid-button {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+}
