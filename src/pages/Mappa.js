@@ -21,11 +21,12 @@ import {
 } from "@ionic/react";
 import { locate } from "ionicons/icons";
 import React from "react";
-import {GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import MapContainer from "../components/MapContainer";
 import "../theme/page.css";
 import "../theme/tag.css";
 import axios from "axios";
+import dotenv from "dotenv";
 
 const mapStyles = {
   width: "100%",
@@ -34,7 +35,7 @@ const mapStyles = {
 
 class Mappa extends React.Component {
   state = {
-    url: "http://localhost:4000/userspos",
+    url: `http://localhost:4000/userspos`,
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
@@ -59,16 +60,16 @@ class Mappa extends React.Component {
         this.setState({
           userspos: userspos
         });
-        console.log(res.data);
+        console.log(this.state);
       })
       .catch(err => {});
-    console.log(this.state.users);
+    console.log(this.state.userspos);
   }
 
   render() {
     return (
       <IonPage>
-        <MapContainer users={this.state.userspos} />
+        <MapContainer />
       </IonPage>
     );
   }
