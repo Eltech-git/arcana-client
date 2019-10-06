@@ -64,7 +64,7 @@ class Add extends React.Component {
     data.append("agentAssigned", this.state.operation.agentAssigned);
 
     axios
-      .post(`http://localhost:4000/createoperation`, data)
+      .post(`http://687c40a9.ngrok.io/createoperation`, data)
       .then(res => {
         console.log(res);
       })
@@ -77,7 +77,7 @@ class Add extends React.Component {
 
   componentWillMount() {
     axios
-      .get(`http://localhost:4000/users`)
+      .get(`http://687c40a9.ngrok.io/users`)
       .then(res => {
         let users = this.state.users;
         users = res.data;
