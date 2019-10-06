@@ -89,6 +89,28 @@ class MapContainer extends React.Component {
     mylatitude: 0,
     mylongitude: 0
   };
+  componentWillMount() {
+    axios
+      .get(this.state.url)
+      .then(res => {
+        let users = this.state.users;
+        users = res.data;
+        this.setState({
+          users: users
+        }).then(this.getmyloc);
+        console.log(res.data);
+      })
+      .catch(err => {});
+
+    Geolocation.getCurrentPosition().then(result => {
+      let gotlongitude = result.coords.longitude;
+      let gotlatitude = result.coords.latitude;
+      this.setState({
+        mylatitude: gotlatitude,
+        mylongitude: gotlongitude
+      });
+    });
+  }
 
   UNSAFE_componentWillMount() {
     axios

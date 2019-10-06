@@ -54,28 +54,41 @@ class OperationDetail extends React.Component {
     url: "http://687c40a9.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
-  componentDidMount() {
-    axios
-      .get(this.state.url)
-      .then(res => {
-        let operation = this.state.operation;
-        operation = res.data;
-        this.setState({
-          operation: operation
-        });
-        console.log(res.data);
-      })
-      .catch(err => {});
+  state = {
+    operation: {
+      comments: [],
+      dayDone: 0,
+      title: "",
+      description: "",
+      firstOCP: "",
+      daysAssigned: 0,
+      target: {
+        pictures: [],
+        name: ""
+      }
+    }
+  };
+
+  componentWillMount() {
+    console.log("hello");
+    let operation = this.props.location.operation;
+    console.log("log1 >>>>>>" + operation);
+    this.setState({
+      operation: operation
+    });
   }
 
-  sendPhoto = image => {
-    // axios.post("faccia/sdsdfdsf");
-    // window.location = "record";
-    this.props.history.push({
-      pathname: "/selectimage",
-      image: image,
-      _id: this.state.operation.target._id
+  componentWillReceiveProps(props) {
+    console.log("hello");
+    let operation = props.location.operation;
+    console.log("log2 >>>>" + operation);
+    this.setState({
+      operation: operation
     });
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
   };
 
   render() {
@@ -104,7 +117,6 @@ class OperationDetail extends React.Component {
               <IonIcon icon={add} />
             </IonFabButton>
           </IonFab>
-          <Camera sendPhoto={this.sendPhoto} />
         </IonContent>
       </IonPage>
     );

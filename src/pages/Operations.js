@@ -41,8 +41,10 @@ class Operations extends React.Component {
       assignedOP: [
         {
           comments: [],
+          title: "",
           target: {
-            pictures: []
+            pictures: [],
+            name: ""
           }
         }
       ],
@@ -52,9 +54,11 @@ class Operations extends React.Component {
     url: `http://687c40a9.ngrok.io/users/5d9434bb03dd9307d82d4329`
   };
 
-  goToDetail = () => {
+  goToDetail = i => {
     this.props.history.push({
-      pathname: "/operationdetail"
+      pathname: "/operationdetail",
+      assignedOP: this.state.user.assignedOP,
+      index: i
     });
   };
 
@@ -74,18 +78,42 @@ class Operations extends React.Component {
     console.log(this.state.user);
   }
 
-  sendToTarghe = image => {
-    axios.post("targe.com/sdfsd");
-  };
+  componentWillReceiveProps(props) {
+    axios
+      .get(this.state.url)
+      .then(res => {
+        let user = this.state.user;
+        user = res.data;
+        this.setState({
+          user: user
+        });
+        console.log(res.data);
+      })
+      .catch(err => {});
+  }
 
   render() {
     return (
       <IonPage>
         <IonContent className="page">
-          <Camera sendPhoto={this.sendToTarghe} />
-          {this.state.user.assignedOP.map((o, i) => (
-            <Operation o={o} key={i} goToDetail={this.goToDetail} />
+          {this.state.user.assignedOP.map((operation, i) => (
+            <Operation
+              operation={operation}
+              key={i}
+              goToDetail={() => this.goToDetail(i)}
+              history={this.props.history}
+            />
           ))}
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
+            <IonFabButton href="/add" color="light">
+              <IonIcon icon={add} />
+            </IonFabButton>
+          </IonFab>
+          <IonFab vertical="bottom" horizontal="start" slot="fixed">
+            <IonFabButton href="/detailwork" color="light">
+              <IonIcon icon={nuclear} />
+            </IonFabButton>
+          </IonFab>
         </IonContent>
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton href="/add" color="light">

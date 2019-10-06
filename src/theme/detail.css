@@ -31,6 +31,11 @@
   text-align: center;
 }
 
+.grid-detail .back {
+  font-size: 200%;
+  text-align: center;
+}
+
 .grid-detail .text {
   margin: auto;
   font-size: 90%;

@@ -9,7 +9,12 @@ import {
   IonLabel,
   IonTextarea,
   IonButton,
-  IonText
+  IonText,
+  IonSelect,
+  IonSelectOption,
+  IonGrid,
+  IonAvatar,
+  IonImg
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
@@ -25,48 +30,76 @@ class Add extends React.Component {
       title: "",
       description: "",
       firstOCP: "",
-      // agentAssigned:"",
-      daysAssigned: 0
-      // target: ""
+      agentAssigned: "",
+      daysAssigned: 0,
+      email: "",
+      target: ""
     },
     target: {
       name: "",
       vehiclePlate: "",
-      pictures: []
-    }
+      pictures: [],
+      descriptionOfSubject: ""
+    },
+    email: "",
+    users: []
   };
+
   submitHandler = event => {
     event.preventDefault();
+    const email = this.state.email;
 
-    const operation = this.state.operation;
-    console.log(operation);
-    axios
-      .post(`${process.env.API_ADDRESS}/operations`, operation)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
     const target = this.state.target;
+
+    let data = new FormData();
+
+    data.append("name", this.state.target.name);
+    data.append("vehiclePlate", this.state.target.vehiclePlate);
+    data.append("pictures", this.state.target.pictures[0]);
+    data.append("descriptionOfSubject", this.state.target.descriptionOfSubject);
+    data.append("title", this.state.operation.title);
+    data.append("daysAssigned", this.state.operation.daysAssigned);
+    data.append("firstOCP", this.state.operation.firstOCP);
+    data.append("description", this.state.operation.description);
+    data.append("agentAssigned", this.state.operation.agentAssigned);
+
     axios
-      .post(`${process.env.API_ADDRESS}/targets`, target)
+      .post(`http://localhost:4000/createoperation`, data)
       .then(res => {
         console.log(res);
       })
       .catch(err => {
         console.log(err);
       });
+
+    this.props.history.goBack();
   };
+
+  componentWillMount() {
+    axios
+      .get(`http://localhost:4000/users`)
+      .then(res => {
+        let users = this.state.users;
+        users = res.data;
+        this.setState({
+          users: users
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   inputChangeOP = (event, field) => {
     let name = event.target.value;
+    console.log(name);
     let operation = this.state.operation;
     operation[field] = name;
     this.setState({
       operation
     });
   };
+
   inputChangeTA = (event, field) => {
     let name = event.target.value;
     let target = this.state.target;
@@ -75,6 +108,27 @@ class Add extends React.Component {
       target
     });
   };
+
+  getAgent = event => {
+    let id = event.target.value;
+    let operation = this.state.operation;
+    operation.agentAssigned = id;
+    this.setState({
+      operation
+    });
+  };
+
+  getFile = event => {
+    console.log("e", event);
+    console.log("t", event.target.files[0]);
+    // let photo = event.target.files[0]
+    // let target = this.state.target
+    // target.pictures.push(photo)
+    // this.setState({
+    // 	target
+    // })
+  };
+
   render() {
     return (
       <IonPage>
@@ -94,7 +148,6 @@ class Add extends React.Component {
               placeholder="nome"
               onIonChange={event => this.inputChangeOP(event, "title")}
             ></IonInput>
-            {console.log(this.state.operations)}
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Giornate</IonLabel>
@@ -130,11 +183,8 @@ class Add extends React.Component {
             ></IonInput>
           </IonItem>
           <IonItem className="input">
-            <IonLabel position="stacked">Immagini</IonLabel>
-            <IonInput
-              type="file"
-              onIonChange={event => this.inputChangeTA(event, "pictures")}
-            ></IonInput>
+            <IonLabel position="stacked">Immagine</IonLabel>
+            <input type="file" onChange={event => this.getFile(event)} />
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Targa</IonLabel>
@@ -143,10 +193,21 @@ class Add extends React.Component {
               onIonChange={event => this.inputChangeTA(event, "vehiclePlate")}
             ></IonInput>
           </IonItem>
-          <IonItem className="title">
-            <IonText>Seleziona agenti</IonText>
+          <IonItem>
+            <IonLabel>Seleziona agente</IonLabel>
+            <IonSelect
+              value={this.state.operation.agentAssigned}
+              interface="action-sheet"
+              placeholder="Seleziona uno"
+              onIonChange={event => this.getAgent(event)}
+            >
+              {this.state.users.map((n, i) => (
+                <IonSelectOption key={i} value={n._id}>
+                  {`${n.name}    Operazioni: ${n.assignedOP.length}`}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
           </IonItem>
-
           <IonButton
             className="button"
             shape="round"

@@ -27,8 +27,9 @@ class Agents extends React.Component {
     url: `http://4c921f55.ngrok.io/users`,
     users: []
   };
-  ionViewDidEnter() {
-    console.log("ionViewWillEnter event fired");
+
+
+  componentWillMount() {
     axios
       .get(this.state.url)
       .then(res => {
@@ -49,13 +50,17 @@ class Agents extends React.Component {
     });
   };
 
+	addAgent = () => {
+		console.log(this.props.agent)
+	}
+
   render() {
     return (
       <IonPage>
         <IonContent className="page">
-          {this.state.users.map((a, i) => (
-            <Agent a={a} key={i} goToDetail={this.goToDetail} />
-          ))}
+				{this.state.users.map((agent, i) => (
+					<Agent agent={agent} key={i} goToDetail={this.goToDetail} />
+				))}
         </IonContent>
       </IonPage>
     );

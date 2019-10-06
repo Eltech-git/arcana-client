@@ -14,8 +14,10 @@ import { map, list, person, add } from "ionicons/icons";
 import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
+import DetailWork from "./pages/DetailWork";
 import LocationDetail from "./pages/LocationDetail";
 import Agents from "./pages/Agents";
+import SelectTypeImage from "./pages/SelectTypeImage";
 import Add from "./pages/Add";
 import Login from "./pages/Login";
 import RecordAudio from "./pages/RecordAudio";
@@ -44,22 +46,27 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/mappa" component={Mappa} exact={true} />
+          <Route path="/app/mappa" component={Mappa} exact={true} />
           <Route path="/operations" component={Operations} exact={true} />
           <Route
             path="/operationdetail"
             component={OperationDetail}
             exact={true}
           />
+
+          <Route path="/detailwork" component={DetailWork} exact={true} />
+          <Route path="/newoperation" component={Add} exact={true} />
           <Route
             path="/locationdetail"
             component={LocationDetail}
             exact={true}
           />
           <Route path="/add" component={Add} exact={true} />
+          <Route path="/selectimage" component={SelectTypeImage} exact={true} />
           <Route path="/record" component={RecordAudio} exact={true} />
           <Route path="/agents" component={Agents} />
-          <Route exact path="/" render={() => <Redirect to="/app" />} />
+          <Route exact path="/app" render={() => <Redirect to="/mappa" />} />
+          <Route exact path="/" render={() => <Redirect to="/login" />} />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
           <IonTabButton tab="tab1" href="/mappa">

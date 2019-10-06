@@ -48,11 +48,10 @@ class Login extends React.Component {
             ? this.setState({ errorEmail: res.data.error })
             : this.setState({ errorPassword: res.data.error });
         } else {
-          console.log(res.data.token);
-          localStorage.setItem("token", res.data.token);
-          window.location = "/mappa";
+          // console.log(res.data.token);
+          // localStorage.setItem("token", res.data.token);
+          window.location = "/app";
         }
-        console.log(this.state.error);
       })
       .catch(err => {});
   };

@@ -51,6 +51,7 @@ class Signup extends React.Component {
       .post(`${process.env.API_ADDRESS}/signup`, user)
       .then(res => {
         console.log(res);
+				window.location = "/login";
       })
       .catch(err => {
         console.log(err);
