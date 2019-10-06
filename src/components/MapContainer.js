@@ -56,7 +56,7 @@ const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
   state = {
-    url: "http://4c921f55.ngrok.io/userspos",
+    url: "http://687c40a9.ngrok.io/userspos",
     users: [
       {
         avatar: "",
@@ -110,7 +110,7 @@ class MapContainer extends React.Component {
         mylongitude: gotlongitude
       }).then(
         axios
-          .patch("http://4c921f55.ngrok.io/users/5d9434bb03dd9307d82d4329", {
+          .patch("http://687c40a9.ngrok.io/users/5d9434bb03dd9307d82d4329", {
             lat: gotlatitude,
             lng: gotlongitude
           })
