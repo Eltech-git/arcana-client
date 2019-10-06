@@ -20,72 +20,52 @@ import {
   IonCardContent,
   IonCardTitle,
   IonFabButton,
-  IonFab
+  IonFab,
+  IonItem,
+  IonSelectOption,
+  IonSelect
 } from "@ionic/react";
 import React from "react";
+import { arrowRoundBack, add } from "ionicons/icons";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import Header from "../components/Header";
 import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
-import Camera from "../components/Camera";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { arrowRoundBack, add } from "ionicons/icons";
 
 import "../theme/detail.css";
 
 class OperationDetail extends React.Component {
   state = {
-    header: {
-      src: "../images/woman.jpg",
-      case: " Tradimento Bianchi e Rossi",
-      cases: 4,
-      image: "../images/lover.jpg"
-    },
-    comments: false,
-    comment: {
-      image: "../images/lover.jpg",
-      largeContent: `L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi. L'amante del tradimento bianchi e Rossi è stato trovato in Via Roma 12, dove  incontrato la signora Rossi.`,
-      smallContent: ""
-    },
     operation: {
-      comments: [
-        {
-          pictures: ""
-        }
-      ],
-      target: {}
-    }
+      comments: [],
+      dayDone: 0,
+      title: "",
+      description: "",
+      firstOCP: "",
+      daysAssigned: 0,
+      target: {
+        pictures: [],
+        name: ""
+      }
+    },
+    url: "http://687c40a9.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
-  ionViewWillEnter() {
-    console.log("ionViewWillEnter event fired");
+  componentDidMount() {
     axios
       .get(this.state.url)
       .then(res => {
-        let user = this.state.user;
-        user = res.data;
+        let operation = this.state.operation;
+        operation = res.data;
         this.setState({
-          user: user
+          operation: operation
         });
         console.log(res.data);
       })
       .catch(err => {});
-    console.log(this.state.user);
   }
 
-  sendPhoto = image => {
-    // axios.post("faccia/sdsdfdsf");
-    // window.location = "record";
-    this.props.history.push({
-      pathname: "record"
-    });
-  };
-
-  // {this.state.operation.comments.map((comment, i) => (
-  // 	<LargeComment comment={comment} />
-  // ))}
-
-  // {this.state.operation.title}
   render() {
     return (
       <IonPage>
@@ -97,13 +77,21 @@ class OperationDetail extends React.Component {
                   <IonIcon className="back" icon={arrowRoundBack} />
                 </Link>
                 <IonAvatar className="text">
-                  <IonImg />
+                  <IonImg src={this.state.operation.target.pictures[0]} />
                 </IonAvatar>
-                <IonText className="text"></IonText>
+                <IonText className="text">{this.state.operation.title}</IonText>
               </IonGrid>
             </IonToolbar>
           </IonHeader>
-          <Camera sendPhoto={this.sendPhoto} />
+          {this.state.operation.comments.map((comment, i) => (
+            <LargeComment comment={comment} />
+          ))}
+
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
+            <IonFabButton color="light">
+              <IonIcon icon={add} />
+            </IonFabButton>
+          </IonFab>
         </IonContent>
       </IonPage>
     );
