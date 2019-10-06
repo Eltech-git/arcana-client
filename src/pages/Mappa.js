@@ -50,21 +50,21 @@ class Mappa extends React.Component {
     ]
   };
 
-  ionViewWillEnter() {
-    console.log("ionViewWillEnter event fired");
-    axios
-      .get(this.state.url)
-      .then(res => {
-        let userspos = this.state.userspos;
-        userspos = res.data;
-        this.setState({
-          userspos: userspos
-        });
-        console.log(this.state);
-      })
-      .catch(err => {});
-    console.log(this.state.userspos);
-  }
+  // ionViewWillEnter() {
+  //   console.log("ionViewWillEnter event fired");
+  //   axios
+  //     .get(this.state.url)
+  //     .then(res => {
+  //       let userspos = this.state.userspos;
+  //       userspos = res.data;
+  //       this.setState({
+  //         userspos: userspos
+  //       });
+  //       console.log(this.state);
+  //     })
+  //     .catch(err => {});
+  //   console.log(this.state.userspos);
+  // }
 
   render() {
     return (

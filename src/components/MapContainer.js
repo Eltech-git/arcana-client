@@ -32,26 +32,6 @@ const mapStyles = {
   height: "100%"
 };
 
-const mylng = Geolocation.getCurrentPosition().then(function(result) {
-  let mylng = result.coords.longitude;
-  return mylng;
-});
-
-const usersposition = () => {
-  return new Promise(function(resolve, reject) {
-    axios
-      .patch("http://4c921f55.ngrok.io/users/5d9434bb03dd9307d82d4329", {
-        lat: this.state.mylatitude,
-        lng: this.state.mylongitude
-      })
-      .then(response => {
-        resolve(response.data);
-      })
-      .catch(err => {
-        reject(err);
-      });
-  });
-};
 const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
@@ -89,28 +69,6 @@ class MapContainer extends React.Component {
     mylatitude: 0,
     mylongitude: 0
   };
-  componentWillMount() {
-    axios
-      .get(this.state.url)
-      .then(res => {
-        let users = this.state.users;
-        users = res.data;
-        this.setState({
-          users: users
-        }).then(this.getmyloc);
-        console.log(res.data);
-      })
-      .catch(err => {});
-
-    Geolocation.getCurrentPosition().then(result => {
-      let gotlongitude = result.coords.longitude;
-      let gotlatitude = result.coords.latitude;
-      this.setState({
-        mylatitude: gotlatitude,
-        mylongitude: gotlongitude
-      });
-    });
-  }
 
   UNSAFE_componentWillMount() {
     axios
@@ -127,22 +85,12 @@ class MapContainer extends React.Component {
     Geolocation.getCurrentPosition().then(result => {
       let gotlongitude = result.coords.longitude;
       let gotlatitude = result.coords.latitude;
+      console.log(gotlatitude);
+      console.log(gotlongitude);
       this.setState({
         mylatitude: gotlatitude,
         mylongitude: gotlongitude
-      }).then(
-        axios
-          .patch("http://687c40a9.ngrok.io/users/5d9434bb03dd9307d82d4329", {
-            lat: gotlatitude,
-            lng: gotlongitude
-          })
-          .then(res => {
-            console.log(res);
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      );
+      });
     });
   }
 
@@ -220,7 +168,6 @@ class MapContainer extends React.Component {
           }}
         />
         {() => this.getmyloc()}
-        {console.log(mylng)}
         {this.displayMarkers()}
         <InfoWindow
           content={"ciao"}

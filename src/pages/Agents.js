@@ -24,10 +24,9 @@ import axios from "axios";
 import dotenv from "dotenv";
 class Agents extends React.Component {
   state = {
-    url: `http://4c921f55.ngrok.io/users`,
+    url: `http://687c40a9.ngrok.io/users`,
     users: []
   };
-
 
   componentWillMount() {
     axios
@@ -50,17 +49,17 @@ class Agents extends React.Component {
     });
   };
 
-	addAgent = () => {
-		console.log(this.props.agent)
-	}
+  addAgent = () => {
+    console.log(this.props.agent);
+  };
 
   render() {
     return (
       <IonPage>
         <IonContent className="page">
-				{this.state.users.map((agent, i) => (
-					<Agent agent={agent} key={i} goToDetail={this.goToDetail} />
-				))}
+          {this.state.users.map((agent, i) => (
+            <Agent agent={agent} key={i} goToDetail={this.goToDetail} />
+          ))}
         </IonContent>
       </IonPage>
     );
