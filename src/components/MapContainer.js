@@ -124,7 +124,7 @@ class MapContainer extends React.Component {
       })
       .catch(err => {});
 
-    Geolocation.getCurrentPosition({ setTimeout: 15000 }).then(result => {
+    Geolocation.getCurrentPosition().then(result => {
       let gotlongitude = result.coords.longitude;
       let gotlatitude = result.coords.latitude;
       this.setState({

@@ -46,7 +46,7 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/app/mappa" component={Mappa} exact={true} />
+          <Route path="/mappa" component={Mappa} exact={true} />
           <Route path="/operations" component={Operations} exact={true} />
           <Route
             path="/operationdetail"
