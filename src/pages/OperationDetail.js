@@ -51,7 +51,7 @@ class OperationDetail extends React.Component {
         _id: ""
       }
     },
-    url: "http://687c40a9.ngrok.io/operations/5d943cb303dd9307d82d432e"
+    url: "http://61a9362b.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
   state = {

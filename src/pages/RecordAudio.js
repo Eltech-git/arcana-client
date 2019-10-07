@@ -57,8 +57,8 @@ class RecordAudio extends React.Component {
   }
 
   onStop = recordedBlob => {
-    // axios.post("faccia/sdsdfdsf");
-    // window.location = "record";
+    axios.post("http://61a9362b.ngrok.io/comments");
+
     this.props.history.push({
       pathname: "mappa"
     });
