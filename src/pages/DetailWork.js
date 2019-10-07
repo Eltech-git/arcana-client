@@ -26,15 +26,16 @@ class DetailWork extends React.Component {
 						_id: ''
 				}
 		},
-		url: 'http://localhost:4000/operations/5d943cb303dd9307d82d432e'
+		url: 'http://localhost:4000/operations/5d9ac0da9c0fb24b50c299b2'
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		axios
       .get(this.state.url)
       .then(res => {
         let operation = this.state.operation;
         operation = res.data;
+
         this.setState({
           operation: operation
         });
