@@ -41,7 +41,7 @@ const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
   state = {
-    url: "http://localhost:4000/userspos",
+    url: "http://61a9362b.ngrok.io/userspos",
     users: [
       {
         avatar: "",

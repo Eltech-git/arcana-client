@@ -10,11 +10,11 @@ import {
   IonTextarea,
   IonButton,
   IonText,
-	IonSelect,
-	IonSelectOption,
-	IonGrid,
-	IonAvatar,
-	IonImg
+  IonSelect,
+  IonSelectOption,
+  IonGrid,
+  IonAvatar,
+  IonImg
 } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
@@ -29,60 +29,56 @@ class Add extends React.Component {
       title: "",
       description: "",
       firstOCP: "",
-      agentAssigned:"",
+      agentAssigned: "",
       daysAssigned: 0,
-			email: '',
-      target: ''
+      email: "",
+      target: ""
     },
     target: {
       name: "",
       vehiclePlate: "",
       pictures: [],
-			descriptionOfSubject: ''
+      descriptionOfSubject: ""
     },
-		email: '',
-		users: []
+    email: "",
+    users: []
   };
 
   submitHandler = event => {
     event.preventDefault();
-		const email = this.state.email
+    const email = this.state.email;
 
-		const target = this.state.target;
+    const target = this.state.target;
 
-		let data = new FormData()
+    let data = new FormData();
 
-		data.append('name', this.state.target.name)
-		data.append('vehiclePlate', this.state.target.vehiclePlate)
-		data.append('pictures', this.state.target.pictures[0])
-		data.append('descriptionOfSubject', this.state.target.descriptionOfSubject)
-		data.append('title', this.state.operation.title)
-		data.append('daysAssigned', this.state.operation.daysAssigned)
-		data.append('firstOCP', this.state.operation.firstOCP)
-		data.append('description', this.state.operation.description)
-		data.append('agentAssigned', this.state.operation.agentAssigned)
+    data.append("name", this.state.target.name);
+    data.append("vehiclePlate", this.state.target.vehiclePlate);
+    data.append("pictures", this.state.target.pictures[0]);
+    data.append("descriptionOfSubject", this.state.target.descriptionOfSubject);
+    data.append("title", this.state.operation.title);
+    data.append("daysAssigned", this.state.operation.daysAssigned);
+    data.append("firstOCP", this.state.operation.firstOCP);
+    data.append("description", this.state.operation.description);
+    data.append("agentAssigned", this.state.operation.agentAssigned);
 
+    axios
+      .post(`http://61a9362b.ngrok.io/createoperation`, data)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-				axios
-					.post(`http://localhost:4000/createoperation`, data)
-					.then(res => {
-						console.log(res);
-					})
-					.catch(err => {
-						console.log(err);
-					});
-
-
-			this.props.history.goBack()
-
-
+    this.props.history.goBack();
   };
 
-	componentWillMount() {
-		axios
-      .get(`http://localhost:4000/users`)
+  componentWillMount() {
+    axios
+      .get(`http://61a9362b.ngrok.io/users`)
       .then(res => {
-				let users = this.state.users;
+        let users = this.state.users;
         users = res.data;
         this.setState({
           users: users
@@ -91,15 +87,11 @@ class Add extends React.Component {
       .catch(err => {
         console.log(err);
       });
-
-
-	}
-
-
+  }
 
   inputChangeOP = (event, field) => {
     let name = event.target.value;
-		console.log(name)
+    console.log(name);
     let operation = this.state.operation;
     operation[field] = name;
     this.setState({
@@ -116,28 +108,25 @@ class Add extends React.Component {
     });
   };
 
-	getAgent = (event) => {
-		let id = event.target.value
-		let operation = this.state.operation
-		operation.agentAssigned = id
-		this.setState({
-			operation
-		})
-	}
+  getAgent = event => {
+    let id = event.target.value;
+    let operation = this.state.operation;
+    operation.agentAssigned = id;
+    this.setState({
+      operation
+    });
+  };
 
-
-	getFile = (event) => {
-		console.log('e', event)
-		console.log('t', event.target.files[0])
-		let photo = event.target.files[0]
-		let target = this.state.target
-		target.pictures.push(photo)
-		this.setState({
-			target
-		})
-	}
-
-
+  getFile = event => {
+    console.log("e", event);
+    console.log("t", event.target.files[0]);
+    let photo = event.target.files[0];
+    let target = this.state.target;
+    target.pictures.push(photo);
+    this.setState({
+      target
+    });
+  };
 
   render() {
     return (
@@ -194,10 +183,7 @@ class Add extends React.Component {
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Immagine</IonLabel>
-            <input
-              type="file"
-              onChange={event => this.getFile(event)}
-            />
+            <input type="file" onChange={event => this.getFile(event)} />
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Targa</IonLabel>
@@ -206,16 +192,21 @@ class Add extends React.Component {
               onIonChange={event => this.inputChangeTA(event, "vehiclePlate")}
             ></IonInput>
           </IonItem>
-					<IonItem>
-		        <IonLabel>Seleziona agente</IonLabel>
-					<IonSelect value={this.state.operation.agentAssigned} interface="action-sheet" placeholder="Seleziona uno" onIonChange={event => this.getAgent(event)} >
-							{this.state.users.map((n, i) =>
-								<IonSelectOption key={i} value={n._id}>
-									{`${n.name}    Operazioni: ${n.assignedOP.length}`}
-								</IonSelectOption>
-							)}
-		        </IonSelect>
-		      </IonItem>
+          <IonItem>
+            <IonLabel>Seleziona agente</IonLabel>
+            <IonSelect
+              value={this.state.operation.agentAssigned}
+              interface="action-sheet"
+              placeholder="Seleziona uno"
+              onIonChange={event => this.getAgent(event)}
+            >
+              {this.state.users.map((n, i) => (
+                <IonSelectOption key={i} value={n._id}>
+                  {`${n.name}    Operazioni: ${n.assignedOP.length}`}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
+          </IonItem>
           <IonButton
             className="button"
             shape="round"

@@ -48,22 +48,22 @@ class Signup extends React.Component {
 
     const user = this.state.form;
 
-		let data = new FormData()
+    let data = new FormData();
 
-		data.append('name', this.state.form.name)
-		data.append('surname', this.state.form.surname)
-		data.append('avatar', this.state.form.avatar)
-		data.append('email', this.state.form.email)
-		data.append('password', this.state.form.password)
-		data.append('location', this.state.form.location)
-		data.append('birthDate', this.state.form.birthDate)
-		data.append('phone', this.state.form.phone)
-		data.append('companyIDnum', this.state.form.companyIDnum)
+    data.append("name", this.state.form.name);
+    data.append("surname", this.state.form.surname);
+    data.append("avatar", this.state.form.avatar);
+    data.append("email", this.state.form.email);
+    data.append("password", this.state.form.password);
+    data.append("location", this.state.form.location);
+    data.append("birthDate", this.state.form.birthDate);
+    data.append("phone", this.state.form.phone);
+    data.append("companyIDnum", this.state.form.companyIDnum);
     axios
-      .post(`http://localhost:4000/signup`, data)
+      .post(`http://61a9362b.ngrok.io/signup`, data)
       .then(res => {
         console.log(res);
-				window.location = "/app";
+        window.location = "/app";
       })
       .catch(err => {
         console.log(err);
@@ -79,17 +79,17 @@ class Signup extends React.Component {
     });
   };
 
-	getFile = (event) => {
-		console.log('e', event)
-		console.log('t', event.target.files[0])
-		let photo = event.target.files[0]
-		let form = this.state.form
-		console.log(form)
-		form.avatar = photo
-		this.setState({
-			form
-		})
-	}
+  getFile = event => {
+    console.log("e", event);
+    console.log("t", event.target.files[0]);
+    let photo = event.target.files[0];
+    let form = this.state.form;
+    console.log(form);
+    form.avatar = photo;
+    this.setState({
+      form
+    });
+  };
 
   render() {
     return (
@@ -169,10 +169,7 @@ class Signup extends React.Component {
             </IonItem>
             <IonItem className="input">
               <IonLabel position="stacked">Foto profilo</IonLabel>
-						<input
-                type="file"
-                onChange={event => this.getFile(event)}
-              />
+              <input type="file" onChange={event => this.getFile(event)} />
             </IonItem>
             <IonButton
               className="button"

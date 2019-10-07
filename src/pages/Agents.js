@@ -23,10 +23,9 @@ import "../theme/page.css";
 import axios from "axios";
 class Agents extends React.Component {
   state = {
-    url: "http://localhost:4000/users",
+    url: "http://61a9362b.ngrok.io/users",
     users: []
   };
-
 
   componentWillMount() {
     axios
@@ -49,17 +48,17 @@ class Agents extends React.Component {
     });
   };
 
-	addAgent = () => {
-		console.log(this.props.agent)
-	}
+  addAgent = () => {
+    console.log(this.props.agent);
+  };
 
   render() {
     return (
       <IonPage>
         <IonContent className="page">
-				{this.state.users.map((agent, i) => (
-					<Agent agent={agent} key={i} goToDetail={this.goToDetail} />
-				))}
+          {this.state.users.map((agent, i) => (
+            <Agent agent={agent} key={i} goToDetail={this.goToDetail} />
+          ))}
         </IonContent>
       </IonPage>
     );

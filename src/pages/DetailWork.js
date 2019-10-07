@@ -1,36 +1,61 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonImg, IonText,  IonAvatar, IonTabBar, IonTabButton, IonBadge, IonIcon, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle,IonFabButton,IonFab, IonItem, IonSelectOption, IonSelect } from '@ionic/react';
-import React from 'react';
-import {arrowRoundBack, add} from 'ionicons/icons';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonGrid,
+  IonRow,
+  IonImg,
+  IonText,
+  IonAvatar,
+  IonTabBar,
+  IonTabButton,
+  IonBadge,
+  IonIcon,
+  IonLabel,
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardContent,
+  IonCardTitle,
+  IonFabButton,
+  IonFab,
+  IonItem,
+  IonSelectOption,
+  IonSelect
+} from "@ionic/react";
+import React from "react";
+import { arrowRoundBack, add } from "ionicons/icons";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import Camera from "../components/Camera";
-import Header from '../components/Header';
-import Operation from '../components/Operation';
-import LargeComment from '../components/LargeComment';
+import Header from "../components/Header";
+import Operation from "../components/Operation";
+import LargeComment from "../components/LargeComment";
 
-import '../theme/detail.css';
+import "../theme/detail.css";
 
 class DetailWork extends React.Component {
+  state = {
+    operation: {
+      comments: [],
+      dayDone: 0,
+      title: "",
+      description: "",
+      firstOCP: "",
+      daysAssigned: 0,
+      target: {
+        pictures: [],
+        name: "",
+        _id: ""
+      }
+    },
+    url: "http://61a9362b.ngrok.io/operations/5d9ac0da9c0fb24b50c299b2"
+  };
 
-	state = {
-		operation: {
-          comments: [],
-					dayDone: 0,
-          title: '',
-					description: '',
-					firstOCP: '',
-					daysAssigned: 0,
-					target: {
-						pictures: [],
-						name: '',
-						_id: ''
-				}
-		},
-		url: 'http://localhost:4000/operations/5d9ac0da9c0fb24b50c299b2'
-	}
-
-	componentWillMount() {
-		axios
+  componentWillMount() {
+    axios
       .get(this.state.url)
       .then(res => {
         let operation = this.state.operation;
@@ -42,54 +67,49 @@ class DetailWork extends React.Component {
         console.log(res.data);
       })
       .catch(err => {});
-	}
+  }
 
-	sendPhoto = image => {
+  sendPhoto = image => {
     // axios.post("faccia/sdsdfdsf");
     // window.location = "record";
     this.props.history.push({
       pathname: "/selectimage",
-			image: image,
-			_id: this.state.operation.target._id
-
+      image: image,
+      _id: this.state.operation.target._id
     });
   };
 
+  render() {
+    return (
+      <IonPage>
+        <IonContent className="page">
+          <IonHeader>
+            <IonToolbar className="detail-header">
+              <IonGrid className="grid-detail">
+                <Link to="/operations">
+                  <IonIcon className="back" icon={arrowRoundBack} />
+                </Link>
+                <IonAvatar className="text">
+                  <IonImg src={this.state.operation.target.pictures[0]} />
+                </IonAvatar>
+                <IonText className="text">{this.state.operation.title}</IonText>
+              </IonGrid>
+            </IonToolbar>
+          </IonHeader>
+          {this.state.operation.comments.map((comment, i) => (
+            <LargeComment comment={comment} />
+          ))}
 
-	render() {
-		return (
-	    <IonPage>
-	      <IonContent className="page">
-				<IonHeader>
-				<IonToolbar className="detail-header">
-							<IonGrid className="grid-detail">
-							<Link to="/operations">
-							<IonIcon className="back" icon={arrowRoundBack} />
-							</Link>
-								<IonAvatar className="text">
-								<IonImg src={this.state.operation.target.pictures[0]}/>
-								</IonAvatar>
-								<IonText className="text">{this.state.operation.title}
-								</IonText>
-							</IonGrid>
-						</IonToolbar>
-					</IonHeader>
-					{
-						this.state.operation.comments.map((comment, i) =>
-							<LargeComment comment={comment}/>
-						)
-					}
-
-						<IonFab vertical="bottom" horizontal="end" slot="fixed" >
-							<IonFabButton color="light">
-								<IonIcon icon={add} />
-						</IonFabButton>
-						</IonFab>
-						<Camera sendPhoto={this.sendPhoto} />
-				</IonContent>
-	    </IonPage>
-	  );
-	}
-};
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
+            <IonFabButton color="light">
+              <IonIcon icon={add} />
+            </IonFabButton>
+          </IonFab>
+          <Camera sendPhoto={this.sendPhoto} />
+        </IonContent>
+      </IonPage>
+    );
+  }
+}
 
 export default DetailWork;
