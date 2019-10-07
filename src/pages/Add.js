@@ -129,12 +129,12 @@ class Add extends React.Component {
 	getFile = (event) => {
 		console.log('e', event)
 		console.log('t', event.target.files[0])
-		// let photo = event.target.files[0]
-		// let target = this.state.target
-		// target.pictures.push(photo)
-		// this.setState({
-		// 	target
-		// })
+		let photo = event.target.files[0]
+		let target = this.state.target
+		target.pictures.push(photo)
+		this.setState({
+			target
+		})
 	}
 
 
