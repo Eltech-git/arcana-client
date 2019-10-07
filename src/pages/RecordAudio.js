@@ -33,11 +33,13 @@ import "../theme/detail.css";
 
 class RecordAudio extends React.Component {
   state = {
-    record: false
+    record: false,
+    image: ""
   };
 
   ionViewWillEnter() {
     console.log("RecordAudio");
+    console.log(this.props.location.image);
   }
 
   startRecording = () => {
@@ -60,7 +62,7 @@ class RecordAudio extends React.Component {
     axios.post("http://61a9362b.ngrok.io/comments");
 
     this.props.history.push({
-      pathname: "mappa"
+      pathname: ""
     });
   };
 
