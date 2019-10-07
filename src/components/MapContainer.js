@@ -137,7 +137,10 @@ class MapContainer extends React.Component {
               <div>
                 <div className="agent">
                   <h7>Agente:</h7>
-                  <h4>{agent.name}</h4>
+                  <h4>
+                    {`${agent.name} 
+                    ${agent.surname}`}
+                  </h4>
                 </div>
                 <div className="operation" onClick={e => this.toAgentPage()}>
                   <h7>Operazione:</h7>
