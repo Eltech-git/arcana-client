@@ -34,12 +34,12 @@ import "../theme/detail.css";
 class RecordAudio extends React.Component {
   state = {
     record: false,
-    image: ""
+    image: "",
+    operationID: ""
   };
 
   ionViewWillEnter() {
     console.log("RecordAudio");
-    console.log(this.props.location.image);
   }
 
   startRecording = () => {
@@ -59,10 +59,17 @@ class RecordAudio extends React.Component {
   }
 
   onStop = recordedBlob => {
-    axios.post("http://61a9362b.ngrok.io/comments");
+    axios
+      .post("http://61a9362b.ngrok.io/speech")
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     this.props.history.push({
-      pathname: ""
+      pathname: "detailwork"
     });
   };
 
@@ -78,6 +85,11 @@ class RecordAudio extends React.Component {
               <IonGrid className="grid-detail"></IonGrid>
             </IonToolbar>
           </IonHeader>
+          {console.log(
+            "oooooooooperatioooooooooooon",
+            this.props.location.operationID
+          )}
+          ;
           <ReactMic
             record={this.state.record}
             className="sound-wave"

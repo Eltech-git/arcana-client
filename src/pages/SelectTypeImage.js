@@ -39,7 +39,9 @@ class SelectTypeImage extends React.Component {
     // axios.post("faccia/sdsdfdsf");
     // window.location = "record";
     this.props.history.push({
-      pathname: "/record"
+      pathname: "/record",
+      image: this.state.url,
+      operationID: this.props.location.operationID
     });
   };
 

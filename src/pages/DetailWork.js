@@ -38,6 +38,7 @@ import "../theme/detail.css";
 
 class DetailWork extends React.Component {
   state = {
+    operationID: "5d943cb303dd9307d82d432e",
     operation: {
       comments: [],
       dayDone: 0,
@@ -75,7 +76,8 @@ class DetailWork extends React.Component {
     this.props.history.push({
       pathname: "/selectimage",
       image: image,
-      _id: this.state.operation.target._id
+      _id: this.state.operation.target._id,
+      operationID: this.state.operationID
     });
   };
 

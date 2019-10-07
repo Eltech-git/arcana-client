@@ -62,7 +62,7 @@ class Operations extends React.Component {
     });
   };
 
-  componentWillReceiveProps(props) {
+  componentWillMount() {
     console.log("ionViewWillEnter event fired");
     let token = localStorage.getItem("token");
     let key = "token";
