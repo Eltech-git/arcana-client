@@ -1,7 +1,7 @@
 {
-  "appId": "com.project.arcana",
-  "appName": "Arcana",
+  "appId": "io.ionic.starter",
+  "appName": "inv_fac",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "public"
+  "webDir": "build"
 }

@@ -51,10 +51,10 @@ class DetailWork extends React.Component {
         _id: ""
       }
     },
-    url: "http://61a9362b.ngrok.io/operations/5d9ac0da9c0fb24b50c299b2"
+    url: "http://61a9362b.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
-  componentWillMount() {
+  componentDidMount() {
     axios
       .get(this.state.url)
       .then(res => {

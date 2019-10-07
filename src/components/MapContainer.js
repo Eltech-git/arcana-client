@@ -32,11 +32,6 @@ const mapStyles = {
   height: "100%"
 };
 
-const mylng = Geolocation.getCurrentPosition().then(function(result) {
-  let mylng = result.coords.longitude;
-  return mylng;
-});
-
 const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
@@ -75,14 +70,7 @@ class MapContainer extends React.Component {
     mylongitude: 0
   };
 
-  getmyloc = (mylat, mylng) => {
-    console.log(mylat);
-    this.setState({
-      mylatitude: mylat,
-      mylongitude: mylng
-    });
-  };
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios
       .get(this.state.url)
       .then(res => {
@@ -90,14 +78,15 @@ class MapContainer extends React.Component {
         users = res.data;
         this.setState({
           users: users
-        }).then(this.getmyloc);
-        console.log(res.data);
+        });
       })
       .catch(err => {});
 
     Geolocation.getCurrentPosition().then(result => {
       let gotlongitude = result.coords.longitude;
       let gotlatitude = result.coords.latitude;
+      console.log(gotlatitude);
+      console.log(gotlongitude);
       this.setState({
         mylatitude: gotlatitude,
         mylongitude: gotlongitude
@@ -179,7 +168,6 @@ class MapContainer extends React.Component {
           }}
         />
         {() => this.getmyloc()}
-        {console.log(mylng)}
         {this.displayMarkers()}
         <InfoWindow
           content={"ciao"}

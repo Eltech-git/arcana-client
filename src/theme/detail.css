@@ -1,41 +1,47 @@
 .page {
-	--background: #2d3439;
+  --background: #2d3439;
 }
 
 .detail-header {
-	--background: #222428;
-	color: white;
+  --background: #222428;
+  color: white;
 }
 
 .card {
-	background-color: rgba(106, 107, 111, 0.5);
-	color: rgba(241, 241, 241, 0.9);
-	padding-bottom: 2%;
+  background-color: rgba(106, 107, 111, 0.5);
+  color: rgba(241, 241, 241, 0.9);
+  padding-bottom: 2%;
+}
+.sound-wave {
+  height: 50%;
+  width: 100%;
 }
 
-
 .grid-detail {
-	display: grid;
-	grid-template-columns: 1fr 1fr 3fr;
-	padding: 5%;
-	grid-gap: 2%;
-	align-items: center;
-	text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  padding: 5%;
+  grid-gap: 2%;
+  align-items: center;
+  text-align: center;
 }
 
 .grid-detail .back {
-	font-size: 200%;
-	text-align: center;
+  font-size: 200%;
+  text-align: center;
 }
 
+.grid-detail .back {
+  font-size: 200%;
+  text-align: center;
+}
 
 .grid-detail .text {
-	margin: auto;
-	font-size: 90%;
-	text-align: center;
+  margin: auto;
+  font-size: 90%;
+  text-align: center;
 }
 
-
 .add {
-	color: white;
+  color: white;
 }

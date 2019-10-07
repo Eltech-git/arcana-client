@@ -49,15 +49,30 @@ class SelectTypeImage extends React.Component {
 
   // url mandare
 
-  checkFace = () => {
+  checkFace = e => {
     let check = this.state;
     axios
       .post(`http://61a9362b.ngrok.io/face`, check)
       .then(data => {
-        console.log(data);
+        console.log("data >>>", data);
       })
       .catch(err => {
-        console.log(err);
+        console.log("err >>>", err);
+      });
+  };
+
+  checkPlate = e => {
+    let check = {
+      url:
+        "https://static.allaguida.it/r/845X0/www.allaguida.it/img/Alfa-Romeo-Giulia4.jpg"
+    };
+    axios
+      .post(`http://61a9362b.ngrok.io/plate`, check)
+      .then(data => {
+        console.log("data >>>", data);
+      })
+      .catch(err => {
+        console.log("err >>>", err);
       });
   };
 
@@ -79,7 +94,11 @@ class SelectTypeImage extends React.Component {
               <IonIcon icon={person} />
               Viso
             </IonButton>
-            <IonButton className="button" shape="round">
+            <IonButton
+              className="button"
+              shape="round"
+              onClick={this.checkPlate}
+            >
               <IonIcon icon={logoModelS} />
               Targa
             </IonButton>

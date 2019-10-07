@@ -25,6 +25,7 @@ import LargeComment from "../components/LargeComment";
 import { add, nuclear } from "ionicons/icons";
 import axios from "axios";
 import "../theme/page.css";
+require("dotenv").config();
 
 class Operations extends React.Component {
   state = {
@@ -126,6 +127,11 @@ class Operations extends React.Component {
             </IonFabButton>
           </IonFab>
         </IonContent>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton href="/add" color="light">
+            <IonIcon icon={add} />
+          </IonFabButton>
+        </IonFab>
       </IonPage>
     );
   }

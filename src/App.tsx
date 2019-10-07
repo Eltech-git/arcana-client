@@ -10,7 +10,7 @@ import {
   IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { map, list, person,people } from "ionicons/icons";
+import { map, list, person, people } from "ionicons/icons";
 import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
@@ -47,8 +47,8 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/app/mappa" component={Mappa} exact={true} />
-					<Route path="/profile" component={Profile} exact={true} />
+          <Route path="/mappa" component={Mappa} exact={true} />
+          <Route path="/profile" component={Profile} exact={true} />
           <Route path="/operations" component={Operations} exact={true} />
           <Route
             path="/operationdetail"
@@ -56,26 +56,22 @@ const App: React.FC = () => (
             exact={true}
           />
 
-					<Route
-            path="/detailwork"
-            component={DetailWork}
-            exact={true}
-          />
-					<Route
-            path="/newoperation"
-            component={Add}
-            exact={true}
-          />
-					<Route
+          <Route path="/detailwork" component={DetailWork} exact={true} />
+          <Route path="/newoperation" component={Add} exact={true} />
+          <Route
             path="/locationdetail"
             component={LocationDetail}
             exact={true}
           />
           <Route path="/add" component={Add} exact={true} />
-					<Route path="/selectimage" component={SelectTypeImage} exact={true} />
-					<Route path="/record" component={RecordAudio} exact={true} />
+          <Route path="/selectimage" component={SelectTypeImage} exact={true} />
+          <Route path="/record" component={RecordAudio} exact={true} />
           <Route path="/agents" component={Agents} />
-					<Route exact path="/app" render={() => <Redirect to="/operations" />} />
+          <Route
+            exact
+            path="/app"
+            render={() => <Redirect to="/operations" />}
+          />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
           <IonTabButton tab="tab1" href="/mappa">
@@ -90,7 +86,7 @@ const App: React.FC = () => (
             <IonIcon icon={people} />
             <IonLabel>Agenti</IonLabel>
           </IonTabButton>
-					<IonTabButton tab="tab4" href="/profile">
+          <IonTabButton tab="tab4" href="/profile">
             <IonIcon icon={person} />
             <IonLabel>Profilo</IonLabel>
           </IonTabButton>
