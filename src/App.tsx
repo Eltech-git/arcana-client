@@ -10,7 +10,7 @@ import {
   IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { map, list, person, add } from "ionicons/icons";
+import { map, list, person,people } from "ionicons/icons";
 import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
@@ -19,6 +19,7 @@ import LocationDetail from "./pages/LocationDetail";
 import Agents from "./pages/Agents";
 import SelectTypeImage from "./pages/SelectTypeImage";
 import Add from "./pages/Add";
+import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import RecordAudio from "./pages/RecordAudio";
 
@@ -47,6 +48,7 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/app/mappa" component={Mappa} exact={true} />
+					<Route path="/profile" component={Profile} exact={true} />
           <Route path="/operations" component={Operations} exact={true} />
           <Route
             path="/operationdetail"
@@ -73,8 +75,7 @@ const App: React.FC = () => (
 					<Route path="/selectimage" component={SelectTypeImage} exact={true} />
 					<Route path="/record" component={RecordAudio} exact={true} />
           <Route path="/agents" component={Agents} />
-					<Route exact path="/app" render={() => <Redirect to="/mappa" />} />
-          <Route exact path="/" render={() => <Redirect to="/login" />} />
+					<Route exact path="/app" render={() => <Redirect to="/operations" />} />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
           <IonTabButton tab="tab1" href="/mappa">
@@ -86,8 +87,12 @@ const App: React.FC = () => (
             <IonLabel>Operazioni</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/agents">
-            <IonIcon icon={person} />
+            <IonIcon icon={people} />
             <IonLabel>Agenti</IonLabel>
+          </IonTabButton>
+					<IonTabButton tab="tab4" href="/profile">
+            <IonIcon icon={person} />
+            <IonLabel>Profilo</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

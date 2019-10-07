@@ -1,0 +1,29 @@
+.grid-profile {
+	display: grid;
+	grid-template-columns: 6fr 1fr;
+	padding: 20px;
+}
+
+.grid-list {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 2%;
+}
+
+
+.avatar-profile {
+	--border-radius: 50% !important;
+    width: 90px !important;
+    height: 90px !important;
+}
+
+
+.profile-label {
+	--color: white !important;
+}
+
+.profile-text {
+		--background: #2d3439;
+		color: #ffffff;
+		--border-color: #2d3439;
+}
