@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@capacitor/android": "^1.2.1",
-    "@capacitor/core": "1.2.1",
+    "@capacitor/core": "^1.2.1",
     "@expo/vector-icons": "^10.0.5",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/google-maps": "^5.0.0-beta.27",
@@ -49,6 +49,6 @@
   ],
   "description": "An Ionic project",
   "devDependencies": {
-    "@capacitor/cli": "1.2.1"
+    "@capacitor/cli": "^1.2.1"
   }
 }
