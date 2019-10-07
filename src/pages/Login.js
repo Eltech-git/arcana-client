@@ -40,7 +40,7 @@ class Login extends React.Component {
     e.preventDefault();
     let user = this.state.form;
     axios
-      .post("http://61a9362b.ngrok.io/login", user)
+      .post("http://c1824d42.ngrok.io/login", user)
       .then(res => {
         console.log(res.data);
         if (res.data.error) {

@@ -52,7 +52,7 @@ class DetailWork extends React.Component {
         _id: ""
       }
     },
-    url: "http://61a9362b.ngrok.io/operations/5d943cb303dd9307d82d432e"
+    url: "http://c1824d42.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
   componentDidMount() {
@@ -88,7 +88,7 @@ class DetailWork extends React.Component {
           <IonHeader>
             <IonToolbar className="detail-header">
               <IonGrid className="grid-detail">
-                <Link to="/operations">
+                <Link to="/app/operations">
                   <IonIcon className="back" icon={arrowRoundBack} />
                 </Link>
                 <IonAvatar className="text">

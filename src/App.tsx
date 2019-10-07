@@ -47,46 +47,50 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/mappa" component={Mappa} exact={true} />
-          <Route path="/profile" component={Profile} exact={true} />
-          <Route path="/operations" component={Operations} exact={true} />
+          <Route path="/app/mappa" component={Mappa} exact={true} />
+          <Route path="/app/profile" component={Profile} exact={true} />
+          <Route path="/app/operations" component={Operations} exact={true} />
           <Route
-            path="/operationdetail"
+            path="/app/operationdetail"
             component={OperationDetail}
             exact={true}
           />
 
-          <Route path="/detailwork" component={DetailWork} exact={true} />
-          <Route path="/newoperation" component={Add} exact={true} />
+          <Route path="/app/detailwork" component={DetailWork} exact={true} />
+          <Route path="/app/newoperation" component={Add} exact={true} />
           <Route
-            path="/locationdetail"
+            path="/app/locationdetail"
             component={LocationDetail}
             exact={true}
           />
-          <Route path="/add" component={Add} exact={true} />
-          <Route path="/selectimage" component={SelectTypeImage} exact={true} />
-          <Route path="/record" component={RecordAudio} exact={true} />
-          <Route path="/agents" component={Agents} />
+          <Route path="/app/add" component={Add} exact={true} />
+          <Route
+            path="/app/selectimage"
+            component={SelectTypeImage}
+            exact={true}
+          />
+          <Route path="/app/record" component={RecordAudio} exact={true} />
+          <Route path="/app/agents" component={Agents} />
           <Route
             exact
             path="/app"
-            render={() => <Redirect to="/operations" />}
+            render={() => <Redirect to="app/operations" />}
           />
         </IonRouterOutlet>
         <IonTabBar color="dark" slot="bottom">
-          <IonTabButton tab="tab1" href="/mappa">
+          <IonTabButton tab="tab1" href="/app/mappa">
             <IonIcon icon={map} />
             <IonLabel>Mappa</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/operations">
+          <IonTabButton tab="tab2" href="/app/operations">
             <IonIcon icon={list} />
             <IonLabel>Operazioni</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/agents">
+          <IonTabButton tab="tab3" href="/app/agents">
             <IonIcon icon={people} />
             <IonLabel>Agenti</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/profile">
+          <IonTabButton tab="tab4" href="/app/profile">
             <IonIcon icon={person} />
             <IonLabel>Profilo</IonLabel>
           </IonTabButton>

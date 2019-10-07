@@ -51,26 +51,21 @@ class Operations extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "http://61a9362b.ngrok.io/users"
+    url: "http://c1824d42.ngrok.io/users"
   };
 
   goToDetail = i => {
     this.props.history.push({
-      pathname: "/operationdetail",
+      pathname: "/app/operationdetail",
       assignedOP: this.state.user.assignedOP,
       index: i
     });
   };
 
-  componentWillMount() {
-    console.log("ionViewWillEnter event fired");
+  getUser = () => {
     let token = localStorage.getItem("token");
-    let key = "token";
-    console.log(token);
-    console.log(key);
-
     axios
-      .post(`http://61a9362b.ngrok.io/agent?${key}=${token}`)
+      .post(`http://c1824d42.ngrok.io/agent?token=${token}`)
       .then(res => {
         let idUser = res.data;
         console.log(res.data);
@@ -87,6 +82,20 @@ class Operations extends React.Component {
           .catch(err => {});
       })
       .catch(err => {});
+  };
+
+  componentWillMount() {
+    // axios.get(`localhost:4000/operations?agent=${agentId}`, {
+    // 	headers: {
+    // 		Authorization: `Bearer ${token}`
+    // 	}
+    // }).then()
+    this.getUser();
+  }
+
+  ionViewDidEnter() {
+    console.log("I enter");
+    this.getUser();
   }
 
   // componentWillReceiveProps(props) {
@@ -117,18 +126,18 @@ class Operations extends React.Component {
             />
           ))}
           <IonFab vertical="bottom" horizontal="end" slot="fixed">
-            <IonFabButton href="/add" color="light">
+            <IonFabButton href="/app/add" color="light">
               <IonIcon icon={add} />
             </IonFabButton>
           </IonFab>
           <IonFab vertical="bottom" horizontal="start" slot="fixed">
-            <IonFabButton href="/detailwork" color="light">
+            <IonFabButton href="/app/detailwork" color="light">
               <IonIcon icon={nuclear} />
             </IonFabButton>
           </IonFab>
         </IonContent>
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton href="/add" color="light">
+          <IonFabButton href="/app/add" color="light">
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>

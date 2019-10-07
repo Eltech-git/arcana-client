@@ -53,8 +53,9 @@ class SelectTypeImage extends React.Component {
 
   checkFace = e => {
     let check = this.state;
+    console.log("check", check);
     axios
-      .post(`http://61a9362b.ngrok.io/face`, check)
+      .post(`http://c1824d42.ngrok.io/face`, check)
       .then(data => {
         console.log("data >>>", data);
       })
@@ -69,7 +70,7 @@ class SelectTypeImage extends React.Component {
         "https://static.allaguida.it/r/845X0/www.allaguida.it/img/Alfa-Romeo-Giulia4.jpg"
     };
     axios
-      .post(`http://61a9362b.ngrok.io/plate`, check)
+      .post(`http://c1824d42.ngrok.io/plate`, check)
       .then(data => {
         console.log("data >>>", data);
       })

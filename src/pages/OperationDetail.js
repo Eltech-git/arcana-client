@@ -51,7 +51,7 @@ class OperationDetail extends React.Component {
         _id: ""
       }
     },
-    url: "http://61a9362b.ngrok.io/operations/5d943cb303dd9307d82d432e"
+    url: "http://c1824d42.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
   state = {
@@ -69,25 +69,26 @@ class OperationDetail extends React.Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     console.log("hello");
     let operation = this.props.location.operation;
-    console.log("log1 >>>>>>" + operation);
+    console.log("log1 >>>>>>", operation);
     this.setState({
       operation: operation
     });
   }
 
-  componentWillReceiveProps(props) {
+  componentDidReceiveProps(props) {
     console.log("hello");
     let operation = props.location.operation;
-    console.log("log2 >>>>" + operation);
+    console.log("log2 >>>>", operation);
     this.setState({
       operation: operation
     });
   }
 
   goBack = () => {
+    console.log("this.props.history", this.props.history);
     this.props.history.goBack();
   };
 
@@ -98,9 +99,14 @@ class OperationDetail extends React.Component {
           <IonHeader>
             <IonToolbar className="detail-header">
               <IonGrid className="grid-detail">
-                <Link to="/operations">
+                {/*<Link to="/app/operations">
                   <IonIcon className="back" icon={arrowRoundBack} />
-                </Link>
+                </Link>*/}
+                <IonIcon
+                  className="back"
+                  icon={arrowRoundBack}
+                  onClick={this.goBack}
+                />
                 <IonAvatar className="text">
                   <IonImg src={this.state.operation.target.pictures[0]} />
                 </IonAvatar>
