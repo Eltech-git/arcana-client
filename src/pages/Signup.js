@@ -39,7 +39,7 @@ class Signup extends React.Component {
       birthDate: " ",
       phone: 0,
       companyIDnum: " ",
-      avatar: " "
+      avatar: {}
     }
   };
 
@@ -47,11 +47,23 @@ class Signup extends React.Component {
     event.preventDefault();
 
     const user = this.state.form;
+
+		let data = new FormData()
+
+		data.append('name', this.state.form.name)
+		data.append('surname', this.state.form.surname)
+		data.append('avatar', this.state.form.avatar)
+		data.append('email', this.state.form.email)
+		data.append('password', this.state.form.password)
+		data.append('location', this.state.form.location)
+		data.append('birthDate', this.state.form.birthDate)
+		data.append('phone', this.state.form.phone)
+		data.append('companyIDnum', this.state.form.companyIDnum)
     axios
-      .post(`http://localhost:4000/signup`, user)
+      .post(`http://localhost:4000/signup`, data)
       .then(res => {
         console.log(res);
-				window.location = "/login";
+				window.location = "/app";
       })
       .catch(err => {
         console.log(err);
@@ -66,6 +78,18 @@ class Signup extends React.Component {
       form
     });
   };
+
+	getFile = (event) => {
+		console.log('e', event)
+		console.log('t', event.target.files[0])
+		let photo = event.target.files[0]
+		let form = this.state.form
+		console.log(form)
+		form.avatar = photo
+		this.setState({
+			form
+		})
+	}
 
   render() {
     return (
@@ -123,7 +147,7 @@ class Signup extends React.Component {
               <IonLabel position="floating">Data di Nascita</IonLabel>
               <IonInput
                 type="date"
-                placeholder="Data di Nascita"
+                placeholder="19/09/1989"
                 onIonChange={event => this.inputChange(event, "birthDate")}
               ></IonInput>
             </IonItem>
@@ -145,10 +169,10 @@ class Signup extends React.Component {
             </IonItem>
             <IonItem className="input">
               <IonLabel position="stacked">Foto profilo</IonLabel>
-              <IonInput
+						<input
                 type="file"
-                onIonChange={event => this.inputChange(event, "avatar")}
-              ></IonInput>
+                onChange={event => this.getFile(event)}
+              />
             </IonItem>
             <IonButton
               className="button"
