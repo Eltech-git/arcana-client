@@ -61,7 +61,7 @@ class RecordAudio extends React.Component {
   onStop = recordedBlob => {
     console.log("recordedBlob", recordedBlob);
     axios
-      .post("http://c1824d42.ngrok.io/speech", recordedBlob)
+      .post("http://74fe330c.ngrok.io/speech", recordedBlob)
       .then(res => {
         console.log(res);
       })
@@ -70,7 +70,7 @@ class RecordAudio extends React.Component {
       });
 
     this.props.history.push({
-      pathname: "detailwork"
+      pathname: "/app/operationdetail"
     });
   };
 

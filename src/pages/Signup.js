@@ -60,7 +60,7 @@ class Signup extends React.Component {
     data.append("phone", this.state.form.phone);
     data.append("companyIDnum", this.state.form.companyIDnum);
     axios
-      .post(`http://c1824d42.ngrok.io/signup`, data)
+      .post(`http://74fe330c.ngrok.io/signup`, data)
       .then(res => {
         console.log(res);
         window.location = "/app";

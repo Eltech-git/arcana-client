@@ -51,7 +51,7 @@ class OperationDetail extends React.Component {
         _id: ""
       }
     },
-    url: "http://c1824d42.ngrok.io/operations/5d943cb303dd9307d82d432e"
+    url: "http://74fe330c.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
   state = {
@@ -86,7 +86,16 @@ class OperationDetail extends React.Component {
       operation: operation
     });
   }
-
+  sendPhoto = image => {
+    // axios.post("faccia/sdsdfdsf");
+    // window.location = "record";
+    this.props.history.push({
+      pathname: "/app/selectimage",
+      image: image,
+      _id: this.state.operation.target._id,
+      operationID: this.state.operationID
+    });
+  };
   goBack = () => {
     console.log("this.props.history", this.props.history);
     this.props.history.goBack();
@@ -118,11 +127,8 @@ class OperationDetail extends React.Component {
             <LargeComment comment={comment} />
           ))}
 
-          <IonFab vertical="bottom" horizontal="end" slot="fixed">
-            <IonFabButton color="light">
-              <IonIcon icon={add} />
-            </IonFabButton>
-          </IonFab>
+          <IonFab vertical="bottom" horizontal="end" slot="fixed"></IonFab>
+          <Camera sendPhoto={this.sendPhoto} />
         </IonContent>
       </IonPage>
     );

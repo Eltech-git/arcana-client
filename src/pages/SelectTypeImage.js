@@ -39,7 +39,7 @@ class SelectTypeImage extends React.Component {
     // axios.post("faccia/sdsdfdsf");
     // window.location = "record";
     this.props.history.push({
-      pathname: "/record",
+      pathname: "/app/record",
       image: this.state.url,
       operationID: this.props.location.operationID
     });
@@ -55,7 +55,7 @@ class SelectTypeImage extends React.Component {
     let check = this.state;
     console.log("check", check);
     axios
-      .post(`http://c1824d42.ngrok.io/face`, check)
+      .post(`http://74fe330c.ngrok.io/face`, check)
       .then(data => {
         console.log("data >>>", data);
       })
@@ -70,7 +70,7 @@ class SelectTypeImage extends React.Component {
         "https://static.allaguida.it/r/845X0/www.allaguida.it/img/Alfa-Romeo-Giulia4.jpg"
     };
     axios
-      .post(`http://c1824d42.ngrok.io/plate`, check)
+      .post(`http://74fe330c.ngrok.io/plate`, check)
       .then(data => {
         console.log("data >>>", data);
       })

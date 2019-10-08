@@ -24,7 +24,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 class Agents extends React.Component {
   state = {
-    url: "http://c1824d42.ngrok.io/users",
+    url: "http://74fe330c.ngrok.io/users",
     users: []
   };
 

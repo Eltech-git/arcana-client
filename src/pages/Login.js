@@ -40,7 +40,7 @@ class Login extends React.Component {
     e.preventDefault();
     let user = this.state.form;
     axios
-      .post("http://c1824d42.ngrok.io/login", user)
+      .post("http://74fe330c.ngrok.io/login", user)
       .then(res => {
         console.log(res.data);
         if (res.data.error) {
@@ -101,7 +101,7 @@ class Login extends React.Component {
           >
             Login
           </IonButton>
-          <IonItem className="link" href="/map">
+          <IonItem className="link" href="/signup">
             <IonText className="link">Registra nuovo agente</IonText>
           </IonItem>
         </IonContent>
