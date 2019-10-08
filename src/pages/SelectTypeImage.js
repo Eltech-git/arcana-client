@@ -32,7 +32,12 @@ import axios from "axios";
 class SelectTypeImage extends React.Component {
   state = {
     url: this.props.location.image,
-    _id: this.props.location._id
+    _id: this.props.location._id,
+    faceRecon: {
+      isIdentical: false,
+      confidence: 0
+    },
+    result: `Indice di affinità volti`
   };
 
   moveToRecord = () => {
@@ -52,12 +57,21 @@ class SelectTypeImage extends React.Component {
   // url mandare
 
   checkFace = e => {
+    this.setState({
+      result: "Elaborazione affinità volti...attendere prego"
+    });
     let check = this.state;
     console.log("check", check);
+
     axios
       .post(`http://74fe330c.ngrok.io/face`, check)
       .then(data => {
-        console.log("data >>>", data);
+        let recon = data.data;
+        this.setState({
+          faceRecon: recon,
+          result: `Indice di affinità volti: `
+        });
+        console.log("data >>>", data.data);
       })
       .catch(err => {
         console.log("err >>>", err);
@@ -109,7 +123,11 @@ class SelectTypeImage extends React.Component {
               <IonIcon icon={image} />
               Altro
             </IonButton>
-            <span>Viso riconosciuto</span>
+            <span>{`${this.state.result} ${
+              this.state.faceRecon.confidence === 0
+                ? ""
+                : this.state.faceRecon.confidence
+            }`}</span>
           </IonGrid>
           <IonFab vertical="bottom" horizontal="end" slot="fixed">
             <IonFabButton color="light" onClick={this.moveToRecord}>
