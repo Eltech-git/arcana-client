@@ -51,7 +51,7 @@ class Operations extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "http://74fe330c.ngrok.io/users"
+    url: "http://3ef3c07b.ngrok.io/users"
   };
 
   goToDetail = i => {
@@ -65,7 +65,7 @@ class Operations extends React.Component {
   getUser = () => {
     let token = localStorage.getItem("token");
     axios
-      .post(`http://74fe330c.ngrok.io/agent?token=${token}`)
+      .post(`http://3ef3c07b.ngrok.io/agent?token=${token}`)
       .then(res => {
         let idUser = res.data;
         console.log(res.data);

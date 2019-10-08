@@ -60,7 +60,7 @@ class Signup extends React.Component {
     data.append("phone", this.state.form.phone);
     data.append("companyIDnum", this.state.form.companyIDnum);
     axios
-      .post(`http://74fe330c.ngrok.io/signup`, data)
+      .post(`http://3ef3c07b.ngrok.io/signup`, data)
       .then(res => {
         console.log(res);
         window.location = "/app";
@@ -169,7 +169,9 @@ class Signup extends React.Component {
             </IonItem>
             <IonItem className="input">
               <IonLabel position="stacked">Foto profilo</IonLabel>
-              <input type="file" onChange={event => this.getFile(event)} />
+              <IonInput>
+                <input type="file" onChange={event => this.getFile(event)} />
+              </IonInput>
             </IonItem>
             <IonButton
               className="button"

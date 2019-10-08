@@ -61,7 +61,7 @@ class RecordAudio extends React.Component {
   onStop = recordedBlob => {
     console.log("recordedBlob", recordedBlob);
     axios
-      .post("http://74fe330c.ngrok.io/speech", recordedBlob)
+      .post("http://3ef3c07b.ngrok.io/speech", recordedBlob)
       .then(res => {
         console.log(res);
       })
