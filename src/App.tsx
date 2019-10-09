@@ -14,7 +14,6 @@ import { map, list, person, people } from "ionicons/icons";
 import Mappa from "./pages/Mappa";
 import Operations from "./pages/Operations";
 import OperationDetail from "./pages/OperationDetail";
-import DetailWork from "./pages/DetailWork";
 import LocationDetail from "./pages/LocationDetail";
 import Agents from "./pages/Agents";
 import SelectTypeImage from "./pages/SelectTypeImage";
@@ -54,8 +53,6 @@ const App: React.FC = () => (
             component={OperationDetail}
             exact={true}
           />
-
-          <Route path="/app/detailwork" component={DetailWork} exact={true} />
           <Route path="/app/newoperation" component={Add} exact={true} />
           <Route
             path="/app/locationdetail"

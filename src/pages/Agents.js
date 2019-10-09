@@ -21,7 +21,6 @@ import Header from "../components/Header";
 import Agent from "../components/Agent";
 import "../theme/page.css";
 import axios from "axios";
-import dotenv from "dotenv";
 class Agents extends React.Component {
   state = {
     url: `${process.env.REACT_APP_API}/users`,

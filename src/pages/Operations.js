@@ -6,12 +6,12 @@ import {
   IonFabButton,
   withIonLifeCycle
 } from "@ionic/react";
+import "../theme/page.css";
 import React from "react";
 import Operation from "../components/Operation";
 import { add, nuclear } from "ionicons/icons";
 import axios from "axios";
 import "../theme/page.css";
-require("dotenv").config();
 
 class Operations extends React.Component {
   state = {
@@ -114,11 +114,6 @@ class Operations extends React.Component {
           <IonFab vertical="bottom" horizontal="end" slot="fixed">
             <IonFabButton href="/app/add" color="light">
               <IonIcon icon={add} />
-            </IonFabButton>
-          </IonFab>
-          <IonFab vertical="bottom" horizontal="start" slot="fixed">
-            <IonFabButton href="/app/detailwork" color="light">
-              <IonIcon icon={nuclear} />
             </IonFabButton>
           </IonFab>
         </IonContent>

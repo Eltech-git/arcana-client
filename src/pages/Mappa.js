@@ -26,7 +26,6 @@ import MapContainer from "../components/MapContainer";
 import "../theme/page.css";
 import "../theme/tag.css";
 import axios from "axios";
-import dotenv from "dotenv";
 
 const mapStyles = {
   width: "100%",

@@ -24,8 +24,8 @@ import {
   IonItem,
   IonTextarea
 } from "@ionic/react";
-import React from "react";
 import "../theme/detail.css";
+import React from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import { Link } from "react-router-dom";

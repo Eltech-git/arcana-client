@@ -25,6 +25,7 @@ import {
   IonSelectOption,
   IonSelect
 } from "@ionic/react";
+import "../theme/detail.css";
 import React from "react";
 import { arrowRoundBack, add } from "ionicons/icons";
 import { Link } from "react-router-dom";
