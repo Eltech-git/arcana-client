@@ -58,7 +58,9 @@ class SelectTypeImage extends React.Component {
     console.log(this.props.location.image);
 
     axios
-      .get(`http://dba26fb1.ngrok.io/targets/${this.props.location._id}`)
+      .get(
+        `https://arcana-api.herokuapp.com/targets/${this.props.location._id}`
+      )
       .then(res => {
         let target = res.data;
         console.log(target);
@@ -78,7 +80,7 @@ class SelectTypeImage extends React.Component {
     console.log("check", check);
 
     axios
-      .post(`http://dba26fb1.ngrok.io/face`, check)
+      .post(`https://arcana-api.herokuapp.com/face`, check)
       .then(data => {
         let recon = data.data;
         this.setState({
@@ -98,7 +100,7 @@ class SelectTypeImage extends React.Component {
         "https://static.allaguida.it/r/845X0/www.allaguida.it/img/Alfa-Romeo-Giulia4.jpg"
     };
     axios
-      .post(`http://dba26fb1.ngrok.io/plate`, check)
+      .post(`https://arcana-api.herokuapp.com/plate`, check)
       .then(data => {
         console.log("data >>>", data);
       })

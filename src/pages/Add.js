@@ -64,7 +64,7 @@ class Add extends React.Component {
     data.append("agentAssigned", this.state.operation.agentAssigned);
 
     axios
-      .post(`http://dba26fb1.ngrok.io/createoperation`, data)
+      .post(`https://arcana-api.herokuapp.com/createoperation`, data)
       .then(res => {
         console.log(res);
         this.props.history.goBack();
@@ -76,7 +76,7 @@ class Add extends React.Component {
 
   componentWillMount() {
     axios
-      .get(`http://dba26fb1.ngrok.io/users`)
+      .get(`https://arcana-api.herokuapp.com/users`)
       .then(res => {
         let users = this.state.users;
         users = res.data;

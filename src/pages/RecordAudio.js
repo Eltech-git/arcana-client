@@ -48,7 +48,8 @@ class RecordAudio extends React.Component {
         "Si richiede attività di OCP su soggetto per sospetta infedeltà copniugale, il soggetto lavora in via delle pere dalle ore 09.00 alle ore 14.00, si sospetta che esca con l'amante il giovedì sera per recarsi presso il ristorante pane e olio di via di ripetta"
     },
     urlbig: {
-      url: "/Users/emilianolombardi/Documents/GitHub/inv_fac/public/test3.flac"
+      url:
+        "https://res.cloudinary.com/dint5f4h7/video/upload/v1570612289/test3_l8ul2y.flac"
     }
   };
 
@@ -84,7 +85,7 @@ class RecordAudio extends React.Component {
     let audio = this.state.urlbig;
     console.log("audio-------", audio);
     axios
-      .post("http://dba26fb1.ngrok.io/speech", audio)
+      .post("https://arcana-api.herokuapp.com/speech", audio)
       .then(res => {
         console.log("rispostaaaaaaaaaaaaaaa", res);
         let text = res.data;
@@ -117,11 +118,11 @@ class RecordAudio extends React.Component {
     let token = localStorage.getItem("token");
     let key = "token";
     axios
-      .post(`http://dba26fb1.ngrok.io/agent?${key}=${token}`)
+      .post(`https://arcana-api.herokuapp.com/agent?${key}=${token}`)
       .then(res => {
         let idUser = res.data;
         axios
-          .get(`http://dba26fb1.ngrok.io/users/${idUser}`)
+          .get(`https://arcana-api.herokuapp.com/users/${idUser}`)
           .then(res => {
             let user = res.data;
             let userlat = this.state.request.lat;
@@ -130,7 +131,7 @@ class RecordAudio extends React.Component {
             user.lng = userlng;
 
             axios
-              .patch(`http://dba26fb1.ngrok.io/user/${idUser}`, user)
+              .patch(`https://arcana-api.herokuapp.com/users/${idUser}`, user)
               .then(res => {
                 console.log(res);
               })
@@ -143,7 +144,7 @@ class RecordAudio extends React.Component {
         request.user = idUser;
         console.log(request);
         axios
-          .post("http://dba26fb1.ngrok.io/comments", request)
+          .post("https://arcana-api.herokuapp.com/comments", request)
           .then(res => {
             console.log(res);
             this.props.history.push({
