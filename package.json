@@ -1,7 +1,10 @@
 {
-  "name": "inv_fac",
+  "name": "arcana-client",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "10.16.2"
+  },
   "dependencies": {
     "@capacitor/android": "^1.2.1",
     "@capacitor/core": "^1.2.1",
