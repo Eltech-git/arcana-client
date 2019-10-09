@@ -1,26 +1,16 @@
 import {
   IonContent,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonGrid,
   IonRow,
-  IonCol,
   IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
   IonLabel,
   IonButton,
   IonInput,
   IonItem,
   IonImg
 } from "@ionic/react";
-import { Route } from "react-router-dom";
 import React from "react";
-import Agents from "./Agents";
 import "../theme/signup.css";
 import axios from "axios";
 

@@ -1,29 +1,16 @@
 import {
   IonContent,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonGrid,
-  IonRow,
-  IonCol,
   IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
   IonIcon,
-  IonLabel,
   IonButton,
-  IonInput,
-  IonItem,
-  IonImg,
-  IonRouterLink,
   IonHeader,
   IonFab,
   IonFabButton,
   IonAvatar
 } from "@ionic/react";
-import { Route } from "react-router-dom";
 import { person, logoModelS, image, mic, logoIonic } from "ionicons/icons";
 import React from "react";
 import Agents from "./Agents";

@@ -20,7 +20,6 @@ import Agents from "./pages/Agents";
 import SelectTypeImage from "./pages/SelectTypeImage";
 import Add from "./pages/Add";
 import Profile from "./pages/Profile";
-import Login from "./pages/Login";
 import RecordAudio from "./pages/RecordAudio";
 
 /* Core CSS required for Ionic components to work properly */

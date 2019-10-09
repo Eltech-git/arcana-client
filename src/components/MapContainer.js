@@ -1,23 +1,3 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
-  IonLabel,
-  IonButton,
-  IonInput,
-  IonItem
-} from "@ionic/react";
 import { locate } from "ionicons/icons";
 import React from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
@@ -130,6 +110,7 @@ class MapContainer extends React.Component {
             <div className="tagGrid">
               <div>
                 <img
+                  alt=""
                   className="tag"
                   style={{ backgroundImage: "url(" + agent.avatar + ")" }}
                 />

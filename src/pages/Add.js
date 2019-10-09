@@ -11,18 +11,12 @@ import {
   IonButton,
   IonText,
   IonSelect,
-  IonSelectOption,
-  IonGrid,
-  IonAvatar,
-  IonImg
+  IonSelectOption
 } from "@ionic/react";
 import React from "react";
-import Header from "../components/Header";
-import Agent from "../components/Agent";
 import "../theme/add.css";
 import "../theme/header.css";
 import axios from "axios";
-import dotenv from "dotenv";
 
 class Add extends React.Component {
   state = {
@@ -47,9 +41,6 @@ class Add extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
-    const email = this.state.email;
-
-    const target = this.state.target;
 
     let data = new FormData();
 

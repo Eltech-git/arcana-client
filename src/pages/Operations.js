@@ -1,27 +1,13 @@
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
   IonIcon,
-  IonLabel,
   IonFab,
   IonFabButton,
   withIonLifeCycle
 } from "@ionic/react";
 import React from "react";
-import Header from "../components/Header";
 import Operation from "../components/Operation";
-import LargeComment from "../components/LargeComment";
 import { add, nuclear } from "ionicons/icons";
 import axios from "axios";
 import "../theme/page.css";

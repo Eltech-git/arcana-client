@@ -2,30 +2,13 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonGrid,
-  IonRow,
-  IonCol,
   IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
   IonItem,
-  IonThumbnail,
-  IonButton,
-  IonDatetime,
-  IonSelect,
   IonLabel,
-  IonList,
   IonInput,
-  IonSelectOption,
-  IonCheckbox,
-  IonRange,
-  IonAvatar,
-  IonToggle
+  IonAvatar
 } from "@ionic/react";
 import React from "react";
 import axios from "axios";

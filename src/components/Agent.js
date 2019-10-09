@@ -1,4 +1,4 @@
-import { IonGrid, IonText, IonCard, IonAvatar, IonItem } from "@ionic/react";
+import { IonGrid, IonText, IonCard, IonAvatar } from "@ionic/react";
 import React from "react";
 import "../theme/card.css";
 import Operation from "../components/Operation";
@@ -11,8 +11,7 @@ class Agent extends React.Component {
       cases: 3
     },
     large: false,
-		agent: {},
-		component: this.props.component
+    component: this.props.component
   };
 
   showOperations = () => {
@@ -24,10 +23,9 @@ class Agent extends React.Component {
     });
   };
 
-
-	addAgent = () => {
-		console.log(this.props.agent)
-	}
+  addAgent = () => {
+    console.log(this.props.agent);
+  };
 
   render() {
     return (
@@ -37,16 +35,20 @@ class Agent extends React.Component {
             <img className="img" src={this.props.agent.avatar} />
           </IonAvatar>
           <IonText className="text">{this.props.agent.name}</IonText>
-				<IonText className="text">{`Op: ${this.props.agent.assignedOP.length}`}</IonText>
+          <IonText className="text">{`Op: ${this.props.agent.assignedOP.length}`}</IonText>
         </IonGrid>
-				<IonText className="display" onClick={this.showOperations}>
-				          {this.state.showOperations === true
-				            ? "Nascondi operazioni"
-				            : "Visualizza operazioni"}
-				 </IonText>
+        <IonText className="display" onClick={this.showOperations}>
+          {this.state.showOperations === true
+            ? "Nascondi operazioni"
+            : "Visualizza operazioni"}
+        </IonText>
         <IonGrid className={this.state.large === true ? "" : "hidden"}>
           {this.props.agent.assignedOP.map((operation, i) => (
-            <Operation operation={operation} key={i} goToDetail={this.props.goToDetail} />
+            <Operation
+              operation={operation}
+              key={i}
+              goToDetail={this.props.goToDetail}
+            />
           ))}
         </IonGrid>
       </IonCard>
