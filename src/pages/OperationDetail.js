@@ -51,11 +51,12 @@ class OperationDetail extends React.Component {
         _id: ""
       }
     },
-    url: "http://3ef3c07b.ngrok.io/operations/5d943cb303dd9307d82d432e"
+    url: "http://dba26fb1.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
   state = {
     operation: {
+      _id: "",
       comments: [],
       dayDone: 0,
       title: "",
@@ -69,7 +70,7 @@ class OperationDetail extends React.Component {
     }
   };
 
-  componentDidMount() {
+  componentWillMount() {
     console.log("hello");
     let operation = this.props.location.operation;
     console.log("log1 >>>>>>", operation);
@@ -93,7 +94,7 @@ class OperationDetail extends React.Component {
       pathname: "/app/selectimage",
       image: image,
       _id: this.state.operation.target._id,
-      operationID: this.state.operationID
+      operationID: this.state.operation._id
     });
   };
   goBack = () => {

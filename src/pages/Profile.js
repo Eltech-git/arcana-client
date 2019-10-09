@@ -56,7 +56,7 @@ class Profile extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "http://3ef3c07b.ngrok.io/users"
+    url: "http://dba26fb1.ngrok.io/users"
   };
 
   componentWillReceiveProps(props) {
@@ -67,7 +67,7 @@ class Profile extends React.Component {
     console.log(key);
 
     axios
-      .post(`http://3ef3c07b.ngrok.io/agent?${key}=${token}`)
+      .post(`http://dba26fb1.ngrok.io/agent?${key}=${token}`)
       .then(res => {
         let idUser = res.data;
         console.log(res.data);

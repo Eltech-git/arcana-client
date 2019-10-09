@@ -52,7 +52,7 @@ class Signup extends React.Component {
 
     data.append("name", this.state.form.name);
     data.append("surname", this.state.form.surname);
-    data.append("avatar", this.state.form.avatar);
+    data.append("file", this.state.form.avatar);
     data.append("email", this.state.form.email);
     data.append("password", this.state.form.password);
     data.append("location", this.state.form.location);
@@ -60,10 +60,10 @@ class Signup extends React.Component {
     data.append("phone", this.state.form.phone);
     data.append("companyIDnum", this.state.form.companyIDnum);
     axios
-      .post(`http://3ef3c07b.ngrok.io/signup`, data)
+      .post(`http://localhost:4000/signup`, data)
       .then(res => {
         console.log(res);
-        window.location = "/app";
+        window.location = "/login";
       })
       .catch(err => {
         console.log(err);

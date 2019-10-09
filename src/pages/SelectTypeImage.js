@@ -32,6 +32,7 @@ import axios from "axios";
 class SelectTypeImage extends React.Component {
   state = {
     url: this.props.location.image,
+    opID: this.props.location.operationID,
     _id: this.props.location._id,
     faceRecon: {
       isIdentical: false,
@@ -46,7 +47,7 @@ class SelectTypeImage extends React.Component {
     this.props.history.push({
       pathname: "/app/record",
       image: this.state.url,
-      operationID: this.props.location.operationID
+      operationID: this.state.opID
     });
   };
 
@@ -64,7 +65,7 @@ class SelectTypeImage extends React.Component {
     console.log("check", check);
 
     axios
-      .post(`http://3ef3c07b.ngrok.io/face`, check)
+      .post(`http://dba26fb1.ngrok.io/face`, check)
       .then(data => {
         let recon = data.data;
         this.setState({
@@ -84,7 +85,7 @@ class SelectTypeImage extends React.Component {
         "https://static.allaguida.it/r/845X0/www.allaguida.it/img/Alfa-Romeo-Giulia4.jpg"
     };
     axios
-      .post(`http://3ef3c07b.ngrok.io/plate`, check)
+      .post(`http://dba26fb1.ngrok.io/plate`, check)
       .then(data => {
         console.log("data >>>", data);
       })

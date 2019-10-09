@@ -52,7 +52,7 @@ class DetailWork extends React.Component {
         _id: ""
       }
     },
-    url: "http://3ef3c07b.ngrok.io/operations/5d943cb303dd9307d82d432e"
+    url: "http://dba26fb1.ngrok.io/operations/5d943cb303dd9307d82d432e"
   };
 
   componentDidMount() {

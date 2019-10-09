@@ -55,7 +55,7 @@ class Add extends React.Component {
 
     data.append("name", this.state.target.name);
     data.append("vehiclePlate", this.state.target.vehiclePlate);
-    data.append("pictures", this.state.target.pictures[0]);
+    data.append("file", this.state.target.pictures[0]);
     data.append("descriptionOfSubject", this.state.target.descriptionOfSubject);
     data.append("title", this.state.operation.title);
     data.append("daysAssigned", this.state.operation.daysAssigned);
@@ -64,7 +64,7 @@ class Add extends React.Component {
     data.append("agentAssigned", this.state.operation.agentAssigned);
 
     axios
-      .post(`http://3ef3c07b.ngrok.io/createoperation`, data)
+      .post(`http://dba26fb1.ngrok.io/createoperation`, data)
       .then(res => {
         console.log(res);
         this.props.history.goBack();
@@ -76,7 +76,7 @@ class Add extends React.Component {
 
   componentWillMount() {
     axios
-      .get(`http://3ef3c07b.ngrok.io/users`)
+      .get(`http://dba26fb1.ngrok.io/users`)
       .then(res => {
         let users = this.state.users;
         users = res.data;
@@ -183,7 +183,9 @@ class Add extends React.Component {
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Immagine</IonLabel>
-            <input type="file" onChange={event => this.getFile(event)} />
+            <IonInput>
+              <input type="file" onChange={event => this.getFile(event)} />
+            </IonInput>
           </IonItem>
           <IonItem className="input">
             <IonLabel position="stacked">Targa</IonLabel>
