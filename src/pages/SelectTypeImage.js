@@ -11,9 +11,8 @@ import {
   IonFabButton,
   IonAvatar
 } from "@ionic/react";
-import { person, logoModelS, image, mic, logoIonic } from "ionicons/icons";
+import { person, logoModelS, mic } from "ionicons/icons";
 import React from "react";
-import Agents from "./Agents";
 import "../theme/select.css";
 import axios from "axios";
 
@@ -107,13 +106,13 @@ class SelectTypeImage extends React.Component {
             <IonGrid className="grid-target">
               <IonText className="target-text">Target</IonText>
               <IonAvatar className="avatar-select">
-                <img src={this.state.target.pictures} />
+                <img src={this.state.target.pictures} alt="" />
               </IonAvatar>
             </IonGrid>
             <IonGrid className="grid-target">
               <IonText className="target-text">Soggetto</IonText>
               <IonAvatar className="avatar-select">
-                <img src={this.state.url.dataUrl} />
+                <img src={this.state.url.dataUrl} alt="" />
               </IonAvatar>
             </IonGrid>
           </IonGrid>

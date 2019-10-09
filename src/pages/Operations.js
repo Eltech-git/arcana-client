@@ -9,7 +9,7 @@ import {
 import "../theme/page.css";
 import React from "react";
 import Operation from "../components/Operation";
-import { add, nuclear } from "ionicons/icons";
+import { add } from "ionicons/icons";
 import axios from "axios";
 import "../theme/page.css";
 

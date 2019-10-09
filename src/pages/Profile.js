@@ -116,7 +116,7 @@ class Profile extends React.Component {
               </IonItem>
             </IonGrid>
             <IonAvatar className="avatar-profile">
-              <img src={this.state.user.avatar} />
+              <img src={this.state.user.avatar} alt="" />
             </IonAvatar>
           </IonGrid>
         </IonContent>

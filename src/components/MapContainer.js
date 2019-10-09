@@ -1,4 +1,3 @@
-import { locate } from "ionicons/icons";
 import React from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import "../theme/page.css";
@@ -12,7 +11,7 @@ const mapStyles = {
   height: "100%"
 };
 
-const wait = Geolocation.watchPosition({}, (position, err) => {});
+// const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
   state = {

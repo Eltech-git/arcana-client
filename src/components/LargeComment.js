@@ -1,21 +1,9 @@
 import {
-  IonContent,
   IonCard,
-  IonCardHeader,
-  IonRow,
-  IonCol,
-  IonText,
-  IonCardSubtitle,
-  IonCardTitle,
   IonIcon,
-  IonLabel,
   IonButton,
   IonCardContent,
-  IonItem,
-  IonAvatar,
   IonGrid,
-  IonTitle,
-  IonImg,
   withIonLifeCycle
 } from "@ionic/react";
 import { volumeHigh, pin } from "ionicons/icons";

@@ -1,27 +1,6 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
-  IonLabel,
-  IonButton,
-  IonInput,
-  IonItem,
-  withIonLifeCycle
-} from "@ionic/react";
-import { locate } from "ionicons/icons";
+import { IonPage, withIonLifeCycle } from "@ionic/react";
+
 import React from "react";
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import MapContainer from "../components/MapContainer";
 import "../theme/page.css";
 import "../theme/tag.css";
