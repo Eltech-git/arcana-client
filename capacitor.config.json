@@ -1,5 +1,5 @@
 {
-  "appId": "com.arcana.and",
+  "appId": "com.arcana.client",
   "appName": "arcana",
   "bundledWebRuntime": false,
   "npmClient": "npm",
