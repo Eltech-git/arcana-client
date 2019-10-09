@@ -24,7 +24,10 @@ import "../theme/comment.css";
 
 class LargeComment extends React.Component {
   state = {
-    comment: {},
+    comment: {
+      lat: 10,
+      lng: 10
+    },
     stateContent: false
   };
 
@@ -50,7 +53,10 @@ class LargeComment extends React.Component {
       <IonCard className="largecomment">
         <IonGrid className="divlarge">
           <img className="img" src={this.props.comment.picture} />
-          <IonButton className="divBtn" href="/locationdetail">
+          <IonButton
+            className="divBtn"
+            onClick={() => this.props.goToComLoc(this.props.comment)}
+          >
             <IonIcon className="icon" icon={pin} />
           </IonButton>
           <IonButton className="divBtn">

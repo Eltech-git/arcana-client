@@ -102,6 +102,18 @@ class OperationDetail extends React.Component {
     this.props.history.goBack();
   };
 
+  goToComLoc = comment => {
+    this.props.history.push({
+      pathname: "/app/locationdetail",
+      comment: comment
+    });
+    // this.props.history.push({
+    //   pathname: "/app/locationdetail"
+    //   // lat: this.state.lat,
+    //   // lng: this.state.lng
+    // });
+  };
+
   render() {
     return (
       <IonPage>
@@ -125,7 +137,7 @@ class OperationDetail extends React.Component {
             </IonToolbar>
           </IonHeader>
           {this.state.operation.comments.map((comment, i) => (
-            <LargeComment comment={comment} />
+            <LargeComment goToComLoc={this.goToComLoc} comment={comment} />
           ))}
 
           <IonFab vertical="bottom" horizontal="end" slot="fixed"></IonFab>

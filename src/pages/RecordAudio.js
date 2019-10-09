@@ -47,14 +47,14 @@ class RecordAudio extends React.Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     Geolocation.getCurrentPosition().then(result => {
       let gotlongitude = result.coords.longitude;
       let gotlatitude = result.coords.latitude;
       let request = this.state.request;
       request.lat = gotlatitude;
       request.lng = gotlongitude;
-      console.log(gotlatitude);
+      console.log("latitudine goooooooooooooooooot", gotlatitude);
       console.log(gotlongitude);
       this.setState({ request });
     });
