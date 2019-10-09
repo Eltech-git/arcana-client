@@ -1,7 +1,0 @@
-{
-  "appId": "com.arcana.and",
-  "appName": "arcana",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build"
-}

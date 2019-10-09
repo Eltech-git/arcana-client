@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">arcana</string>
-    <string name="title_activity_main">arcana</string>
-    <string name="package_name">com.project.arcana</string>
-    <string name="fileprovider_authority">com.project.arcana.fileprovider</string>
-    <string name="custom_url_scheme">com.project.arcana</string>
-</resources>
