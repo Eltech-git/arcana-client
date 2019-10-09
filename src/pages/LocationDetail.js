@@ -86,7 +86,10 @@ class LocationDetail extends React.Component {
             google={this.props.google}
             zoom={7.5}
             style={mapStyles}
-            initialCenter={{ lat: 42.5, lng: 12.285 }}
+            initialCenter={{
+              lat: this.state.comment.lat,
+              lng: this.state.comment.lng
+            }}
           >
             <Marker
               position={{
