@@ -64,7 +64,7 @@ class Add extends React.Component {
     data.append("agentAssigned", this.state.operation.agentAssigned);
 
     axios
-      .post(`https://arcana-api.herokuapp.com/createoperation`, data)
+      .post(`${process.env.REACT_APP_API}/createoperation`, data)
       .then(res => {
         console.log(res);
         this.props.history.goBack();
@@ -76,7 +76,7 @@ class Add extends React.Component {
 
   componentWillMount() {
     axios
-      .get(`https://arcana-api.herokuapp.com/users`)
+      .get(`${process.env.REACT_APP_API}/users`)
       .then(res => {
         let users = this.state.users;
         users = res.data;

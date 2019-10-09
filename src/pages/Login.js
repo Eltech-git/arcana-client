@@ -40,7 +40,7 @@ class Login extends React.Component {
     e.preventDefault();
     let user = this.state.form;
     axios
-      .post("https://arcana-api.herokuapp.com/login", user)
+      .post(`${process.env.REACT_APP_API}/login`, user)
       .then(res => {
         console.log(res.data);
         if (res.data.error) {

@@ -36,7 +36,7 @@ const wait = Geolocation.watchPosition({}, (position, err) => {});
 
 class MapContainer extends React.Component {
   state = {
-    url: "https://arcana-api.herokuapp.com/userspos",
+    url: `${process.env.REACT_APP_API}/userspos`,
     users: [
       {
         avatar: "",
@@ -162,7 +162,7 @@ class MapContainer extends React.Component {
         google={this.props.google}
         zoom={7.5}
         style={mapStyles}
-        initialCenter={{ lat: 42.5, lng: 12.285 }}
+        initialCenter={{ lat: 9.467639499999999, lng: 100.04709509999999 }}
       >
         <Marker
           position={{

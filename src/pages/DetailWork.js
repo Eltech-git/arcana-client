@@ -52,7 +52,7 @@ class DetailWork extends React.Component {
         _id: ""
       }
     },
-    url: "https://arcana-api.herokuapp.com/operations/5d943cb303dd9307d82d432e"
+    url: `${process.env.REACT_APP_API}/operations/5d943cb303dd9307d82d432e`
   };
 
   componentDidMount() {

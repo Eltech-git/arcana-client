@@ -60,7 +60,7 @@ class Signup extends React.Component {
     data.append("phone", this.state.form.phone);
     data.append("companyIDnum", this.state.form.companyIDnum);
     axios
-      .post(`https://arcana-api.herokuapp.com/signup`, data)
+      .post(`${process.env.REACT_APP_API}/signup`, data)
       .then(res => {
         console.log(res);
         window.location = "/login";

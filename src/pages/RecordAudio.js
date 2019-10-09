@@ -30,7 +30,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { ReactMic } from "react-mic";
-import { mic, micOff, checkmark, nuclear } from "ionicons/icons";
+import { mic, micOff, checkmark, nuclear, send } from "ionicons/icons";
 import { Plugins } from "@capacitor/core";
 const { Geolocation } = Plugins;
 
@@ -85,7 +85,7 @@ class RecordAudio extends React.Component {
     let audio = this.state.urlbig;
     console.log("audio-------", audio);
     axios
-      .post("https://arcana-api.herokuapp.com/speech", audio)
+      .post(`${process.env.REACT_APP_API}/speech`, audio)
       .then(res => {
         console.log("rispostaaaaaaaaaaaaaaa", res);
         let text = res.data;
@@ -118,11 +118,11 @@ class RecordAudio extends React.Component {
     let token = localStorage.getItem("token");
     let key = "token";
     axios
-      .post(`https://arcana-api.herokuapp.com/agent?${key}=${token}`)
+      .post(`${process.env.REACT_APP_API}/agent?${key}=${token}`)
       .then(res => {
         let idUser = res.data;
         axios
-          .get(`https://arcana-api.herokuapp.com/users/${idUser}`)
+          .get(`${process.env.REACT_APP_API}/users/${idUser}`)
           .then(res => {
             let user = res.data;
             let userlat = this.state.request.lat;
@@ -131,7 +131,7 @@ class RecordAudio extends React.Component {
             user.lng = userlng;
 
             axios
-              .patch(`https://arcana-api.herokuapp.com/users/${idUser}`, user)
+              .patch(`${process.env.REACT_APP_API}/users/${idUser}`, user)
               .then(res => {
                 console.log(res);
               })
@@ -144,7 +144,7 @@ class RecordAudio extends React.Component {
         request.user = idUser;
         console.log(request);
         axios
-          .post("https://arcana-api.herokuapp.com/comments", request)
+          .post(`${process.env.REACT_APP_API}/comments`, request)
           .then(res => {
             console.log(res);
             this.props.history.push({
@@ -190,19 +190,19 @@ class RecordAudio extends React.Component {
               onIonChange={event => this.typeComment(event)}
             ></IonTextarea>
           </IonItem>
-          <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFab vertical="bottom" horizontal="center" slot="fixed">
             <IonFabButton color="light" onClick={this.stopRecording}>
               <IonIcon icon={micOff} />
             </IonFabButton>
           </IonFab>
-          <IonFab vertical="bottom" horizontal="center" slot="fixed">
+          <IonFab vertical="bottom" horizontal="start" slot="fixed">
             <IonFabButton color="light" onClick={this.startRecording}>
               <IonIcon icon={mic} />
             </IonFabButton>
           </IonFab>
-          <IonFab vertical="bottom" horizontal="start" slot="fixed">
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
             <IonFabButton color="light" onClick={this.createComment}>
-              <IonIcon icon={nuclear} />
+              <IonIcon icon={send} />
             </IonFabButton>
           </IonFab>
         </IonContent>

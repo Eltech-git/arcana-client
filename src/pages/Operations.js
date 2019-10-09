@@ -51,7 +51,7 @@ class Operations extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "https://arcana-api.herokuapp.com/users"
+    url: `${process.env.REACT_APP_API}/users`
   };
 
   goToDetail = i => {
@@ -65,7 +65,7 @@ class Operations extends React.Component {
   getUser = () => {
     let token = localStorage.getItem("token");
     axios
-      .post(`https://arcana-api.herokuapp.com/agent?token=${token}`)
+      .post(`${process.env.REACT_APP_API}/agent?token=${token}`)
       .then(res => {
         let idUser = res.data;
         console.log(res.data);

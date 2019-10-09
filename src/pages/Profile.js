@@ -56,7 +56,7 @@ class Profile extends React.Component {
       companyIDnum: 0,
       agentAssigned: []
     },
-    url: "https://arcana-api.herokuapp.com/users"
+    url: `${process.env.REACT_APP_API}/users`
   };
 
   componentWillReceiveProps(props) {
@@ -67,7 +67,7 @@ class Profile extends React.Component {
     console.log(key);
 
     axios
-      .post(`https://arcana-api.herokuapp.com/agent?${key}=${token}`)
+      .post(`${process.env.REACT_APP_API}/agent?${key}=${token}`)
       .then(res => {
         let idUser = res.data;
         console.log(res.data);
