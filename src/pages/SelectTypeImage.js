@@ -20,10 +20,11 @@ import {
   IonRouterLink,
   IonHeader,
   IonFab,
-  IonFabButton
+  IonFabButton,
+  IonAvatar
 } from "@ionic/react";
 import { Route } from "react-router-dom";
-import { person, logoModelS, image, mic } from "ionicons/icons";
+import { person, logoModelS, image, mic, logoIonic } from "ionicons/icons";
 import React from "react";
 import Agents from "./Agents";
 import "../theme/select.css";
@@ -38,7 +39,9 @@ class SelectTypeImage extends React.Component {
       isIdentical: false,
       confidence: 0
     },
-    result: `Indice di affinità volti`
+    result: `Indice di affinità volti`,
+    target: {},
+    large: false
   };
 
   moveToRecord = () => {
@@ -53,6 +56,16 @@ class SelectTypeImage extends React.Component {
 
   componentWillMount() {
     console.log(this.props.location.image);
+
+    axios
+      .get(`http://dba26fb1.ngrok.io/targets/${this.props.location._id}`)
+      .then(res => {
+        let target = res.data;
+        console.log(target);
+        this.setState({
+          target: target
+        });
+      });
   }
 
   // url mandare
@@ -100,9 +113,23 @@ class SelectTypeImage extends React.Component {
         <IonContent className="login">
           <IonHeader>
             <IonToolbar className="detail-header">
-              <IonText>Riconoscimento</IonText>
+              <IonText>Riconoscimento Viso</IonText>
             </IonToolbar>
           </IonHeader>
+          <IonGrid className="grid-photos">
+            <IonGrid className="grid-target">
+              <IonText className="target-text">Target</IonText>
+              <IonAvatar className="avatar-select">
+                <img src={this.state.target.pictures} />
+              </IonAvatar>
+            </IonGrid>
+            <IonGrid className="grid-target">
+              <IonText className="target-text">Soggetto</IonText>
+              <IonAvatar className="avatar-select">
+                <img src={this.state.url.dataUrl} />
+              </IonAvatar>
+            </IonGrid>
+          </IonGrid>
           <IonGrid className="grid-select">
             <IonButton
               onClick={this.checkFace}
@@ -120,15 +147,11 @@ class SelectTypeImage extends React.Component {
               <IonIcon icon={logoModelS} />
               Targa
             </IonButton>
-            <IonButton className="button" shape="round">
-              <IonIcon icon={image} />
-              Altro
-            </IonButton>
-            <span>{`${this.state.result} ${
+            <IonText className="text">{`${this.state.result} ${
               this.state.faceRecon.confidence === 0
                 ? ""
-                : this.state.faceRecon.confidence
-            }`}</span>
+                : this.state.faceRecon.confidence * 100 + " %"
+            }`}</IonText>
           </IonGrid>
           <IonFab vertical="bottom" horizontal="end" slot="fixed">
             <IonFabButton color="light" onClick={this.moveToRecord}>

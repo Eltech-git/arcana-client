@@ -20,7 +20,9 @@ import {
   IonCardContent,
   IonCardTitle,
   IonFabButton,
-  IonFab
+  IonFab,
+  IonItem,
+  IonTextarea
 } from "@ionic/react";
 import React from "react";
 import "../theme/detail.css";
@@ -44,6 +46,9 @@ class RecordAudio extends React.Component {
       picture: this.props.location.image.dataUrl,
       text:
         "Si richiede attività di OCP su soggetto per sospetta infedeltà copniugale, il soggetto lavora in via delle pere dalle ore 09.00 alle ore 14.00, si sospetta che esca con l'amante il giovedì sera per recarsi presso il ristorante pane e olio di via di ripetta"
+    },
+    urlbig: {
+      url: "/Users/emilianolombardi/Documents/GitHub/inv_fac/public/test3.flac"
     }
   };
 
@@ -75,19 +80,35 @@ class RecordAudio extends React.Component {
     console.log("chunk of real-time data is: ", recordedBlob);
   }
 
-  onStop = recordedBlob => {
-    console.log("recordedBlob", recordedBlob);
+  onStop = () => {
+    let audio = this.state.urlbig;
+    console.log("audio-------", audio);
     axios
-      .post("http://dba26fb1.ngrok.io/speech", recordedBlob)
+      .post("http://dba26fb1.ngrok.io/speech", audio)
       .then(res => {
-        console.log(res);
+        console.log("rispostaaaaaaaaaaaaaaa", res);
+        let text = res.data;
+        let request = this.state.request;
+        request.text = text;
+        this.setState({
+          request
+        });
       })
       .catch(err => {
         console.log(err);
       });
 
-    this.props.history.push({
-      pathname: "/app/operationdetail"
+    // this.props.history.push({
+    //   pathname: "/app/operationdetail"
+    // });
+  };
+  typeComment = event => {
+    let text = event.target.value;
+    console.log(text);
+    let request = this.state.request;
+    request.text = text;
+    this.setState({
+      request
     });
   };
 
@@ -99,6 +120,25 @@ class RecordAudio extends React.Component {
       .post(`http://dba26fb1.ngrok.io/agent?${key}=${token}`)
       .then(res => {
         let idUser = res.data;
+        axios
+          .get(`http://dba26fb1.ngrok.io/users/${idUser}`)
+          .then(res => {
+            let user = res.data;
+            let userlat = this.state.request.lat;
+            let userlng = this.state.request.lng;
+            user.lat = userlat;
+            user.lng = userlng;
+
+            axios
+              .patch(`http://dba26fb1.ngrok.io/user/${idUser}`, user)
+              .then(res => {
+                console.log(res);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          })
+          .catch(err => {});
         let request = this.state.request;
         request.user = idUser;
         console.log(request);
@@ -142,6 +182,13 @@ class RecordAudio extends React.Component {
             strokeColor="#000000"
             backgroundColor="rgba(219, 224, 241, 0.02)"
           />
+          <IonItem className="input-textarea">
+            <IonLabel position="stacked">Scrivi il tuo commento</IonLabel>
+            <IonTextarea
+              placeholder="aggiungi maggiori informazioni qui..."
+              onIonChange={event => this.typeComment(event)}
+            ></IonTextarea>
+          </IonItem>
           <IonFab vertical="bottom" horizontal="end" slot="fixed">
             <IonFabButton color="light" onClick={this.stopRecording}>
               <IonIcon icon={micOff} />

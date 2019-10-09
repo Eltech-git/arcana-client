@@ -136,7 +136,7 @@ class OperationDetail extends React.Component {
               </IonGrid>
             </IonToolbar>
           </IonHeader>
-          {this.state.operation.comments.map((comment, i) => (
+          {this.state.operation.comments.reverse().map((comment, i) => (
             <LargeComment goToComLoc={this.goToComLoc} comment={comment} />
           ))}
 

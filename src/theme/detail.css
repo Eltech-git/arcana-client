@@ -13,7 +13,7 @@
   padding-bottom: 2%;
 }
 .sound-wave {
-  height: 50%;
+  height: 25%;
   width: 100%;
 }
 
@@ -34,6 +34,13 @@
 .grid-detail .back {
   font-size: 200%;
   text-align: center;
+}
+.input-textarea {
+  height: 400px;
+  --background: #2d3439;
+  color: white;
+  --border-color: white;
+  --highlight-color-focused: white;
 }
 
 .grid-detail .text {
