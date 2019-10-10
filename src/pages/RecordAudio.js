@@ -84,20 +84,20 @@ class RecordAudio extends React.Component {
   onStop = () => {
     let audio = this.state.urlbig;
     console.log("audio-------", audio);
-    axios
-      .post(`${process.env.REACT_APP_API}/speech`, audio)
-      .then(res => {
-        console.log("rispostaaaaaaaaaaaaaaa", res);
-        let text = res.data;
-        let request = this.state.request;
-        request.text = text;
-        this.setState({
-          request
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios
+    //   .post(`${process.env.REACT_APP_API}/speech`, audio)
+    //   .then(res => {
+    //     console.log("rispostaaaaaaaaaaaaaaa", res);
+    //     let text = res.data;
+    //     let request = this.state.request;
+    //     request.text = text;
+    //     this.setState({
+    //       request
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
 
     // this.props.history.push({
     //   pathname: "/app/operationdetail"
