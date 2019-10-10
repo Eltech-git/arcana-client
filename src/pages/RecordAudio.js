@@ -45,7 +45,7 @@ class RecordAudio extends React.Component {
       operation: this.props.location.operationID,
       picture: this.props.location.image.dataUrl,
       text:
-        "Si richiede attività di OCP su soggetto per sospetta infedeltà copniugale, il soggetto lavora in via delle pere dalle ore 09.00 alle ore 14.00, si sospetta che esca con l'amante il giovedì sera per recarsi presso il ristorante pane e olio di via di ripetta"
+        "ore 17:30 soggetto rientrato presso la propria abitazione ripeto soggetto rientrato presso la propria abitazione è solo"
     },
     urlbig: {
       url:
