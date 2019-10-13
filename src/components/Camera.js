@@ -33,8 +33,8 @@ class Camera extends React.Component {
   }
   takePicture = () => {
     Plugins.Camera.getPhoto({
-      quality: 50,
-      allowEditing: true,
+      quality: 10,
+      allowEditing: false,
       correctOrientation: true,
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera
