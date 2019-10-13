@@ -2,36 +2,20 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonGrid,
-  IonRow,
   IonImg,
   IonText,
   IonAvatar,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
   IonIcon,
-  IonLabel,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardContent,
-  IonCardTitle,
-  IonFabButton,
-  IonFab,
-  IonItem,
-  IonSelectOption,
-  IonSelect
+  IonFab
 } from "@ionic/react";
 import "../theme/detail.css";
 import React from "react";
-import { arrowRoundBack, add } from "ionicons/icons";
+import { arrowRoundBack } from "ionicons/icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Camera from "../components/Camera";
-import Header from "../components/Header";
 import Operation from "../components/Operation";
 import LargeComment from "../components/LargeComment";
 

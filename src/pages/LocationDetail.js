@@ -2,21 +2,8 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
-  IonLabel,
-  IonButton,
-  IonInput,
-  IonItem
+  IonIcon
 } from "@ionic/react";
 import { locate } from "ionicons/icons";
 import React from "react";

@@ -8,17 +8,8 @@ import {
   IonRow,
   IonImg,
   IonText,
-  IonAvatar,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
   IonIcon,
   IonLabel,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardContent,
-  IonCardTitle,
   IonFabButton,
   IonFab,
   IonItem,
@@ -26,11 +17,11 @@ import {
 } from "@ionic/react";
 import "../theme/detail.css";
 import React from "react";
-import Header from "../components/Header";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { ReactMic } from "react-mic";
-import { mic, micOff, checkmark, nuclear, send } from "ionicons/icons";
+import { mic, micOff, send } from "ionicons/icons";
 import { Plugins } from "@capacitor/core";
 const { Geolocation } = Plugins;
 

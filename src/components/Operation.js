@@ -1,13 +1,4 @@
-import {
-  IonGrid,
-  IonText,
-  IonCard,
-  IonImg,
-  IonAvatar,
-  IonCardContent,
-  IonButton,
-  IonItem
-} from "@ionic/react";
+import { IonGrid, IonText, IonCard, IonAvatar } from "@ionic/react";
 import React from "react";
 import SmallComment from "./SmallComment";
 import "../theme/card.css";

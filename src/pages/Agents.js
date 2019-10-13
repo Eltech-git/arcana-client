@@ -1,21 +1,4 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
-  IonLabel,
-  withIonLifeCycle
-} from "@ionic/react";
+import { IonContent, IonPage, withIonLifeCycle } from "@ionic/react";
 import React from "react";
 import Header from "../components/Header";
 import Agent from "../components/Agent";

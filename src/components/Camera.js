@@ -1,28 +1,9 @@
 import React from "react";
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonText,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonBadge,
-  IonIcon,
-  IonLabel,
-  IonFabButton,
-  IonFab,
-  withIonLifeCycle
-} from "@ionic/react";
+import { IonIcon, IonFabButton, IonFab } from "@ionic/react";
 
 import { Plugins, CameraResultType, CameraSource } from "@capacitor/core";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
-import { arrowRoundBack, add } from "ionicons/icons";
+import { add } from "ionicons/icons";
 
 class Camera extends React.Component {
   state = {
